@@ -1,0 +1,12 @@
+$enable-gradients: true;
+$enable-shadows: true;
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import './assets/css/style.css';
+
+//le icone di bootstrap
+@import './assets/css/glyphicons.css';
+
+//ho letto che di icone ci sarebbero anche queste
+//$fa-font-path: "../fonts";
+//@import "../font-awesome/scss/font-awesome.scss";

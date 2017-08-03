@@ -1,0 +1,10 @@
+
+<div class={{className}}>
+    <button class="button_nav" align="right" (click)="toggle()">{{show ? '<' : '>'}}</button>
+    <div *ngIf="show">
+        <h3><font color="white">Choose a lesson:</font></h3>
+        <div *ngFor=" let lessonName of lessonsUnique">
+            <div class="box"><input type="submit" (click)="choose(lessonName)" value={{lessonName}}></div>
+        </div>
+  </div>
+</div>
