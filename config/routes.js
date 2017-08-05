@@ -31,11 +31,15 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-/* lo commento perchè voglio vedere index.html presente in /assets 
-
+// lo commento perchè voglio vedere index.html presente in /assets
+/*
   '/': {
-    view: 'view-employ'
-  }*/
+    view: 'view-login'
+  },*/
+  //user
+  'POST /user': 'UserController.create',
+
+  'GET /users/:login': 'UserController.findOne',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

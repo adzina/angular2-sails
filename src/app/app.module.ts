@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'
-import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -17,6 +17,7 @@ import { ChooseModeComponent } from './views/choose-mode/view-choose-mode.compon
 import { NavbarComponent } from './bars/navbar/navbar.component';
 import { GoodbyeComponent } from './views/goodbye/view-goodbye.component';
 import { TeacherPanelComponent } from './views/teacher-panel/view-teacher-panel.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { TeacherPanelComponent } from './views/teacher-panel/view-teacher-panel.
     FormsModule,
     AppRoutingModule,
     BrowserModule,
-    HttpModule //http://www.concretepage.com/angular-2/angular-2-http-post-example
+    HttpClientModule //http://www.concretepage.com/angular-2/angular-2-http-post-example
   ],
   providers: [EmployeeService,LoginService],
   bootstrap: [AppComponent]
