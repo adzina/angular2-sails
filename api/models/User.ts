@@ -12,3 +12,10 @@ module.exports = {
     password: {type: 'string', required:'true'}
   }
 };
+/*
+export class User {
+	public id: number = 0;
+	public login: string = '';
+	public password:string = '';
+}
+*/

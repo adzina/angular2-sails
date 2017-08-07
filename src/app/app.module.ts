@@ -8,7 +8,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
-import { EmployeeService } from './services/employee.service';
 import { LoginComponent } from './views/login/view-login.component';
 import {LoginService} from './services/login.service';
 import { DashboardComponent } from './views/dashboard/view-dashboard.component';
@@ -39,7 +38,7 @@ import { TeacherPanelComponent } from './views/teacher-panel/view-teacher-panel.
     BrowserModule,
     HttpClientModule //http://www.concretepage.com/angular-2/angular-2-http-post-example
   ],
-  providers: [EmployeeService,LoginService],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

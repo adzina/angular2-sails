@@ -34,9 +34,10 @@ module.exports.routes = {
 // lo commento perchè voglio vedere index.html presente in /assets
 /*
   '/': {
-    view: 'view-login'
+    view: 'index'
   },*/
   //user
+
   'POST /user': 'UserController.create',
 
   'GET /users/:login': 'UserController.findOne',
