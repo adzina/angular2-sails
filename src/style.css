@@ -61,6 +61,14 @@ div.box {
 	height:50px;
 	border:none;
 }
+div.box1 {
+	margin:10% 1% 1% 0;
+	float:left;
+	clear:none;
+	width:100%;
+	height:50px;
+	border:none;
+}
 button{
 	height:100%;
 	background-color: lightyellow;

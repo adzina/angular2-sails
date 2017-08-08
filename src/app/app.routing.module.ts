@@ -8,11 +8,12 @@ import {TeacherWordsPanelComponent} from './views/teacher-words-panel/view-teach
 import {TeacherDashboardComponent} from './views/teacher-dashboard/view-teacher-dashboard.component';
 import {TeacherAddStudentsComponent} from './views/teacher-add-students/view-teacher-add-students.component';
 import { RegisterComponent } from './views/register/view-register.component';
+import { ProgressComponent } from './views/progress/view-progress.component';
 
 
 // Define the routes
 export const routes = [
-  { 
+  {
     path: '',
     data: ['Login'],
     component: LoginComponent
@@ -45,6 +46,11 @@ export const routes = [
   {  path: 'choose-mode',
     data: ['Choose Mode'],
     component: ChooseModeComponent
+  },
+  {
+    path: 'progress',
+    data: ['Progress'],
+    component: ProgressComponent
   },
   {
     path: 'goodbye',

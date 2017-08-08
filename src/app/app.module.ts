@@ -19,6 +19,7 @@ import { TeacherWordsPanelComponent } from './views/teacher-words-panel/view-tea
 import { TeacherDashboardComponent } from './views/teacher-dashboard/view-teacher-dashboard.component';
 import { TeacherAddStudentsComponent } from './views/teacher-add-students/view-teacher-add-students.component';
 import { RegisterComponent } from './views/register/view-register.component';
+import { ProgressComponent } from './views/progress/view-progress.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { RegisterComponent } from './views/register/view-register.component';
     TeacherDashboardComponent,
     TeacherAddStudentsComponent,
     RegisterComponent,
+    ProgressComponent,
   ],
   imports: [
     AlertModule.forRoot(),
