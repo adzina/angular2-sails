@@ -5,11 +5,11 @@ import { SidePanelLessonsComponent } from '../../bars/side-panel-lessons/side-pa
 
 @Component({
   moduleId: module.id,
-  selector: 'teacher-panel',
-  templateUrl: 'view-teacher-panel.component.html',
+  selector: 'teacher-words-panel',
+  templateUrl: 'view-teacher-words-panel.component.html',
 })
 
-export class TeacherPanelComponent {
+export class TeacherWordsPanelComponent {
   polish: string;
   english: string;
   lessons: word[];

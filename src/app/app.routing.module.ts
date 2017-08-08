@@ -4,37 +4,38 @@ import { LoginComponent } from './views/login/view-login.component';
 import { DashboardComponent } from './views/dashboard/view-dashboard.component';
 import {ChooseModeComponent} from './views/choose-mode/view-choose-mode.component';
 import {GoodbyeComponent} from './views/goodbye/view-goodbye.component';
-import {TeacherPanelComponent} from './views/teacher-panel/view-teacher-panel.component';
-
-/*
-You can create a new view using these DOS commands:
-
-cd /directory of my project
-for example cd /SingleAppPage
-
-cd /src/app/views
-ng generate component viewPageNotFound
-cls
-dir
-rename view-page-not-found page-not-found
-cd /directory of my project
-
-*/
-
-//import { ViewPageNotFoundComponent } from './views/page-not-found/view-page-not-found.component';
+import {TeacherWordsPanelComponent} from './views/teacher-words-panel/view-teacher-words-panel.component';
+import {TeacherDashboardComponent} from './views/teacher-dashboard/view-teacher-dashboard.component';
+import {TeacherAddStudentsComponent} from './views/teacher-add-students/view-teacher-add-students.component';
+import { RegisterComponent } from './views/register/view-register.component';
 
 
 // Define the routes
 export const routes = [
-  { //It associates the url / with the view ViewMainComponent
+  { 
     path: '',
     data: ['Login'],
     component: LoginComponent
   },
   {
-    path: 'teacher-panel',
-    data: ['Teacher Panel'],
-    component: TeacherPanelComponent
+    path: 'register',
+    data: ['Register'],
+    component: RegisterComponent
+  },
+  {
+    path: 'teacher-words-panel',
+    data: ['Teacher words panel'],
+    component: TeacherWordsPanelComponent
+  },
+  {
+      path: 'teacher-dashboard',
+      data: ['Teacher\'s dashboard'],
+      component: TeacherDashboardComponent
+  },
+  {
+    path: 'teacher-add-students',
+    data: ['Teacher add students'],
+    component: TeacherAddStudentsComponent
   },
   { //It associates the url /employee with the view ViewEmployeeComponent
     path: 'dashboard',

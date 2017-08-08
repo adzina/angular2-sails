@@ -1,0 +1,9 @@
+<input type="text" name="name" [(ngModel)]="name" placeholder="Name"><br><br>
+<input type="text" name="surname" [(ngModel)]="surname" placeholder="Surname"><br><br>
+<input type="text" name="email" [(ngModel)]="email" placeholder="E-mail"><br><br>
+<input type="{{inputType}}" name="password" [(ngModel)]="password" placeholder="Password" /><br><br>
+<input type="checkbox" name="passwordCheckBox" [(ngModel)]="passwordCheckbox" (click)="hideShowPassword()" />
+<label for="checkbox" *ngIf="passwordCheckbox">Hide password</label>
+<label for="checkbox" *ngIf="!passwordCheckbox">Show password</label>
+<button type="button" (click)="submit('student')">Register as a student</button>
+<button type="button" (click)="submit('teacher')">Register as a teacher</button>

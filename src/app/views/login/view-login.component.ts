@@ -14,17 +14,12 @@ export class LoginComponent{
   inputType: string;
   username: string;
   password: string;
-  loggedIn: boolean;
   constructor(private _router:Router, private _loginService: LoginService, private http: HttpClient){
     this.inputType = 'password';
     this.username="";
     this.password="";
   }
-  ngOnInit(){
-    if(this._loginService.getUserType()==null){
-        this._router.navigate(['/']);
-      }
-  }
+
   hideShowPassword(){
     if (this.inputType == 'password')
       this.inputType = 'text';
@@ -35,16 +30,15 @@ export class LoginComponent{
 submit(type:string){
   var results: ItemsResponse;
   var string="/users/"+this.username;
-  this.http.get<ItemsResponse>(string).subscribe(data => {
-    results = data;
-  });
+//  this.http.get<ItemsResponse>(string).subscribe(data => {
+//    results = data;
+//  });
     //  console.log(results.password);
       this._loginService.setUserType(type);
       this._loginService.setLoggedIn(false);
     //sprawdza poprawność wprowadzonego hasła
       //if(this.password==results.password){
       if(this.username=="admin" && this.password=="admin"){
-        this.loggedIn=true;
         this._loginService.setLoggedIn(true);
         this._loginService.setUsername(this.username);
 
@@ -52,13 +46,16 @@ submit(type:string){
           this._router.navigate(['./choose-mode']);
         }
         else{
-          this._router.navigate(['./teacher-panel']);
+          this._router.navigate(['./teacher-dashboard']);
         }
       }
       else{
         alert('Wrong credentials');
       }
   };
+register(){
+  this._router.navigate(['./register']);
+}
 }
 interface ItemsResponse {
   login: string,

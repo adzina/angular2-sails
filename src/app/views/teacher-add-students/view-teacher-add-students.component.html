@@ -1,0 +1,13 @@
+<body>
+  <navbar></navbar>
+    <side-panel-lessons (lessonChosen)="handleLessonChosen($event)"></side-panel-lessons>
+
+
+  <div>
+    <div *ngFor=" let student of students">
+        {{student.name}}  {{student.surname}} <input type="checkbox" (click)="submit()">
+
+    </div>
+  </div>
+
+</body>

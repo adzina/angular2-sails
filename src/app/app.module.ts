@@ -15,7 +15,10 @@ import { SidePanelLessonsComponent } from './bars/side-panel-lessons/side-panel-
 import { ChooseModeComponent } from './views/choose-mode/view-choose-mode.component';
 import { NavbarComponent } from './bars/navbar/navbar.component';
 import { GoodbyeComponent } from './views/goodbye/view-goodbye.component';
-import { TeacherPanelComponent } from './views/teacher-panel/view-teacher-panel.component';
+import { TeacherWordsPanelComponent } from './views/teacher-words-panel/view-teacher-words-panel.component';
+import { TeacherDashboardComponent } from './views/teacher-dashboard/view-teacher-dashboard.component';
+import { TeacherAddStudentsComponent } from './views/teacher-add-students/view-teacher-add-students.component';
+import { RegisterComponent } from './views/register/view-register.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { TeacherPanelComponent } from './views/teacher-panel/view-teacher-panel.
     ChooseModeComponent,
     NavbarComponent,
     GoodbyeComponent,
-    TeacherPanelComponent,
+    TeacherWordsPanelComponent,
+    TeacherDashboardComponent,
+    TeacherAddStudentsComponent,
+    RegisterComponent,
   ],
   imports: [
     AlertModule.forRoot(),
