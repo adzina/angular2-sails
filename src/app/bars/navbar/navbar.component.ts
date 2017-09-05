@@ -12,8 +12,10 @@ import {Router} from '@angular/router';
 export class NavbarComponent{
 
   user: string;
+  user_type: string;
   constructor(private _router:Router, private _loginService:LoginService){
-    this.user=this._loginService.getUserName();
+    this.user=_loginService.getUserName();
+    this.user_type=_loginService.getUserType();
   }
   logout(){
     this._router.navigate(['./goodbye']);

@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 export class LoginService{
   loggedIn: boolean;
   userName: string;
+  name: string;
   userType: string;
   mode: number;
   constructor(private _router:Router){
@@ -17,6 +18,9 @@ export class LoginService{
   getUserName(){
     return this.userName;
   };
+  getNmae(){
+    return this.name;
+  }
   getUserType(){
     return this.userType;
   };
@@ -41,5 +45,20 @@ export class LoginService{
     if(!this.loggedIn){
       this._router.navigate(['./login']);
     };
+  }
+  checkLogin(){
+    /*
+      W zaleznosci od this.type: student/teacher
+                            findOne
+                            in: login
+                            out: password
+                    dzialania:
+                              jeśli password poprawny
+                                this.name=user.name;
+                                this.loggedIn=true;
+                                return true;
+                              else
+                                  return false;
+    */
   }
 }

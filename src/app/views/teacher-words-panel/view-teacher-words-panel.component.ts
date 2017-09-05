@@ -33,6 +33,13 @@ export class TeacherWordsPanelComponent {
     //--------------------------------------------------------------------------------
     //pobierz z bazy danych tylko slowka z danej lekcji
     this.lessonsFiltered=this.lessons.filter((l:word) => l.lesson===this.chosenLesson);
+    //------------------------------------------------------------------------------------
+    /*
+      GET words
+      findAll
+      in: id lekcji
+      out: [words]
+    */
   }
   onlyUniqueLessons(){
 
@@ -48,12 +55,17 @@ export class TeacherWordsPanelComponent {
   }
   submit() {
     //-------------------------------------------------------------------------------
-    //push to database
-    //------------------------------------------------------------------------------
+
 
     var n={pol:this.polish,eng:this.english,lesson:this.chosenLesson,id:""};
 
     this.lessonsFiltered.push({pol:this.polish,eng:this.english,lesson:this.chosenLesson,id:""});
+
+    //------------------------------------------------------------------------------
+    /*
+      POST words
+      in: id_lekcji, eng, pol
+    */
     this.polish = "";
     this.english = "";
   }

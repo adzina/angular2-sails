@@ -26,6 +26,16 @@ export class RegisterComponent {
     };
 
   submit(type:string){
+    /*
+      GET students/teachers
+          in: name, surname
+          jeśli user nie istnieje:
+      POST students/teachers
+            in: email, password, name, surname
+      else{
+      alert("Account with this credentials already exists");
+    }
+    */
     alert("The account has been created, you can log in now");
   this._router.navigate(['/']);
     };

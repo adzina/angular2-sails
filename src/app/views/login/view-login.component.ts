@@ -18,6 +18,7 @@ export class LoginComponent{
     this.inputType = 'password';
     this.username="";
     this.password="";
+    this._loginService.setLoggedIn(false);
   }
 
   hideShowPassword(){
@@ -33,11 +34,10 @@ submit(type:string){
 //  this.http.get<ItemsResponse>(string).subscribe(data => {
 //    results = data;
 //  });
-    //  console.log(results.password);
+
       this._loginService.setUserType(type);
-      this._loginService.setLoggedIn(false);
-    //sprawdza poprawność wprowadzonego hasła
       //if(this.password==results.password){
+      //===================================================================
       if(this.username=="admin" && this.password=="admin"){
         this._loginService.setLoggedIn(true);
         this._loginService.setUsername(this.username);
@@ -52,6 +52,23 @@ submit(type:string){
       else{
         alert('Wrong credentials');
       }
+      //==================================================================
+      /*
+
+            this._loginService.setUserType(type);
+            let correct=this._loginService.checkLogin();
+            if(correct){
+            if(this._loginService.getUserType()=="student"){
+              this._router.navigate(['./choose-mode']);
+            }
+            else{
+              this._router.navigate(['./teacher-dashboard']);
+            }
+          }
+            else{
+            alert('The credentials do not match any existing account')
+          }
+      */
   };
 register(){
   this._router.navigate(['./register']);

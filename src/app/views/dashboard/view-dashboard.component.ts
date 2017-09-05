@@ -42,10 +42,20 @@ export class DashboardComponent{
     if(this.chosenLesson=='null' || ( this.chosenLesson!='null' && this.clicked==true)){
         if(x!=this.chosenLesson){
         this.chosenLesson=x;
+    //===================================================================================================
         this.lessonsFiltered=this.lessons.filter((l:word) => l.lesson===this.chosenLesson);
+    //===================================================================================
+        /*
+            student2words
+            findAll
+            in: lessonID, studentID
+            out: [wordID]
+
+        */
       }
         this.nextword();
       }
+
 }
   assign(x:string){
     if(!this.clicked){
@@ -56,6 +66,22 @@ export class DashboardComponent{
         }
       }
      this.ok=this.response==this.word.pol ? true : false;
+     /*
+     student2words
+     findOne
+     in: wordID,studentID
+     out: attempts, guessed
+     if(this.ok && attempts==0){
+     UPDATE guessed=3;
+   }
+   if(this.ok && attempts!=0){
+   UPDATE attempts++;
+   UPDATE guessed++;
+ }
+ else{
+  UPDATE attempts++;
+}
+     */
    }
   }
   nextword(){
