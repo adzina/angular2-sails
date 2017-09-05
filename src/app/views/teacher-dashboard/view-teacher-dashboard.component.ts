@@ -16,9 +16,10 @@ export class TeacherDashboardComponent {
   }
   setAction(a:number){
     switch(a){
-      case 0: this._router.navigate(['/teacher-words-panel']); break;
-      case 1: this._router.navigate(['/teacher-add-students']);break;
-      case 2: this._router.navigate(['']);break;
+      case 0: this._router.navigate(['/teacher-create-lesson']);break;
+      case 1: this._router.navigate(['/teacher-words-panel']); break;
+      case 2: this._router.navigate(['/teacher-add-students']);break;
+      case 3: this._router.navigate(['']);break;
     }
   }
 

@@ -4,6 +4,7 @@ import { LoginComponent } from './views/login/view-login.component';
 import { DashboardComponent } from './views/dashboard/view-dashboard.component';
 import {ChooseModeComponent} from './views/choose-mode/view-choose-mode.component';
 import {GoodbyeComponent} from './views/goodbye/view-goodbye.component';
+import {TeacherCreateLessonComponent} from './views/teacher-create-lesson/view-teacher-create-lesson.component';
 import {TeacherWordsPanelComponent} from './views/teacher-words-panel/view-teacher-words-panel.component';
 import {TeacherDashboardComponent} from './views/teacher-dashboard/view-teacher-dashboard.component';
 import {TeacherAddStudentsComponent} from './views/teacher-add-students/view-teacher-add-students.component';
@@ -27,6 +28,11 @@ export const routes = [
     path: 'teacher-words-panel',
     data: ['Teacher words panel'],
     component: TeacherWordsPanelComponent
+  },
+  {
+    path: 'teacher-create-lesson',
+    data: ['Create lesson'],
+    component: TeacherCreateLessonComponent
   },
   {
       path: 'teacher-dashboard',
