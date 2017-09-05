@@ -5,8 +5,8 @@
 
 
   <div>
-    <div *ngFor=" let lesson of lessonsFiltered">
-        {{lesson.eng}}  {{lesson.pol}}
+    <div *ngFor=" let lesson of lessonsFiltered; let i=index" [attr.data-index]="i">
+        {{lesson.eng}}  {{lesson.pol}} <button type="submit" (click)="delete(i)">X</button>
     </div>
   </div>
   <div>

@@ -53,6 +53,9 @@ export class TeacherWordsPanelComponent {
     }
 
   }
+  delete(i:number){
+    this.lessonsFiltered.splice(i,1);
+  }
   submit() {
     //-------------------------------------------------------------------------------
 
