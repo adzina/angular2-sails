@@ -1,4 +1,4 @@
-<div style="align: right width: 50%; margin: 0 auto;">
+<!--<div style="align: right width: 50%; margin: 0 auto;">
 <button class="logout" (click)="logout()">Logout</button>
   <button class="choose_mode" (click)="chooseMode()" *ngIf="user_type=='student'">Switch learning mode</button>
 
@@ -6,3 +6,30 @@
  <div ng-controller="hello" class="welcome">Welcome {{user}}!</div>
 <br>
 <hr>
+-->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!--logo-->
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand">LOGO HERE</a>
+    </div>
+
+    <!--menu items-->
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active" (click)="goto(0)">
+          Create a lesson
+        </li>
+        <li (click)="goto(1)">
+          Add words to lesson
+        </li>
+        <li (click)="goto(2)">
+          Assign lessons to students
+        </li>
+        <li (click)="goto(3)">
+          See students' progress
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

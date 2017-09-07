@@ -12,7 +12,7 @@ $enable-shadows: true;
 //$fa-font-path: "../fonts";
 //@import "../font-awesome/scss/font-awesome.scss";
 */
-
+/*
 
 
 body {
@@ -133,45 +133,46 @@ input[type="text"].false{
  			background-color: lightyellow;}
 
 .sidenav {
-          height: 100%; /* 100% Full-height */
+          height: 100%; // 100% Full-height 
           width: 20%;
-          position: fixed; /* Stay in place */
-          z-index: 1; /* Stay on top */
+          position: fixed; // Stay in place 
+          z-index: 1; // Stay on top 
           top: 0;
           left: 0;
           background-color:  	#483D8B;
-          overflow-x: hidden; /* Disable horizontal scroll */
-          padding-top: 60px; /* Place content 60px from the top */
+          overflow-x: hidden; // Disable horizontal scroll 
+          padding-top: 60px; // Place content 60px from the top 
           border-right:solid white 4px;
       }
 div.sidenav_true{
-          height: 100%; /* 100% Full-height */
+          height: 100%; 
           width: 20%;
-          position: fixed; /* Stay in place */
-          z-index: 1; /* Stay on top */
+          position: fixed; 
+          z-index: 1; 
           top: 0;
           left: 0;
           background-color:  	#483D8B;
-          overflow-x: hidden; /* Disable horizontal scroll */
-          padding-top: 60px; /* Place content 60px from the top */
+          overflow-x: hidden; 
+          padding-top: 60px; 
           border-right:solid white 4px;
 }
 .sidenav_false{
-          height: 100%; /* 100% Full-height */
+          height: 100%; 
           width: 2%;
-          position: fixed; /* Stay in place */
-          z-index: 1; /* Stay on top */
+          position: fixed; 
+          z-index: 1;
           top: 0;
           left: 0;
           background-color:  	#black;
-          overflow-x: hidden; /* Disable horizontal scroll */
-          padding-top: 60px; /* Place content 60px from the top */
+          overflow-x: hidden; 
+          padding-top: 60px; 
           border-right:solid white 4px;
 }
 .dash{
-  height: 100%; /* 100% Full-height */
+  height: 100%; 
   width: 80%;
-  position: fixed; /* Stay in place */
+  position: fixed; 
   top:10%;
   left: 20%;
 }
+*/

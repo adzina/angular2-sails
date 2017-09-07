@@ -49,6 +49,17 @@ import { ProgressComponent } from './views/progress/view-progress.component';
     HttpClientModule //http://www.concretepage.com/angular-2/angular-2-http-post-example
   ],
   providers: [LoginService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,LoginComponent,
+  DashboardComponent,
+  SidePanelLessonsComponent,
+  ChooseModeComponent,
+  NavbarComponent,
+  GoodbyeComponent,
+  TeacherCreateLessonComponent,
+  TeacherWordsPanelComponent,
+  TeacherDashboardComponent,
+  TeacherAddStudentsComponent,
+  RegisterComponent,
+  ProgressComponent,]
 })
 export class AppModule { }

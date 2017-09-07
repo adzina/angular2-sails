@@ -3,6 +3,7 @@ import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { SidePanelLessonsComponent } from '../../bars/side-panel-lessons/side-panel-lessons.component';
 
+
 @Component({
   selector: 'teacher-add-students',
   templateUrl: './view-teacher-add-students.component.html'
@@ -10,7 +11,7 @@ import { SidePanelLessonsComponent } from '../../bars/side-panel-lessons/side-pa
 export class TeacherAddStudentsComponent{
 
   chosenLesson: string;
-  constructor(private _loginService: LoginService) { }
+  constructor(private _loginService: LoginService) {}
 
   ngOnInit() {
     this._loginService.checkLoggedIn();
