@@ -8,6 +8,7 @@ import {TeacherCreateLessonComponent} from './views/teacher-create-lesson/view-t
 import {TeacherWordsPanelComponent} from './views/teacher-words-panel/view-teacher-words-panel.component';
 import {TeacherDashboardComponent} from './views/teacher-dashboard/view-teacher-dashboard.component';
 import {TeacherAddStudentsComponent} from './views/teacher-add-students/view-teacher-add-students.component';
+import {TeacherSeeProgressComponent} from './views/teacher-see-progress/view-teacher-see-progress.component';
 import { RegisterComponent } from './views/register/view-register.component';
 import { ProgressComponent } from './views/progress/view-progress.component';
 
@@ -38,6 +39,11 @@ export const routes = [
       path: 'teacher-dashboard',
       data: ['Teacher\'s dashboard'],
       component: TeacherDashboardComponent
+  },
+  {
+    path: 'teacher-see-progress',
+    data: ['see progress'],
+    component: TeacherSeeProgressComponent
   },
   {
     path: 'teacher-add-students',

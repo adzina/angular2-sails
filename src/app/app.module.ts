@@ -17,6 +17,7 @@ import { NavbarComponent } from './bars/navbar/navbar.component';
 import { GoodbyeComponent } from './views/goodbye/view-goodbye.component';
 import {TeacherCreateLessonComponent} from './views/teacher-create-lesson/view-teacher-create-lesson.component';
 import { TeacherWordsPanelComponent } from './views/teacher-words-panel/view-teacher-words-panel.component';
+import {TeacherSeeProgressComponent} from './views/teacher-see-progress/view-teacher-see-progress.component';
 import { TeacherDashboardComponent } from './views/teacher-dashboard/view-teacher-dashboard.component';
 import { TeacherAddStudentsComponent } from './views/teacher-add-students/view-teacher-add-students.component';
 import { RegisterComponent } from './views/register/view-register.component';
@@ -34,6 +35,7 @@ import { ProgressComponent } from './views/progress/view-progress.component';
     GoodbyeComponent,
     TeacherCreateLessonComponent,
     TeacherWordsPanelComponent,
+    TeacherSeeProgressComponent,
     TeacherDashboardComponent,
     TeacherAddStudentsComponent,
     RegisterComponent,
