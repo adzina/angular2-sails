@@ -7,27 +7,24 @@
 <br>
 <hr>
 -->
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!--logo-->
-    <div class="navbar-header">
-      <a href="#" class="navbar-brand">LOGO HERE</a>
-    </div>
+      <a href="#" class="navbar-brand"><img src="assets/logo.ico"  width="100" height="80"></a>
 
-    <!--menu items-->
     <div>
       <ul class="nav navbar-nav">
-        <li class="active" (click)="goto(0)">
-          Create a lesson
+        <li>
+          <a href="/teacher-create-lesson">Create a lesson</a>
         </li>
-        <li (click)="goto(1)">
-          Add words to lesson
+        <li>
+          <a href="/teacher-words-panel">Add words to lesson</a>
         </li>
-        <li (click)="goto(2)">
-          Assign lessons to students
+        <li>
+          <a href="/teacher-add-students">Assign lessons to students</a>
         </li>
-        <li (click)="goto(3)">
-          See students' progress
+        <li>
+          <a href="/teacher-student-progress">See students' progress</a>
         </li>
       </ul>
     </div>

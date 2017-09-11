@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'teacher-create-lesson',
-  templateUrl: './view-teacher-create-lesson.component.html'
+  templateUrl: 'view-teacher-create-lesson.component.html'
 })
 export class TeacherCreateLessonComponent {
 

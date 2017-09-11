@@ -29,29 +29,32 @@ export class LoginComponent{
   };
 
 submit(type:string){
+  /*
   var results: ItemsResponse;
-  var string="/users/"+this.username;
-//  this.http.get<ItemsResponse>(string).subscribe(data => {
-//    results = data;
-//  });
+  var string="localhost:1337/users/"+this.username;
+  this.http.get<ItemsResponse>(string).subscribe(data => {
+    results = data;
+    this._loginService.setUserType(type);
+    //if(this.password==results.password){
+    //===================================================================
 
-      this._loginService.setUserType(type);
-      //if(this.password==results.password){
-      //===================================================================
-      if(this.username=="admin" && this.password=="admin"){
-        this._loginService.setLoggedIn(true);
-        this._loginService.setUsername(this.username);
+  });*/
+  this._loginService.setUserType(type);
+  if(this.username=="admin" && this.password=="admin"){
+    this._loginService.setLoggedIn(true);
+    this._loginService.setUsername(this.username);
 
-        if(this._loginService.getUserType()=="student"){
-          this._router.navigate(['./choose-mode']);
-        }
-        else{
-          this._router.navigate(['./teacher-dashboard']);
-        }
-      }
-      else{
-        alert('Wrong credentials');
-      }
+    if(this._loginService.getUserType()=="student"){
+      this._router.navigate(['./choose-mode']);
+    }
+    else{
+      this._router.navigate(['./teacher-dashboard']);
+    }
+  }
+  else{
+    alert('Wrong credentials');
+  }
+
       //==================================================================
       /*
 

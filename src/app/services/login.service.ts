@@ -14,26 +14,26 @@ export class LoginService{
   }
   getLoggedIn(){
     return this.loggedIn;
-  };
+  }
   getUserName(){
     return this.userName;
-  };
-  getNmae(){
+  }
+  getName(){
     return this.name;
   }
   getUserType(){
     return this.userType;
-  };
+  }
   getMode(){
     return this.mode;
   }
   setLoggedIn(loggedIn:boolean){
     this.loggedIn=loggedIn;
-  };
+  }
   setUsername(username:string){
     this.userName=username;
 
-  };
+  }
   setUserType(userType:string){
     this.userType=userType;
 

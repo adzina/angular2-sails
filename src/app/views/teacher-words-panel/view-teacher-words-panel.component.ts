@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { SidePanelLessonsComponent } from '../../bars/side-panel-lessons/side-panel-lessons.component';
 
 @Component({
-  moduleId: module.id,
   selector: 'teacher-words-panel',
   templateUrl: 'view-teacher-words-panel.component.html',
 })
@@ -24,10 +23,7 @@ export class TeacherWordsPanelComponent {
     this.onlyUniqueLessons();
     //------------------------------------------------------------------------------
   }
-  ngOnInit(){
-    this._loginService.checkLoggedIn();
 
-  }
   handleLessonChosen(x:string){
     this.chosenLesson=x;
     //--------------------------------------------------------------------------------

@@ -1,32 +1,15 @@
-/*
-$enable-gradients: true;
-$enable-shadows: true;
-
-@import '../node_modules/bootstrap/scss/bootstrap';
-@import './assets/css/style.css';
-
-//le icone di bootstrap
-@import './assets/css/glyphicons.css';
-
-//ho letto che di icone ci sarebbero anche queste
-//$fa-font-path: "../fonts";
-//@import "../font-awesome/scss/font-awesome.scss";
-*/
-/*
-
 
 body {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
-  font-size: 14px !important;
-  line-height: 1.42857143 !important;
-  background-color: lightblue !important;
+background-color: #cccccc;
 }
-h1 {
-  color: #369;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 250%;
-  text-align: center;
+.navbar{
+  background-color:  #ff0000;
 }
+.nav.navbar-nav li a {
+    color: white;
+    font-size: 20px;
+}
+
 div{
   text-align: center;
 }
@@ -133,46 +116,45 @@ input[type="text"].false{
  			background-color: lightyellow;}
 
 .sidenav {
-          height: 100%; // 100% Full-height 
+          height: 100%; // 100% Full-height
           width: 20%;
-          position: fixed; // Stay in place 
-          z-index: 1; // Stay on top 
+          position: fixed; // Stay in place
+          z-index: 1; // Stay on top
           top: 0;
           left: 0;
           background-color:  	#483D8B;
-          overflow-x: hidden; // Disable horizontal scroll 
-          padding-top: 60px; // Place content 60px from the top 
+          overflow-x: hidden; // Disable horizontal scroll
+          padding-top: 60px; // Place content 60px from the top
           border-right:solid white 4px;
       }
 div.sidenav_true{
-          height: 100%; 
+          height: 100%;
           width: 20%;
-          position: fixed; 
-          z-index: 1; 
+          position: fixed;
+          z-index: 1;
           top: 0;
           left: 0;
           background-color:  	#483D8B;
-          overflow-x: hidden; 
-          padding-top: 60px; 
+          overflow-x: hidden;
+          padding-top: 60px;
           border-right:solid white 4px;
 }
 .sidenav_false{
-          height: 100%; 
+          height: 100%;
           width: 2%;
-          position: fixed; 
+          position: fixed;
           z-index: 1;
           top: 0;
           left: 0;
           background-color:  	#black;
-          overflow-x: hidden; 
-          padding-top: 60px; 
+          overflow-x: hidden;
+          padding-top: 60px;
           border-right:solid white 4px;
 }
 .dash{
-  height: 100%; 
+  height: 100%;
   width: 80%;
-  position: fixed; 
+  position: fixed;
   top:10%;
   left: 20%;
 }
-*/
