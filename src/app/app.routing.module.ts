@@ -6,7 +6,6 @@ import {ChooseModeComponent} from './views/choose-mode/view-choose-mode.componen
 import {GoodbyeComponent} from './views/goodbye/view-goodbye.component';
 import {TeacherCreateLessonComponent} from './views/teacher-create-lesson/view-teacher-create-lesson.component';
 import {TeacherWordsPanelComponent} from './views/teacher-words-panel/view-teacher-words-panel.component';
-import {TeacherDashboardComponent} from './views/teacher-dashboard/view-teacher-dashboard.component';
 import {TeacherAddStudentsComponent} from './views/teacher-add-students/view-teacher-add-students.component';
 import {TeacherSeeProgressComponent} from './views/teacher-see-progress/view-teacher-see-progress.component';
 import { RegisterComponent } from './views/register/view-register.component';
@@ -34,11 +33,6 @@ export const routes = [
     path: 'teacher-create-lesson',
     data: ['Create lesson'],
     component: TeacherCreateLessonComponent
-  },
-  {
-      path: 'teacher-dashboard',
-      data: ['Teacher\'s dashboard'],
-      component: TeacherDashboardComponent
   },
   {
     path: 'teacher-see-progress',

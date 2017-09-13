@@ -48,7 +48,7 @@ submit(type:string){
       this._router.navigate(['./choose-mode']);
     }
     else{
-      this._router.navigate(['./teacher-dashboard']);
+      this._router.navigate(['./teacher-create-lesson']);
     }
   }
   else{
