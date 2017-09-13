@@ -1,10 +1,6 @@
 import {Component} from '@angular/core';
 import {LoginService} from '../../services/login.service';
 import {Router} from '@angular/router';
-import {TeacherCreateLessonComponent} from '../../views/teacher-create-lesson/view-teacher-create-lesson.component';
-import {TeacherAddStudentsComponent} from '../../views/teacher-add-students/view-teacher-add-students.component';
-import {TeacherSeeProgressComponent} from '../../views/teacher-see-progress/view-teacher-see-progress.component';
-import {TeacherWordsPanelComponent} from '../../views/teacher-words-panel/view-teacher-words-panel.component';
 
 @Component({
   moduleId: module.id,
