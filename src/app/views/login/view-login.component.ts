@@ -14,6 +14,7 @@ export class LoginComponent{
   inputType: string;
   email: string;
   password: string;
+  wrong: boolean;
   constructor(private _router:Router, private _loginService: LoginService, private http: HttpClient){
     this.inputType = 'password';
     this.email="";
@@ -52,7 +53,7 @@ submit(type:string){
     }
   }
   else{
-    alert('Wrong credentials');
+    this.wrong=true;
   }
 
       //==================================================================

@@ -31,7 +31,7 @@
       <button class="btn btn-success" (click)="submit('student')">Register as a student</button>
       <button class="btn btn-success" (click)="submit('teacher')">Register as a teacher</button>
     <hr>
-    <div class="alert alert-success" *ngIf="registered">
+    <div class="alert alert-success" *ngIf="registered" style="margin-left:10%; margin-right:10%">
    <strong>Account created!</strong> You can <a href="#" class="alert-link">log in now</a>.
     </div>
     <div class="alert alert-danger" *ngIf="registered==false" style="margin-left:10%; margin-right:10%">
