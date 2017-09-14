@@ -14,22 +14,22 @@ module.exports = {
 	create: function(req,res){
 		let _first_name=req.param('first_name'),
 				_last_name=req.param('last_name'),
-				_login=req.param('login'),
+				_email=req.param('email'),
 				_password=req.param('password'),
 				_role=req.param('role');
 		if(!_first_name) return res.badRequest({err: 'Invalid first name'});
 		if(!_last_name) return res.badRequest({err: 'Invalid last name'});
 		if(!_role) return res.badRequest({err: 'Invalid role'});
-		if(!_login) return res.badRequest({err: 'Invalid login'});
+		if(!_email) return res.badRequest({err: 'Invalid email'});
 		if(!_password) return res.badRequest({err:'Invalid password'});
-    console.log(_login);
+    console.log(_email);
     console.log(_password);
 		return UserModel.create({
 			first_name: _first_name,
 			last_name: _last_name,
-			role: _role,
-			login:_login,
-			password:_password
+			email:_email,
+			password:_password,
+			role: _role
 		})
     .exec(function (err, user){
         if (err) { return res.serverError(err); }
@@ -39,17 +39,17 @@ module.exports = {
 	},
 
 	findOne: function(req,res){
-		let userLogin=req.param('login');
-    console.log(userLogin);
+		let userEmail=req.param('email');
+    console.log(userEmail);
 
-		if(!userLogin)
-			return res.badRequest({err:'missing login'});
+		if(!userEmail)
+			return res.badRequest({err:'missing email'});
 
-    UserModel.findOne({login:userLogin})
+    UserModel.findOne({email:userEmail})
     .then(_user =>{
 			if(!_user)
 				return res.notFound({err: 'No such user'});
-				
+
 			return res.ok(_user);
 		})
 	}

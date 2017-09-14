@@ -17,9 +17,7 @@ export class NavbarComponent{
     this.user_type=_loginService.getUserType();
   }
   ngOnInit(){
-    alert(this._loginService.getLoggedIn());
     this._loginService.checkLoggedIn();
-
   }
   logout(){
     this._router.navigate(['./goodbye']);

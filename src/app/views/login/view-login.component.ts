@@ -12,11 +12,11 @@ import {LoginService} from '../../services/login.service';
 
 export class LoginComponent{
   inputType: string;
-  username: string;
+  email: string;
   password: string;
   constructor(private _router:Router, private _loginService: LoginService, private http: HttpClient){
     this.inputType = 'password';
-    this.username="";
+    this.email="";
     this.password="";
     this._loginService.setLoggedIn(false);
   }
@@ -40,9 +40,9 @@ submit(type:string){
 
   });*/
   this._loginService.setUserType(type);
-  if(this.username=="admin" && this.password=="admin"){
+  if(this.email=="admin" && this.password=="admin"){
     this._loginService.setLoggedIn(true);
-    this._loginService.setUsername(this.username);
+    this._loginService.setUsername(this.email);
 
     if(this._loginService.getUserType()=="student"){
       this._router.navigate(['./choose-mode']);
@@ -58,7 +58,6 @@ submit(type:string){
       //==================================================================
       /*
 
-            this._loginService.setUserType(type);
             let correct=this._loginService.checkLogin();
             if(correct){
             if(this._loginService.getUserType()=="student"){
@@ -78,6 +77,6 @@ register(){
 }
 }
 interface ItemsResponse {
-  login: string,
+  email: string,
   password: string
 }

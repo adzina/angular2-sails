@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {LoginService} from '../../services/login.service';
+import 'rxjs/add/operator/catch';
 
 @Component({
   selector: 'register',
@@ -11,12 +12,15 @@ export class RegisterComponent {
   inputType: string;
   email: string;
   password: string;
-  name: string;
-  surname: string;
-  constructor(private _router:Router, private _loginService:LoginService) {
+  first_name: string;
+  last_name: string;
+  registered: boolean;
+  constructor(private _router:Router, private _loginService:LoginService, private http:HttpClient) {
     this.inputType = 'password';
     this.email="";
-    this.password="";}
+    this.password="";
+    this.registered=null;
+  }
 
     hideShowPassword(){
       if (this.inputType == 'password')
@@ -26,6 +30,18 @@ export class RegisterComponent {
     };
 
   submit(type:string){
+    var results: ItemsResponse;
+    var string="localhost:1337/users/"+this.email;
+    this.http.get<ItemsResponse>(string).subscribe(
+      data => {
+      alert('An account with this e-mail already exists');
+    },
+      err=>{
+        if(err="No such user"){
+          this.createUser();
+        }
+      }
+  );
     /*
       GET students/teachers
           in: name, surname
@@ -36,10 +52,19 @@ export class RegisterComponent {
       alert("Account with this credentials already exists");
     }
     */
-    alert("The account has been created, you can log in now");
-  this._router.navigate(['/']);
     };
 
+createUser(){
+  if(this.password!="" && this.last_name!="" && this.first_name!="" && this.email!="")
+    this.registered=true;
+  else{
+    this.registered=false;
+  }
+}
 
+}
 
+interface ItemsResponse {
+  login: string,
+  password: string
 }

@@ -40,7 +40,7 @@ module.exports.routes = {
 
   'POST /user': 'UserController.create',
 
-  'GET /users/:login': 'UserController.findOne',
+  'GET /users/:email': 'UserController.findOne',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
