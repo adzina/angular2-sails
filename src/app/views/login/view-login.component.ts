@@ -53,6 +53,7 @@ submit(type:string){
     }
   }
   else{
+    alert('err');
     this.wrong=true;
   }
 
