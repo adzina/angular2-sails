@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
@@ -42,6 +43,7 @@ import { ProgressComponent } from './views/progress/view-progress.component';
   imports: [
     AlertModule.forRoot(),
 	  BsDropdownModule.forRoot(),
+    NgbModule.forRoot(),
     ModalModule.forRoot(),
     FormsModule,
     AppRoutingModule,
@@ -49,16 +51,6 @@ import { ProgressComponent } from './views/progress/view-progress.component';
     HttpClientModule //http://www.concretepage.com/angular-2/angular-2-http-post-example
   ],
   providers: [LoginService],
-  bootstrap: [AppComponent,LoginComponent,
-  DashboardComponent,
-  SidePanelLessonsComponent,
-  ChooseModeComponent,
-  NavbarComponent,
-  GoodbyeComponent,
-  TeacherCreateLessonComponent,
-  TeacherWordsPanelComponent,
-  TeacherAddStudentsComponent,
-  RegisterComponent,
-  ProgressComponent,]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

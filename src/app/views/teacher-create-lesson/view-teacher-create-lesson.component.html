@@ -3,16 +3,32 @@
 <div style="height:50px">
 </div>
 <div class="container text-center">
-    <input type="text" name="subject" [(ngModel)]="subject" placeholder="Subject" (keydown.enter)="create()">
-
-
-    <label>Date</label>
-<!--
-  <datepicker [(ngModel)]="model.firstDate" [viewFormat]="'DD/MM/YYYY'" [modelFormat]="'YYYY-MM-DD'"  [id]="'firstDate'" [label]="'To'"></datepicker>
--->
-
-    <button class="btn btn-success" (click)="create()">Create</button>
-
-    <div class="alert alert-success" *ngIf="created">Lesson created, you can now add words
+<table align="center">
+  <tr>
+    <td>
+      <form>
+        <div class="form-group" style="text-align:left">
+          <strong> Date</strong><br>
+          <ngb-datepicker #dp class="form-control" style="width:250px" name="model" [(ngModel)]="model"(navigate)="date = $event.next"></ngb-datepicker>
+        </div>
+      </form>
+    </td>
+    <td valign="top">
+      <form>
+        <div style="text-align:left">
+          <strong> Subject</strong>
+        </div>
+      <div class="form-group">
+        <textarea rows="4" cols="30" class="form-control" name="subject" [(ngModel)]="subject" (keydown.enter)="create()" style="padding-top:0px">
+        </textarea>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success" (click)="create()">Create</button>
+      </div>
+    </form>
+    </td>
+  </tr>
+</table>
+    <div class="alert alert-success" *ngIf="created" style="margin-left:25%;margin-right:25%">Lesson created, you can now add words
       <a (click)="goto()" style="cursor: pointer; margin-left:0px"><strong>here</strong></a></div>
 </div>
