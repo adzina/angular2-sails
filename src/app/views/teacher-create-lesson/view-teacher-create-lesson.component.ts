@@ -1,4 +1,4 @@
-
+import {Router} from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,12 +7,16 @@ import { Component } from '@angular/core';
 })
 export class TeacherCreateLessonComponent {
 
+  subject: string;
   chosenLesson: string;
-  constructor(){
-
-  }
+  created: boolean;
+  constructor(private _router:Router){}
   create(){
-    alert("lesson created, you can now add words");
+    this.subject="";
+    this.created=true;
+  }
+  goto(){
+    this._router.navigate(['./teacher-words-panel']);
   }
 
 }

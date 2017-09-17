@@ -3,7 +3,7 @@
 <div style="height:50px">
 </div>
 <div class="container text-center">
-    <input type="text" name="subject" [(ngModel)]="subject" placeholder="Subject">
+    <input type="text" name="subject" [(ngModel)]="subject" placeholder="Subject" (keydown.enter)="create()">
 
 
     <label>Date</label>
@@ -12,4 +12,7 @@
 -->
 
     <button class="btn btn-success" (click)="create()">Create</button>
+
+    <div class="alert alert-success" *ngIf="created">Lesson created, you can now add words
+      <a (click)="goto()" style="cursor: pointer; margin-left:0px"><strong>here</strong></a></div>
 </div>
