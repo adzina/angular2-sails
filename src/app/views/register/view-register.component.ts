@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {LoginService} from '../../services/login.service';
+import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 
 @Component({
@@ -29,19 +30,34 @@ export class RegisterComponent {
         this.inputType = 'password';
     };
 
-  submit(type:string){
+  submit(role:string){
+    var body="first_name="+this.first_name+
+              "&last_name="+this.last_name+
+              "&email="+this.email+
+              "&password="+this.password+
+              "&role="+role;
+              alert(body);
+    var http_string="http://localhost:1337/user";
+    this.http
+        .post(http_string,
+          body,)
+          .subscribe(data => {
+                alert('ok');
+          }, error => {
+              //console.log();
+          });
+    /*
     var results: ItemsResponse;
-    var string="localhost:1337/users/"+this.email;
-    this.http.get<ItemsResponse>(string).subscribe(
-      data => {
-      alert('An account with this e-mail already exists');
-    },
-      err=>{
-        if(err="No such user"){
-          this.createUser();
-        }
-      }
-  );
+    var ob: Observable<Response>;
+    ob=this.http.post(
+      http_string, //url
+      {first_name: this.first_name,
+      last_name: this.last_name,
+      email: this.email,
+      password: this.password,
+      role:role}
+    );
+*/
     /*
       GET students/teachers
           in: name, surname

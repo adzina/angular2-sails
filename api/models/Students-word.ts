@@ -1,16 +1,16 @@
 /**
- * Lesson.js
+ * Students-word.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
 module.exports = {
-  tableName: "lessons",
+  tableName: "studentsWords",
   attributes: {
-      teacherID: {type:'string', required: true},
-      studentID: {type:'string', required: true},
-      date: {type: 'date', required: true},
-      wordID: {type: 'string', required:true}
+    studentID: {type:'string', required: true},
+    wordID: {type:'string', required: true},
+    attempt: {type: 'number', required: true},
+    guessed: {type: 'number', required:true}
   }
 };

@@ -30,16 +30,27 @@ export class LoginComponent{
   };
 
 submit(type:string){
-  /*
   var results: ItemsResponse;
-  var string="localhost:1337/users/"+this.username;
-  this.http.get<ItemsResponse>(string).subscribe(data => {
-    results = data;
+  var first_name: string;
+  var http_string="http://localhost:1337/users/"+this.email
+  this.http.get<ItemsResponse>(http_string).subscribe(data => {
+    if(!data){alert('nth');this.wrong=true;return 0;}
     this._loginService.setUserType(type);
-    //if(this.password==results.password){
+    if(this.password==data.password){
+        this._loginService.setLoggedIn(true);
+        this._loginService.setUsername(this.email);
+
+        if(this._loginService.getUserType()=="student"){
+          this._router.navigate(['./choose-mode']);
+        }
+        else{
+          this._router.navigate(['./teacher-create-lesson']);
+        }
+  }
     //===================================================================
 
-  });*/
+  });
+  /*
   this._loginService.setUserType(type);
   if(this.email=="admin" && this.password=="admin"){
     this._loginService.setLoggedIn(true);
@@ -55,7 +66,7 @@ submit(type:string){
   else{
     this.wrong=true;
   }
-
+*/
       //==================================================================
       /*
 
