@@ -23,7 +23,6 @@ module.exports = {
 			if(!_email) return res.badRequest({err: 'Invalid email'});
 			if(!_password) return res.badRequest({err:'Invalid password'});
 
-					console.log('-------create-------');
 			return sails.models.user.create({
 				first_name: _first_name,
 				last_name: _last_name,

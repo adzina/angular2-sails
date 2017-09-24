@@ -35,60 +35,33 @@ submit(type:string){
   var http_string="http://localhost:1337/users/"+this.email
   this.http.get<ItemsResponse>(http_string).subscribe(
     data => {
-    this._loginService.setUserType(type);
-    if(this.password==data.password){
-        this._loginService.setLoggedIn(true);
-        this._loginService.setUsername(data.first_name);
-        this._router.navigate(['./choose-mode']);
-  }
-  else{
-    this.wrong=true;
-  }
-  },
-  (error)=>{
-    this.wrong=true;
 
-  });
-  /*
-  this._loginService.setUserType(type);
-  if(this.email=="admin" && this.password=="admin"){
-    this._loginService.setLoggedIn(true);
-    this._loginService.setUsername(this.email);
+        if(this.password==data.password){
+            this._loginService.setUserType(type);
+            this._loginService.setUserID(data.id);
+            this._loginService.setLoggedIn(true);
+            this._loginService.setUsername(data.first_name);
+            this._router.navigate(['./choose-mode']);
+      }
+      else{
+        this.wrong=true;
+      }
+    },
+    (error)=>{
+      this.wrong=true;
 
-    if(this._loginService.getUserType()=="student"){
-      this._router.navigate(['./choose-mode']);
-    }
-    else{
-      this._router.navigate(['./teacher-create-lesson']);
-    }
-  }
-  else{
-    this.wrong=true;
-  }
-*/
-      //==================================================================
-      /*
+    });
 
-            let correct=this._loginService.checkLogin();
-            if(correct){
-            if(this._loginService.getUserType()=="student"){
-              this._router.navigate(['./choose-mode']);
-            }
-            else{
-              this._router.navigate(['./teacher-dashboard']);
-            }
-          }
-            else{
-            alert('The credentials do not match any existing account')
-          }
-      */
   };
+
 register(){
   this._router.navigate(['./register']);
 }
+
 }
 interface ItemsResponse {
   email: string,
   password: string,
-  first_name: string
+  first_name: string,
+  id:string
 }

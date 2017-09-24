@@ -41,6 +41,8 @@ module.exports.routes = {
   'POST /user': 'UserController.create',
 
   'GET /users/:email': 'UserController.findOne',
+
+  'POST /lesson':'LessonController.create',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

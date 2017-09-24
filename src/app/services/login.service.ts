@@ -9,11 +9,15 @@ export class LoginService{
   name: string;
   userType: string;
   mode: number;
+  userID: string;
   constructor(private _router:Router){
 
   }
   getLoggedIn(){
     return this.loggedIn;
+  }
+  getUserID(){
+    return this.userID;
   }
   getUserName(){
     return this.userName;
@@ -26,6 +30,9 @@ export class LoginService{
   }
   getMode(){
     return this.mode;
+  }
+  setUserID(id:string){
+    this.userID=id;
   }
   setLoggedIn(loggedIn:boolean){
     this.loggedIn=loggedIn;
@@ -46,19 +53,5 @@ export class LoginService{
       this._router.navigate(['./login']);
     };
   }
-  checkLogin(){
-    /*
-      W zaleznosci od this.type: student/teacher
-                            findOne
-                            in: login
-                            out: password
-                    dzialania:
-                              jeśli password poprawny
-                                this.name=user.name;
-                                this.loggedIn=true;
-                                return true;
-                              else
-                                  return false;
-    */
-  }
+
 }
