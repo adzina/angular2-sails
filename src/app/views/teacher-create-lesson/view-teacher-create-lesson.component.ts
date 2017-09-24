@@ -13,12 +13,20 @@ export class TeacherCreateLessonComponent {
   subject: string;
   chosenLesson: string;
   created: boolean;
+  error: boolean;
   constructor(private _router:Router){
     this.model = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+    this.subject=null;
   }
   create(){
-    this.subject="";
-    this.created=true;
+    if(this.subject!=null){
+      this.subject=null;
+      this.error=false;
+      this.created=true;
+    }
+    else{
+      this.error=true;
+    }
   }
   goto(){
     this._router.navigate(['./teacher-words-panel']);

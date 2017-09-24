@@ -31,6 +31,7 @@ export class NavbarComponent{
       case(1): this._router.navigate(['./teacher-words-panel']);break;
       case(2): this._router.navigate(['./teacher-add-students']);break;
       case(3): this._router.navigate(['./teacher-see-progress']);break;
+      case(4): this._router.navigate(['./goodbye']);break;
     }
   }
 }
