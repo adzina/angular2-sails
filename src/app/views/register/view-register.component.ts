@@ -1,6 +1,8 @@
 import { Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import {HttpErrorResponse} from '@angular/common/http';
+import {Response} from "@angular/http";
 import {LoginService} from '../../services/login.service';
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
@@ -16,11 +18,13 @@ export class RegisterComponent {
   first_name: string;
   last_name: string;
   registered: boolean;
+  backend_error: string;
   constructor(private _router:Router, private _loginService:LoginService, private http:HttpClient) {
     this.inputType = 'password';
     this.email="";
     this.password="";
     this.registered=null;
+    this.backend_error=null;
   }
 
     hideShowPassword(){
@@ -31,21 +35,19 @@ export class RegisterComponent {
     };
 
   submit(role:string){
-    var body="first_name="+this.first_name+
-              "&last_name="+this.last_name+
-              "&email="+this.email+
-              "&password="+this.password+
-              "&role="+role;
-              alert(body);
+    var body={first_name: this.first_name,last_name: this.last_name, email: this.email, password: this.password,role: role};
     var http_string="http://localhost:1337/user";
     this.http
         .post(http_string,
           body,)
           .subscribe(data => {
-                alert('ok');
-          }, error => {
-              //console.log();
-          });
+                this.registered=true;
+          },
+          (error:HttpErrorResponse) => {
+
+            this.backend_error=`Backend returned code ${error.status}`;
+          }
+        );
     /*
     var results: ItemsResponse;
     var ob: Observable<Response>;

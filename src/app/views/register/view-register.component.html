@@ -37,4 +37,7 @@
     <div class="alert alert-danger" *ngIf="registered==false" style="margin-left:10%; margin-right:10%">
    <strong>Fill in all the fields!</strong>
     </div>
+    <div class="alert alert-danger" *ngIf="backend_error!=null" style="margin-left:10%; margin-right:10%">
+   <strong>{{backend_error}}</strong>
+    </div>
 </div>
