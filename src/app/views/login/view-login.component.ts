@@ -35,14 +35,11 @@ submit(type:string){
   var http_string="http://localhost:1337/users/"+this.email
   this.http.get<ItemsResponse>(http_string).subscribe(
     data => {
-    if(!data){alert('nth');this.wrong=true;return 0;}
     this._loginService.setUserType(type);
     if(this.password==data.password){
         this._loginService.setLoggedIn(true);
-        this._loginService.setUsername(this.email);
-
-          this._router.navigate(['./choose-mode']);
-
+        this._loginService.setUsername(data.first_name);
+        this._router.navigate(['./choose-mode']);
   }
   else{
     this.wrong=true;
@@ -92,5 +89,6 @@ register(){
 }
 interface ItemsResponse {
   email: string,
-  password: string
+  password: string,
+  first_name: string
 }
