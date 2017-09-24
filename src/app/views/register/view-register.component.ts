@@ -48,28 +48,6 @@ export class RegisterComponent {
             this.backend_error=`Backend returned code ${error.status}`;
           }
         );
-    /*
-    var results: ItemsResponse;
-    var ob: Observable<Response>;
-    ob=this.http.post(
-      http_string, //url
-      {first_name: this.first_name,
-      last_name: this.last_name,
-      email: this.email,
-      password: this.password,
-      role:role}
-    );
-*/
-    /*
-      GET students/teachers
-          in: name, surname
-          jeśli user nie istnieje:
-      POST students/teachers
-            in: email, password, name, surname
-      else{
-      alert("Account with this credentials already exists");
-    }
-    */
     };
 
 createUser(){

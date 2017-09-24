@@ -19,9 +19,7 @@ export class ChooseModeComponent{
     this._loginService.checkLoggedIn();
   }
   setmode(m:number){
-    if(m!=2){
-    this._loginService.setMode(m);
-    this._router.navigate(['/dashboard']);}
-    else this._router.navigate(['/progress']);
+    if(!m)this._router.navigate(['/register']);
+    else this._router.navigate(['/teacher-create-lesson']);
   }
 }
