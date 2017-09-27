@@ -11,64 +11,61 @@ import {TeacherSeeProgressComponent} from './views/teacher-see-progress/view-tea
 import { RegisterComponent } from './views/register/view-register.component';
 import { ProgressComponent } from './views/progress/view-progress.component';
 
+import { AuthGuard } from './common/auth.guard';
 
 // Define the routes
 export const routes = [
   {
     path: '',
-    data: ['Login'],
     component: LoginComponent
   },
   {
     path: 'register',
-    data: ['Register'],
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'teacher-words-panel',
-    data: ['Teacher words panel'],
-    component: TeacherWordsPanelComponent
+    component: TeacherWordsPanelComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'teacher-create-lesson',
-    data: ['Create lesson'],
-    component: TeacherCreateLessonComponent
+    component: TeacherCreateLessonComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'teacher-see-progress',
-    data: ['see progress'],
-    component: TeacherSeeProgressComponent
+    component: TeacherSeeProgressComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'teacher-add-students',
-    data: ['Teacher add students'],
-    component: TeacherAddStudentsComponent
+    component: TeacherAddStudentsComponent,
+    canActivate: [AuthGuard]
   },
-  { //It associates the url /employee with the view ViewEmployeeComponent
+  {
     path: 'dashboard',
-    data: ['Dashboard'],
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {  path: 'choose-mode',
-    data: ['Choose Mode'],
-    component: ChooseModeComponent
+    component: ChooseModeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'progress',
-    data: ['Progress'],
-    component: ProgressComponent
+    component: ProgressComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'goodbye',
-    data: ['Goodbye'],
     component: GoodbyeComponent
   },
   { //Redirect urls not found at root
     path: '**',
-    redirectTo: '/'
+    redirectTo: ''
   }
-  //It would be best to create a page dedicated to this work
-  //	{ path: '**', component: PageNotFoundComponent }
 ];
 
 

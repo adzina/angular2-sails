@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {LoginService} from '../../services/login.service';
 import {Router} from '@angular/router';
-
+import { AuthHttp } from 'angular2-jwt';
 
 @Component({
   moduleId: module.id,
@@ -11,8 +11,14 @@ import {Router} from '@angular/router';
 
 export class ChooseModeComponent{
 
+  jwt: string;
+  decodedJwt: string;
+  response: string;
   mode: number;
-  constructor(private _router: Router,private _loginService: LoginService){
+  
+  constructor(private _router: Router,private _loginService: LoginService, private authHttp: AuthHttp){
+    this.jwt = localStorage.getItem('id_token');
+    this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
     this.mode=null;
   }
   ngOnInit(){

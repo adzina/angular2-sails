@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChooseModeComponent } from './choose-mode.component';
+import { ChooseModeComponent } from './view-choose-mode.component';
 
 describe('ChooseModeComponent', () => {
   let component: ChooseModeComponent;

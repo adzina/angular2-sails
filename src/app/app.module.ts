@@ -5,7 +5,10 @@ import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+
+import { AuthGuard } from './common/auth.guard';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
@@ -50,7 +53,7 @@ import { ProgressComponent } from './views/progress/view-progress.component';
     BrowserModule,
     HttpClientModule //http://www.concretepage.com/angular-2/angular-2-http-post-example
   ],
-  providers: [LoginService],
+  providers: [LoginService, AuthGuard, ...AUTH_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
