@@ -23,9 +23,6 @@ export class ChooseModeComponent{
     this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
     this.mode=null;
   }
-  ngOnInit(){
-    this._loginService.checkLoggedIn();
-  }
   setmode(m:number){
     if(!m)this._router.navigate(['/register']);
     else this._router.navigate(['/teacher-create-lesson']);

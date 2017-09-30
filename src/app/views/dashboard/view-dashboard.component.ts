@@ -34,10 +34,7 @@ export class DashboardComponent{
     this.clicked=false;
     this.mode=this._loginService.getMode();
   }
-  //nie pozwala przejść do dashboard bez logowania
-  ngOnInit(){
-    this._loginService.checkLoggedIn();
-  }
+
   handleLessonChosen(x:string){
     if(this.chosenLesson=='null' || ( this.chosenLesson!='null' && this.clicked==true)){
         if(x!=this.chosenLesson){

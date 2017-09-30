@@ -10,9 +10,4 @@ export class ProgressComponent{
 
   constructor(private _router: Router,private _loginService: LoginService) { }
 
-  ngOnInit() {
-
-      this._loginService.checkLoggedIn();
-  }
-
 }
