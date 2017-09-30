@@ -29,16 +29,25 @@ export class LoginComponent{
     else
       this.inputType = 'password';
   };
-
+  /*
+  authenticate(email: string, password: string) {
+    this._apiHandler.callService("http://localhost:1337/user/login", RequestMethod.Post, {email: email, password: password})
+      .map(res => <string>res.text())
+      .do((token: string) => {
+        localStorage.setItem('token', token);
+        this._userService.set(this._jwt.decodeToken());
+      });
+}
+*/
   submit(type:string) {
-    //event.preventDefault();
     var email=this.email;
     var pswd=this.password;
     let body = JSON.stringify({ email, pswd });
-    this.http.post('http://localhost:1337/sessions/create', body)
+    this.http.post('http://localhost:1337/user/login', body)
       .subscribe(
         response => {
-          localStorage.setItem('id_token', response.json().id_token);
+          console.log(response.text());
+          localStorage.setItem('id_token', response.text());
           this._router.navigate(['./choose-mode']);
         },
         error => {

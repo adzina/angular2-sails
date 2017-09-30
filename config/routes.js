@@ -40,6 +40,8 @@ module.exports.routes = {
 
   'POST /user': 'UserController.create',
 
+  'POST /user/login': 'UserController.login',
+
   'GET /users/:email': 'UserController.findOne',
 
   'POST /lesson':'LessonController.create',

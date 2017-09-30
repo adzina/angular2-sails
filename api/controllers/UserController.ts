@@ -9,7 +9,41 @@ import { Model } from 'Sails';
 
 declare var sails: any;
 
+import * as jwt from "jsonwebtoken";
+import * as bcrypt from "bcryptjs";
+
 module.exports = {
+	login: function (req, res) {
+
+
+    /**
+     * check if the username matches any email or phoneNumber
+     */
+    sails.models.user.findOne({
+      email: req.body.email
+    }).exec(function callback(err, user) {
+      if (err) return res.serverError(err);
+      if (!user) return res.serverError("User not found, please sign up.");
+
+
+      //check password
+      bcrypt.compare(req.body.pswd, user.password, function (error, matched) {
+        if (error) return res.serverError(error);
+
+        if (!matched) return res.serverError("Invalid password.");
+
+        //save the date the token was generated for already inside toJSON()
+
+        var token = jwt.sign(user.toJSON(), "this is my secret key", {
+          expiresIn: '90m'
+        });
+
+        //return the token here
+        res.ok(token);
+      });
+
+    });
+},
 	create: function(req,res){
 			let _first_name=req.param('first_name'),
 					_last_name=req.param('last_name'),
@@ -48,7 +82,7 @@ module.exports = {
 	    .then(_user =>{
 				if(!_user)
 						return res.notFound({err: 'No such user'});
-	
+
 				return res.ok(_user);
 			})
 	}
