@@ -31,7 +31,7 @@ export class LoginComponent{
   };
 
   submit(type:string) {
-    event.preventDefault();
+    //event.preventDefault();
     var email=this.email;
     var pswd=this.password;
     let body = JSON.stringify({ email, pswd });

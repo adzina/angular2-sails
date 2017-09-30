@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -51,6 +52,7 @@ import { ProgressComponent } from './views/progress/view-progress.component';
     FormsModule,
     AppRoutingModule,
     BrowserModule,
+    HttpModule,
     HttpClientModule //http://www.concretepage.com/angular-2/angular-2-http-post-example
   ],
   providers: [LoginService, AuthGuard, ...AUTH_PROVIDERS],
