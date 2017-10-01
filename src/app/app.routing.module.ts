@@ -22,41 +22,41 @@ export const routes = [
   {
     path: 'register',
     component: RegisterComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'teacher-words-panel',
     component: TeacherWordsPanelComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'teacher-create-lesson',
     component: TeacherCreateLessonComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'teacher-see-progress',
     component: TeacherSeeProgressComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'teacher-add-students',
     component: TeacherAddStudentsComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {  path: 'choose-mode',
     component: ChooseModeComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'progress',
     component: ProgressComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'goodbye',

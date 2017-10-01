@@ -12,10 +12,6 @@ export class TeacherAddStudentsComponent{
 
   chosenLesson: string;
   constructor(private _loginService: LoginService) {}
-
-  ngOnInit() {
-    this._loginService.checkLoggedIn();
-  }
   handleLessonChosen(x:string){
     this.chosenLesson=x;
     /*
