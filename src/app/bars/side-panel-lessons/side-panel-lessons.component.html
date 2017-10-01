@@ -1,5 +1,6 @@
 
-<button *ngIf="!show" class="btn btn-danger button-show" (click)="toggle()"><b> > </b></button>
+<button *ngIf="!show" class="btn btn-danger button_show" (click)="toggle()"><b> > </b></button>
+
 <div class={{className}}>
 
     <div *ngIf="show">
@@ -11,4 +12,4 @@
   </div>
 </div>
 
-<button *ngIf="show" class="btn btn-danger button-hide" (click)="toggle()"><b> < </b></button>
+<button *ngIf="show" class="btn btn-danger button_hide" (click)="toggle()"><b> < </b></button>
