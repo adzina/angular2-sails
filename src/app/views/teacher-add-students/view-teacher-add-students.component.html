@@ -1,6 +1,6 @@
 
   <navbar></navbar>
-  
+
     <side-panel-lessons (lessonChosen)="handleLessonChosen($event)"></side-panel-lessons>
 
 
@@ -9,4 +9,26 @@
         {{student.name}}  {{student.surname}} <input type="checkbox" (click)="submit()">
 
     </div>
+  </div>
+
+  <div class="container">
+    <table class="table table-striped table-bordered table-hover table-condensed">
+      <tr *ngFor=" let group of myGroupsActive; let i=index" [attr.data-index]="i">
+        <th class="text-center col-md-11">{{group}}</th>
+        <th align="center" class="text-center col-md-1">
+          <button type="button" class="close danger" aria-label="Close" (click)="delete(i)" style="width:60px;margin:0 auto">
+            <span aria-hidden="false"> &times; </span>
+          </button>
+        </th>
+      </tr>
+    </table>
+
+    <table class="table table-striped table-bordered table-hover table-condensed">
+      <tr *ngFor=" let group of myGroupsInactive; let i=index" [attr.data-index]="i">
+        <th class="text-center col-md-11">{{group}}</th>
+        <th align="center" class="text-center col-md-1"><button type="button" class="close danger" aria-label="Close" (click)="add(i)" style="width:60px;margin:0 auto">
+          <span aria-hidden="false">Add</span>
+        </button></th>
+      </tr>
+    </table>
   </div>

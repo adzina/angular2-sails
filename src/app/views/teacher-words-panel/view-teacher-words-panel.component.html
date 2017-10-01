@@ -10,9 +10,11 @@
         <tr *ngFor=" let lesson of lessonsFiltered; let i=index" [attr.data-index]="i">
           <th class="text-center">{{lesson.eng}}</th>
           <th class="text-center">{{lesson.pol}}</th>
-          <th class="text-center" style="width:10px"><button type="button" class="close danger" aria-label="Close" (click)="delete(i)">
-            <span aria-hidden="false">&times;</span>
-          </button></th>
+          <th class="text-center" style="width:10px">
+            <button type="button" class="close danger" aria-label="Close" (click)="delete(i)">
+              <span aria-hidden="false">&times;</span>
+            </button>
+          </th>
         </tr>
 
 

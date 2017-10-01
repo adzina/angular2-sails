@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
+
 
 import { AuthGuard } from './common/auth.guard';
 
@@ -55,7 +56,7 @@ import { ProgressComponent } from './views/progress/view-progress.component';
     HttpModule,
     HttpClientModule //http://www.concretepage.com/angular-2/angular-2-http-post-example
   ],
-  providers: [LoginService, AuthGuard, ...AUTH_PROVIDERS],
+  providers: [LoginService, AuthGuard, AuthHttp],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

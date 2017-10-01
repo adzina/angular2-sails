@@ -11,7 +11,12 @@ import { SidePanelLessonsComponent } from '../../bars/side-panel-lessons/side-pa
 export class TeacherAddStudentsComponent{
 
   chosenLesson: string;
-  constructor(private _loginService: LoginService) {}
+  myGroupsActive: string[];
+  myGroupsInactive:string[];
+  constructor(private _loginService: LoginService) {
+    this.myGroupsInactive=['group1','group2'];
+    this.myGroupsActive=['group3','group4'];
+  }
   handleLessonChosen(x:string){
     this.chosenLesson=x;
     /*
@@ -26,5 +31,16 @@ export class TeacherAddStudentsComponent{
 
     jeśli student znajduje się na pierwszej i drugiej liście, to obok jego nazwiska przycisk "remove" wpp "add"
     */
+  }
+
+  delete(i:number){
+    var group=this.myGroupsActive[i];
+    this.myGroupsActive.splice(i,1);
+    this.myGroupsInactive.push(group);
+  }
+  add(i:number){
+      var group=this.myGroupsInactive[i];
+      this.myGroupsInactive.splice(i,1);
+      this.myGroupsActive.push(group);
   }
 }
