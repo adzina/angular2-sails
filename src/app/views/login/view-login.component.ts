@@ -47,7 +47,7 @@ export class LoginComponent{
       .subscribe(
         response => {
           console.log(response.text());
-          localStorage.setItem('id_token', response.text());
+          localStorage.setItem('token', response.text());
           this._router.navigate(['./choose-mode']);
         },
         error => {

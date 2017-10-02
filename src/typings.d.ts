@@ -7,3 +7,4 @@ interface NodeModule {
 interface Window {
   jwt_decode(jwt: string): any;
 }
+declare function jwt_decode(token: string): any;

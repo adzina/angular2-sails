@@ -1,14 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http';
-import { HttpModule, Http, RequestOptions } from '@angular/http';
+import { HttpModule, Http, RequestOptions,ConnectionBackend } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
-
+import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
 import { AuthGuard } from './common/auth.guard';
 
@@ -27,8 +26,14 @@ import {TeacherSeeProgressComponent} from './views/teacher-see-progress/view-tea
 import { TeacherAddStudentsComponent } from './views/teacher-add-students/view-teacher-add-students.component';
 import { RegisterComponent } from './views/register/view-register.component';
 import { ProgressComponent } from './views/progress/view-progress.component';
+import { CommonModule } from '@angular/common';
 
 
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp(new AuthConfig({
+    tokenGetter: (() => localStorage.getItem('access_token'))
+  }), http, options);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,9 +59,16 @@ import { ProgressComponent } from './views/progress/view-progress.component';
     AppRoutingModule,
     BrowserModule,
     HttpModule,
-    HttpClientModule //http://www.concretepage.com/angular-2/angular-2-http-post-example
+    HttpClientModule
   ],
-  providers: [LoginService, AuthGuard, AuthHttp],
+  providers: [
+     {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [ Http, RequestOptions ]
+    }
+      ,LoginService, AuthGuard
+     ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

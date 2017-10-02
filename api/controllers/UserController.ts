@@ -39,7 +39,7 @@ module.exports = {
         });
 
         //return the token here
-        res.ok(token);
+        res.json(200, { id_token: token });
       });
 
     });
