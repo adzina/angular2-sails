@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { SidePanelLessonsComponent } from '../../bars/side-panel-lessons/side-panel-lessons.component';
+import {Http} from '@angular/http';
 
 @Component({
   selector: 'teacher-words-panel',
@@ -15,7 +16,8 @@ export class TeacherWordsPanelComponent {
   lessonsFiltered: word[];
   lessonsUnique: string[];
   chosenLesson: string;
-  constructor(private _loginService: LoginService) {
+  constructor(private _loginService: LoginService,
+              private http: Http) {
     //-----------------------------------------------------------------------------
     this.lessons = [{ eng: "one", pol: "jeden", id: "1", lesson: "words1" }, { eng: "two", pol: "dwa", id: "2", lesson: "words1" }, { eng: "three", pol: "trzy", id: "3", lesson: "words1" }, { eng: "cat", pol: "kot", id: "4", lesson: "words2" }, { eng: "dog", pol: "pies", id: "5", lesson: "words2" }];
     this.chosenLesson = null;
@@ -53,22 +55,31 @@ export class TeacherWordsPanelComponent {
     this.lessonsFiltered.splice(i,1);
   }
   submit() {
+    var string='http://localhost:1337/word';
+    var word_id:string;
+    var body=JSON.stringify({polish:this.polish,english:this.english});
     //-------------------------------------------------------------------------------
-
+    this.http.post(string,body)
+    .map(res=>res.json())
+    .subscribe(
+      response => {
+        this.polish = "";
+        this.english = "";
+        this.addToLesson(response.id);
+      },
+      error => {
+        console.log(error.text());
+      }
+    );
 
     var n={pol:this.polish,eng:this.english,lesson:this.chosenLesson,id:""};
 
     this.lessonsFiltered.push({pol:this.polish,eng:this.english,lesson:this.chosenLesson,id:""});
 
-    //------------------------------------------------------------------------------
-    /*
-      POST words
-      in: id_lekcji, eng, pol
-    */
-    this.polish = "";
-    this.english = "";
   }
+  addToLesson(wordID:string){
 
+  }
 }
 
 interface word {

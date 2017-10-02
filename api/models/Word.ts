@@ -9,7 +9,6 @@ module.exports = {
   tableName: "words",
   attributes: {
     english: {type:'string', required: true},
-    polish: {type:'string', required: true},
-    lessonID: {type: 'string', required: true}
+    polish: {type:'string', required: true}
   }
 };

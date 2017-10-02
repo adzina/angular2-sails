@@ -36,7 +36,6 @@ export class LoginComponent{
     this.http.post('http://localhost:1337/user/login', body)
       .subscribe(
         response => {
-          console.log(response.text());
           localStorage.setItem('token', response.text());
           this._router.navigate(['./choose-mode']);
         },

@@ -39,14 +39,13 @@ module.exports.routes = {
   //user
 
   'POST /user': 'UserController.create',
-
   'POST /user/login': 'UserController.login',
-
   'GET /users/:email': 'UserController.findOne',
 
   'POST /lesson':'LessonController.create',
+  'GET /lesson/:teacherID': 'LessonController.find',
 
-  'GET /lesson/:teacherID': 'LessonController.find'
+  'POST /word': 'WordController.create',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

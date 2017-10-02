@@ -19,9 +19,15 @@ export class ChooseModeComponent{
     this.jwt = localStorage.getItem('token');
     this.decodedJwt = this.jwt && jwt_decode(this.jwt);
     this.mode=null;
+    this.setUserID();
   }
   setmode(m:number){
     if(!m)this._router.navigate(['/register']);
     else this._router.navigate(['/teacher-create-lesson']);
   }
+  //===================================
+  setUserID(){
+    this._loginService.setUserID('4');
+  }
+  //====================================
 }
