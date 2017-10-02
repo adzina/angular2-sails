@@ -5,7 +5,7 @@
 
     <div *ngIf="show">
         <h3><font color="white">Choose a lesson:</font></h3>
-        <div *ngFor=" let lessonName of lessonsUnique">
+        <div *ngFor=" let lessonName of lessons">
 
       				<button style="margin-bottom:3px;min-width:100%"class="btn btn-info" (click)="choose(lessonName)">{{lessonName}}</button><br>
         </div>

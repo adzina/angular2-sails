@@ -27,4 +27,21 @@ module.exports = {
         return res.ok();
 			});
 	},
+  find: function(req,res){
+    var ID=req.param('teacherID');
+          return sails.models.lesson.find({
+        teacherID: ID
+      }).exec(function (err, lessons){
+        if (err) { return res.serverError(err); }
+
+        res.json(200, { lesson: lessons });
+			});
+  },
+  getLessons: function(ID,next) {
+   return sails.models.lesson.find({teacherID:ID}).exec(function(err, lessons) {
+     if(err) throw err;
+     console.log(lessons);
+     next(lessons);
+   });
+ }
 };

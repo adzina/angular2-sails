@@ -29,16 +29,6 @@ export class LoginComponent{
     else
       this.inputType = 'password';
   };
-  /*
-  authenticate(email: string, password: string) {
-    this._apiHandler.callService("http://localhost:1337/user/login", RequestMethod.Post, {email: email, password: password})
-      .map(res => <string>res.text())
-      .do((token: string) => {
-        localStorage.setItem('token', token);
-        this._userService.set(this._jwt.decodeToken());
-      });
-}
-*/
   submit(type:string) {
     var email=this.email;
     var pswd=this.password;

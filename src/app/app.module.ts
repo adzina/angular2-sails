@@ -11,10 +11,12 @@ import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
 import { AuthGuard } from './common/auth.guard';
 
+import {LoginService} from './services/login.service';
+import {BackendService} from './services/backend.service';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { LoginComponent } from './views/login/view-login.component';
-import {LoginService} from './services/login.service';
 import { DashboardComponent } from './views/dashboard/view-dashboard.component';
 import { SidePanelLessonsComponent } from './bars/side-panel-lessons/side-panel-lessons.component';
 import { ChooseModeComponent } from './views/choose-mode/view-choose-mode.component';
@@ -67,7 +69,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       useFactory: authHttpServiceFactory,
       deps: [ Http, RequestOptions ]
     }
-      ,LoginService, AuthGuard
+      ,LoginService, BackendService, AuthGuard
      ],
   bootstrap: [AppComponent]
 })

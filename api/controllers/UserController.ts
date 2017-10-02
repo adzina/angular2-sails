@@ -71,19 +71,4 @@ module.exports = {
 			});
 	},
 
-	findOne: function(req,res){
-			let userEmail=req.param('email');
-
-			if(!userEmail)
-
-				return res.badRequest({err:'missing email'});
-
-	    sails.models.user.findOne({email:userEmail})
-	    .then(_user =>{
-				if(!_user)
-						return res.notFound({err: 'No such user'});
-
-				return res.ok(_user);
-			})
-	}
 };

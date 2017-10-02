@@ -45,6 +45,8 @@ module.exports.routes = {
   'GET /users/:email': 'UserController.findOne',
 
   'POST /lesson':'LessonController.create',
+
+  'GET /lesson/:teacherID': 'LessonController.find'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
