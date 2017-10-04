@@ -21,27 +21,30 @@ module.exports = {
 				date:_date,
 
 			})
-    	.exec(function (err, user){
+    	.exec(function (err, lesson){
         if (err) { return res.serverError(err); }
 
         return res.ok();
 			});
 	},
+  
   find: function(req,res){
-    var ID=req.param('teacherID');
-          return sails.models.lesson.find({
-        teacherID: ID
-      }).exec(function (err, lessons){
-        if (err) { return res.serverError(err); }
+    var id=req.param('teacherID');
 
-        res.json(200, { lesson: lessons });
-			});
+    return sails.models.lesson.find({teacherID: id})
+            .exec(function (err, lessons){
+                  if (err) { return res.serverError(err); }
+                  res.json(200, { lesson: lessons });
+			             });
   },
-  getLessons: function(ID,next) {
-   return sails.models.lesson.find({teacherID:ID}).exec(function(err, lessons) {
-     if(err) throw err;
-     console.log(lessons);
-     next(lessons);
+
+  returnID: function(req,res) {
+    var sub=req.param('subject');
+    return sails.models.lesson.find({subject:sub})
+          .exec(function(err, lessons) {
+                if (err) { return res.serverError(err); }
+                console.log(lessons.id);
+                res.json(200, { id: lessons.id });
    });
  }
 };

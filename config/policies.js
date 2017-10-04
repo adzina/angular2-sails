@@ -19,6 +19,16 @@
 
 module.exports.policies = {
 
+
+  UserController: {
+    create: 'sessionAuth'
+  },
+  LessonController: {
+    find: 'sessionAuth',
+    create: 'sessionAuth'
+  }
+
+
   /***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions (`true` allows public     *

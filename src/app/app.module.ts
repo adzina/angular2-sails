@@ -11,8 +11,8 @@ import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
 import { AuthGuard } from './common/auth.guard';
 
-import {LoginService} from './services/login.service';
-import {BackendService} from './services/backend.service';
+import { LoginService } from './services/login.service';
+import { BackendService } from './services/backend.service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
@@ -22,9 +22,9 @@ import { SidePanelLessonsComponent } from './bars/side-panel-lessons/side-panel-
 import { ChooseModeComponent } from './views/choose-mode/view-choose-mode.component';
 import { NavbarComponent } from './bars/navbar/navbar.component';
 import { GoodbyeComponent } from './views/goodbye/view-goodbye.component';
-import {TeacherCreateLessonComponent} from './views/teacher-create-lesson/view-teacher-create-lesson.component';
+import { TeacherCreateLessonComponent } from './views/teacher-create-lesson/view-teacher-create-lesson.component';
 import { TeacherWordsPanelComponent } from './views/teacher-words-panel/view-teacher-words-panel.component';
-import {TeacherSeeProgressComponent} from './views/teacher-see-progress/view-teacher-see-progress.component';
+import { TeacherSeeProgressComponent } from './views/teacher-see-progress/view-teacher-see-progress.component';
 import { TeacherAddStudentsComponent } from './views/teacher-add-students/view-teacher-add-students.component';
 import { RegisterComponent } from './views/register/view-register.component';
 import { ProgressComponent } from './views/progress/view-progress.component';
@@ -33,7 +33,11 @@ import { CommonModule } from '@angular/common';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
-    tokenGetter: (() => localStorage.getItem('access_token'))
+    /*
+        headerName: 'Authorization',
+        headerPrefix: 'bearer',
+        tokenGetter: (() => localStorage.getItem(this.tokenName)),
+        */
   }), http, options);
 }
 @NgModule({

@@ -56,7 +56,6 @@ export class TeacherWordsPanelComponent {
   }
   submit() {
     var string='http://localhost:1337/word';
-    var word_id:string;
     var body=JSON.stringify({polish:this.polish,english:this.english});
     //-------------------------------------------------------------------------------
     this.http.post(string,body)
@@ -77,8 +76,27 @@ export class TeacherWordsPanelComponent {
     this.lessonsFiltered.push({pol:this.polish,eng:this.english,lesson:this.chosenLesson,id:""});
 
   }
-  addToLesson(wordID:string){
+  addToLesson(wID:string){
+      var string='http://localhost:1337/lessonWord';
+      var lID=this.getLessonID();
+      var body=JSON.stringify({lessonID:lID,wordID:wID});
 
+      this.http.post(string,body).subscribe(response=>{alert('added to lesson');})
+
+  }
+  getLessonID(){
+    var string='http://localhost:1337/lesson';
+    var body=JSON.stringify({subject:this.chosenLesson});
+    var lessonID:string;
+    this.http.get(string,body)
+    .map(res=>res.json())
+    .subscribe(response=>{
+      //===================
+      alert(response.id);
+      //========================
+      lessonID=response.id;
+    });
+    return lessonID;
   }
 }
 

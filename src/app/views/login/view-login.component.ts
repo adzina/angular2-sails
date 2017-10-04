@@ -34,14 +34,15 @@ export class LoginComponent{
     var pswd=this.password;
     let body = JSON.stringify({ email, pswd });
     this.http.post('http://localhost:1337/user/login', body)
+      .map(res=>res.json())
       .subscribe(
         response => {
-          localStorage.setItem('token', response.text());
+          localStorage.setItem('token', response.id_token);
           this._router.navigate(['./choose-mode']);
         },
         error => {
-          alert(error.text());
-          console.log(error.text());
+          alert(error);
+          console.log(error);
         }
       );
   }

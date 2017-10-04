@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {LoginService} from '../../services/login.service';
 import {Router} from '@angular/router';
-import { AuthHttp } from 'angular2-jwt';
-var jwt_decode = require('jwt-decode');
+
 @Component({
   moduleId: module.id,
   selector: 'choose-mode',
@@ -11,13 +10,10 @@ var jwt_decode = require('jwt-decode');
 export class ChooseModeComponent{
 
   jwt: string;
-  decodedJwt: string;
   response: string;
   mode: number;
 
-  constructor(private _router: Router,private _loginService: LoginService, private authHttp: AuthHttp){
-    this.jwt = localStorage.getItem('token');
-    this.decodedJwt = this.jwt && jwt_decode(this.jwt);
+  constructor(private _router: Router,private _loginService: LoginService){
     this.mode=null;
     this.setUserID();
   }

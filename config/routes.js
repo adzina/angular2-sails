@@ -46,6 +46,8 @@ module.exports.routes = {
   'GET /lesson/:teacherID': 'LessonController.find',
 
   'POST /word': 'WordController.create',
+
+  'POST /lessonWord': 'LessonWordController.create',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
