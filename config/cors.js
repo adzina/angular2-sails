@@ -47,10 +47,10 @@ module.exports.cors = {
   * "*" to allow all domains CORS access.                                    *
   *                                                                          *
   ***************************************************************************/
-
-  // origin: '*',
-  origin: 'http://localhost:4200',
-
+  //allRoutes: true,
+   //origin: '*',
+  origin: 'http://localhost:4200, http://localhost:4200/teacher-add-students',
+  headers: 'Content-Type, Authorization', 
   /***************************************************************************
   *                                                                          *
   * Allow cookies to be shared for CORS requests?                            *
