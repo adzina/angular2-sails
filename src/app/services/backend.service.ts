@@ -42,22 +42,54 @@ export class BackendService{
     return groups;
   }
   getAllUsers(){
-    var string='http://localhost:1337/user';
-    var users: string[];
+    var string='http://localhost:1337/user/getAll';
+    var users: user[];
     users=[];
     this.http.get(string)
     .map(res=>res.json())
     .subscribe(response=>{
       for (let index in response)
-        users[index]={first_name:response[index].first_name,
-                      last_name:response[index].last_name,
-                      role: response[index].role};
+        users[index]=response[index];
+
+        return users;
       },
       error=>{
           alert(error);
         }
-
-    );
-    return users;
+   );
+   return users;
   }
+  getActiveUsers(){
+    var string='http://localhost:1337/groupuser';
+    var activeUsersID: string[];
+    var activeUsers: user[];
+    activeUsersID=[];
+    activeUsers=[];
+
+    this.http.get(string)
+      .map(res=>res.json())
+      .subscribe(response=>{
+        for (let index in response)
+          activeUsersID[index]=response[index].userID
+        },
+        error=>{
+            alert(error);
+          }
+    );
+
+    for(let i in activeUsersID)
+      this.http.get('http://localhost:1337/user/findByID')
+      .map(res=>res.json())
+      .subscribe(response=>{
+        activeUsers[i]=response
+      })
+    return activeUsers;
+  }
+}
+
+interface user{
+  id: string,
+  first_name: string,
+  last_name: string,
+  role: string
 }

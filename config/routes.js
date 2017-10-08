@@ -41,6 +41,8 @@ module.exports.routes = {
   'POST /user': 'UserController.create',
   'POST /user/login': 'UserController.login',
   'GET /users/:email': 'UserController.findOne',
+  'GET /user/findByID': 'UserController.findByID',
+  'POST /user/getAll': 'UserController.getAll',
 
   'POST /lesson':'LessonController.create',
   'GET /lesson/:teacherID': 'LessonController.getTeacherID',

@@ -13,11 +13,39 @@ import * as jwt from "jsonwebtoken";
 import * as bcrypt from "bcryptjs";
 
 module.exports = {
+
+	getAll: function(req,res){
+		sails.models.user.find()
+		.exec(function callback(err,users){
+						var output:user[];
+						output=[];
+						for(var i=0;i<users.length;i++){
+							output[i]={id:users[i].id,
+														first_name:users[i].first_name,
+														last_name: users[i].last_name,
+														role:users[i].role};
+						}
+						res.json(200, output);
+		})
+	},
+	findByID: function(req,res){
+		var id=req.param('id');
+		sails.models.user.findOne({
+			id: id
+		}).exec(function callback(err, user) {
+			if (err) return res.serverError(err);
+
+
+			res.json(200, {id:user.id,
+										first_name:user.first_name,
+										last_name:user.last_name,
+										email:user.email });
+
+		});
+	},
 	login: function (req, res) {
-
-
     /**
-     * check if the username matches any email or phoneNumber
+     * check if the username matches any email
      */
     sails.models.user.findOne({
       email: req.body.email
@@ -72,3 +100,10 @@ module.exports = {
 	},
 
 };
+
+interface user{
+  id: string,
+  first_name: string,
+  last_name: string,
+  role: string
+}
