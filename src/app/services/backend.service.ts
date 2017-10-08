@@ -41,5 +41,23 @@ export class BackendService{
         );
     return groups;
   }
+  getAllUsers(){
+    var string='http://localhost:1337/user';
+    var users: string[];
+    users=[];
+    this.http.get(string)
+    .map(res=>res.json())
+    .subscribe(response=>{
+      for (let index in response)
+        users[index]={first_name:response[index].first_name,
+                      last_name:response[index].last_name,
+                      role: response[index].role};
+      },
+      error=>{
+          alert(error);
+        }
 
+    );
+    return users;
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
+import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
 import { SidePanelGroupsComponent } from '../../bars/side-panel-groups/side-panel-groups.component';
 
@@ -13,7 +14,10 @@ export class AdminAddUsersComponent{
   chosenGroup: string;
   myGroupsActive: string[];
   myGroupsInactive:string[];
-  constructor(private _loginService: LoginService) {
+  users: string[];
+  constructor(private _loginService: LoginService,
+              private _backendService: BackendService) {
+    this.users=this._backendService.getAllUsers();
     this.myGroupsInactive=['group1','group2'];
     this.myGroupsActive=['group3','group4'];
   }
