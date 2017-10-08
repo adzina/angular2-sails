@@ -48,9 +48,9 @@ module.exports.cors = {
   *                                                                          *
   ***************************************************************************/
   //allRoutes: true,
-   //origin: '*',
-  origin: 'http://localhost:4200, http://localhost:4200/teacher-add-students',
-  headers: 'Content-Type, Authorization', 
+   origin: '*',
+  //origin: 'http://localhost:4200, http://localhost:4200/teacher-add-students',
+  headers: 'Content-Type, Authorization',
   /***************************************************************************
   *                                                                          *
   * Allow cookies to be shared for CORS requests?                            *

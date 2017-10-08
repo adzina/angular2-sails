@@ -1,11 +1,8 @@
 import { Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
+import { AuthHttp} from 'angular2-jwt';
 import {HttpErrorResponse} from '@angular/common/http';
-import {Response} from "@angular/http";
 import {LoginService} from '../../services/login.service';
-import {Observable} from 'rxjs/Rx';
-import 'rxjs/add/operator/catch';
 
 @Component({
   selector: 'register',
@@ -19,7 +16,7 @@ export class RegisterComponent {
   last_name: string;
   registered: boolean;
   backend_error: string;
-  constructor(private _router:Router, private _loginService:LoginService, private http:HttpClient) {
+  constructor(private _router:Router, private _loginService:LoginService, private http:AuthHttp) {
     this.inputType = 'password';
     this.email="";
     this.password="";

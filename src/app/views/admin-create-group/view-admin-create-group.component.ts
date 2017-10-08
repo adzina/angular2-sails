@@ -1,0 +1,48 @@
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
+import { AuthHttp} from 'angular2-jwt';
+
+
+
+@Component({
+  selector: 'admin-create-group',
+  templateUrl: './view-admin-create-group.component.html'
+})
+export class AdminCreateGroupComponent{
+  name: string;
+  created: boolean;
+  error: boolean;
+  backend_error:string;
+  constructor(private _router:Router,
+              private http:AuthHttp,
+              private _login:LoginService){
+    this.name=null;
+  }
+  create(){
+    if(this.name!=null){
+      this.sendRequest();
+    }
+    else{
+      this.error=true;
+    }
+  }
+  sendRequest(){
+    var body={name:this.name};
+    var http_string="http://localhost:1337/group";
+    this.http
+        .post(http_string,
+          body,)
+          .subscribe(data => {
+            this.name=null;
+            this.error=false;
+            this.created=true;
+          }
+        );
+  }
+  goto(){
+    this._router.navigate(['./admin-add-users']);
+
+  }
+
+}

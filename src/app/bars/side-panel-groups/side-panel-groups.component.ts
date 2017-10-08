@@ -2,11 +2,11 @@ import { Component,Output,EventEmitter } from '@angular/core';
 import {BackendService} from '../../services/backend.service';
 @Component({
   moduleId: module.id,
-  selector: 'side-panel-lessons',
-  templateUrl: 'side-panel-lessons.component.html',
+  selector: 'side-panel-groups',
+  templateUrl: 'side-panel-groups.component.html',
 })
 
-export class SidePanelLessonsComponent {
+export class SidePanelGroupsComponent {
   show:boolean;
   lessons: string[];
   className:string;

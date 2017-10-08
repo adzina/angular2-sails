@@ -8,19 +8,22 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing.module';
 
 import { AuthGuard } from './common/auth.guard';
 
 import { LoginService } from './services/login.service';
 import { BackendService } from './services/backend.service';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app.routing.module';
 import { LoginComponent } from './views/login/view-login.component';
 import { DashboardComponent } from './views/dashboard/view-dashboard.component';
 import { SidePanelLessonsComponent } from './bars/side-panel-lessons/side-panel-lessons.component';
+import { SidePanelGroupsComponent } from './bars/side-panel-groups/side-panel-groups.component';
 import { ChooseModeComponent } from './views/choose-mode/view-choose-mode.component';
 import { NavbarComponent } from './bars/navbar/navbar.component';
+import { AdminNavbarComponent } from './bars/admin-navbar/admin-navbar.component';
+import {AdminCreateGroupComponent} from './views/admin-create-group/view-admin-create-group.component';
 import { GoodbyeComponent } from './views/goodbye/view-goodbye.component';
 import { TeacherCreateLessonComponent } from './views/teacher-create-lesson/view-teacher-create-lesson.component';
 import { TeacherWordsPanelComponent } from './views/teacher-words-panel/view-teacher-words-panel.component';
@@ -46,8 +49,11 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     LoginComponent,
     DashboardComponent,
     SidePanelLessonsComponent,
+    SidePanelGroupsComponent,
     ChooseModeComponent,
     NavbarComponent,
+    AdminNavbarComponent,
+    AdminCreateGroupComponent,
     GoodbyeComponent,
     TeacherCreateLessonComponent,
     TeacherWordsPanelComponent,

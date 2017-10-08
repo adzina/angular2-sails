@@ -27,8 +27,8 @@ module.exports = {
         return res.ok();
 			});
 	},
-  
-  find: function(req,res){
+
+  getTeacherID: function(req,res){
     var id=req.param('teacherID');
 
     return sails.models.lesson.find({teacherID: id})
@@ -38,7 +38,7 @@ module.exports = {
 			             });
   },
 
-  returnID: function(req,res) {
+  getLessonID: function(req,res) {
     var sub=req.param('subject');
     return sails.models.lesson.find({subject:sub})
           .exec(function(err, lessons) {

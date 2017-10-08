@@ -8,8 +8,6 @@
 module.exports = {
   tableName: "groups",
   attributes: {
-    teacherID: {type:'string', required: true},
-    studentID: {type:'string', required: true},
-    lessonID: {type: 'string', required: true}
+    name: {type:'string', required: true}
   }
 };

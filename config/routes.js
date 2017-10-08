@@ -43,9 +43,10 @@ module.exports.routes = {
   'GET /users/:email': 'UserController.findOne',
 
   'POST /lesson':'LessonController.create',
-  'GET /lesson/:teacherID': 'LessonController.find',
+  'GET /lesson/:teacherID': 'LessonController.getTeacherID',
+  'GET /lesson/id': 'LessonController.getLessonID',
 
-  'POST /word': 'WordController.create',
+  'POST /word': 'WordController.add',
 
   'POST /lessonWord': 'LessonWordController.create',
   /***************************************************************************

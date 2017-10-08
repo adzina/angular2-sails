@@ -2,7 +2,7 @@ import {Router} from '@angular/router';
 import {Component} from '@angular/core';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {LoginService} from '../../services/login.service';
-import {Http} from '@angular/http';
+import { AuthHttp} from 'angular2-jwt';
 
 const now = new Date();
 
@@ -14,13 +14,12 @@ export class TeacherCreateLessonComponent {
 
   model: NgbDateStruct;
   subject: string;
-  chosenLesson: string;
   created: boolean;
   error: boolean;
   date: Date;
   backend_error:string;
   constructor(private _router:Router,
-              private http:Http,
+              private http:AuthHttp,
               private _login:LoginService){
     this.model = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
     this.subject=null;

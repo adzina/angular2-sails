@@ -38,6 +38,7 @@ export class LoginComponent{
       .subscribe(
         response => {
           localStorage.setItem('token', response.id_token);
+          this._loginService.setUserID(response.id);
           this._router.navigate(['./choose-mode']);
         },
         error => {

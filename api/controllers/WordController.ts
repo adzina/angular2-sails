@@ -10,15 +10,19 @@
  var WordModel: Sails.Model = sails.models.word;
 
 module.exports = {
-  create: function(req,res){
-    var eng=req.param('english');
-    var pol=req.param('polish');
-
-    return sails.models.word.create({
+  add: function(req,res){
+      var eng=req.param('english'),
+          pol=req.param('polish'),
+          lessonID=req.param('lessonID');
+          var wordID=this.create(eng,pol,lessonID);
+          console.log(wordID);
+  },
+  create: function(eng,pol,lessonID){
+    sails.models.word.create({
       english:eng,
       polish:pol}).exec(function (err, word){
-        if (err) { return res.serverError(err); }
-        res.json(200, { id: word.id });
+      //  res.json(200, { id: word.id });
+        return word.id
 			});
 
     }
