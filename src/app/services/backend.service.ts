@@ -25,5 +25,21 @@ export class BackendService{
         );
     return lessons;
   }
+  getAllGroups(){
+    var string='http://localhost:1337/group';
+    var groups: string[];
+    groups=[];
+    this.http.get(string).
+    map(res => res.json()).
+      subscribe(response=>{
+        for (let index in response)
+          groups[index]=response[index].name;
+        },
+        error=>{
+            alert(error);
+          }
+        );
+    return groups;
+  }
 
 }

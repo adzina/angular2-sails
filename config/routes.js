@@ -49,6 +49,9 @@ module.exports.routes = {
   'POST /word': 'WordController.add',
 
   'POST /lessonWord': 'LessonWordController.create',
+
+
+  'GET /allGroups': 'GroupController.getGroups',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

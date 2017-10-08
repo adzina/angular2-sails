@@ -19,9 +19,6 @@ export class NavbarComponent{
   logout(){
     this._router.navigate(['./goodbye']);
   }
-  chooseMode(){
-    this._router.navigate(['./choose-mode']);
-  }
   navigate(nr: number){
     switch(nr){
       case(0): this._router.navigate(['./teacher-create-lesson']);break;

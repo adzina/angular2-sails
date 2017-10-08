@@ -23,4 +23,12 @@ module.exports = {
         return res.ok();
       });
   },
+
+  getGroups: function(req,res){
+    return sails.models.group.find()
+            .exec(function (err, groups){
+                  if (err) { return res.serverError(err); }
+                      res.json(200, { group: groups });
+			             });
+  }
 };

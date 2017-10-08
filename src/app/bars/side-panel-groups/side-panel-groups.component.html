@@ -4,10 +4,10 @@
 <div class={{className}}>
 
     <div *ngIf="show">
-        <h3><font color="white">Choose a lesson:</font></h3>
-        <div *ngFor=" let lessonName of lessons">
+        <h3><font color="white">Choose a group:</font></h3>
+        <div *ngFor=" let groupName of groups">
 
-      				<button style="margin-bottom:3px;min-width:100%"class="btn btn-info" (click)="choose(lessonName)">{{lessonName}}</button><br>
+      				<button style="margin-bottom:3px;min-width:100%"class="btn btn-info" (click)="choose(groupName)">{{groupName}}</button><br>
         </div>
   </div>
 </div>

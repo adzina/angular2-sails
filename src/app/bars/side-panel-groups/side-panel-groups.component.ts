@@ -8,14 +8,14 @@ import {BackendService} from '../../services/backend.service';
 
 export class SidePanelGroupsComponent {
   show:boolean;
-  lessons: string[];
+  groups: string[];
   className:string;
-  @Output() lessonChosen = new EventEmitter<string>();
+  @Output() groupChosen = new EventEmitter<string>();
   constructor(private backendService:BackendService) {
 
     this.show=false;
     this.className="sidenav_false";
-    this.lessons=backendService.getTeachersLessons();
+    this.groups=backendService.getAllGroups();
   }
   toggle(){
     if(this.show){
@@ -27,7 +27,7 @@ export class SidePanelGroupsComponent {
     }
   }
 
-  choose(lessonNr: string) {
-    this.lessonChosen.emit(lessonNr);
+  choose(groupNr: string) {
+    this.groupChosen.emit(groupNr);
   }
 }
