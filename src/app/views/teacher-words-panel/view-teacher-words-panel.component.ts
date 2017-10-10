@@ -47,6 +47,7 @@ export class TeacherWordsPanelComponent {
     .map(res=>res.json())
     .subscribe(
       response => {
+        console.log("ok");
         this.polish = "";
         this.english = "";
       },

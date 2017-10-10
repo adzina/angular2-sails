@@ -13,8 +13,8 @@ export class SidePanelLessonsComponent {
   @Output() lessonChosen = new EventEmitter<string>();
   constructor(private backendService:BackendService) {
 
-    this.show=false;
-    this.className="sidenav_false";
+    this.show=true;
+    this.className="sidenav_true";
     this.lessons=backendService.getTeachersLessons();
   }
   toggle(){

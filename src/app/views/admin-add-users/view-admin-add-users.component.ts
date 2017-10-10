@@ -23,7 +23,7 @@ export class AdminAddUsersComponent{
               private _backendService: BackendService) {
     this.receivedUsers=this._backendService.getAllUsers();
     console.log(this.receivedUsers);
-    console.log(this.receivedUsers[1]);
+    console.log(this.receivedUsers.length);
     this.receivedActiveUsers=this._backendService.getActiveUsers();
     this.activeUsers=[];
     this.inactiveUsers=[];
@@ -35,7 +35,6 @@ export class AdminAddUsersComponent{
     let count_active=0;
     let count_inactive=0;
     let flag=false;
-      for(let i in this.receivedUsers) console.log(i);
     for (let i in this.receivedUsers){
       for (let j in this.receivedActiveUsers)
         {

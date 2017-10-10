@@ -14,16 +14,30 @@ module.exports = {
       var eng=req.param('english'),
           pol=req.param('polish'),
           lessonID=req.param('lessonID');
-          var wordID=this.create(eng,pol,lessonID);
-          console.log(wordID);
+          this.create(eng,pol,lessonID,(wordID)=>{
+                this.addToLesson(wordID,lessonID,(callback)=>{
+                    console.log(wordID);
+                    console.log(lessonID);
+                    console.log(callback);
+                    res.json(200);
+                })
+          });
   },
-  create: function(eng,pol,lessonID){
+  create: function(eng,pol,lessonID,callback){
     sails.models.word.create({
       english:eng,
       polish:pol}).exec(function (err, word){
-      //  res.json(200, { id: word.id });
-        return word.id
+        return callback(word.id);
 			});
 
-    }
+    },
+  addToLesson: function(wordID, lessonID, callback){
+    sails.models.lessonword.create({wordID:wordID, lessonID: lessonID})
+    .exec(function (err, id){
+      if(id)
+      return callback(id);
+
+      console.log(err);
+    });
+  }
 };

@@ -20,7 +20,7 @@ module.exports = {
 						var output:user[];
 						output=[];
 						for(var i=0;i<users.length;i++){
-							output[i]={id:users[i].id,
+							output[i]={		id:users[i].id,
 														first_name:users[i].first_name,
 														last_name: users[i].last_name,
 														role:users[i].role};
