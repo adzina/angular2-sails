@@ -46,7 +46,7 @@ module.exports.routes = {
 
   'POST /lesson':'LessonController.create',
   'GET /lesson/:teacherID': 'LessonController.getTeacherID',
-  'GET /lesson/id': 'LessonController.getLessonID',
+  'POST /lesson/id': 'LessonController.getLessonID',
 
   'POST /word': 'WordController.add',
 

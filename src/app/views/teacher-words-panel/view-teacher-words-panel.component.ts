@@ -16,6 +16,7 @@ export class TeacherWordsPanelComponent {
   lessonsFiltered: word[];
   lessonsUnique: string[];
   chosenLessonID: string;
+  chosenLessonName: string;
   constructor(private _loginService: LoginService,
               private http: Http) {
     this.chosenLessonID = null;
@@ -23,14 +24,8 @@ export class TeacherWordsPanelComponent {
   }
 
   handleLessonChosen(x:string){
-    var string='http://localhost:1337/lesson/id'+x;
-    var lessonID: string;
-    var body=JSON.stringify({lessonID});
-    this.http.get(string,body)
-    .map(res=>res.json())
-    .subscribe(data=>{
-      this.chosenLessonID=data.id;
-    })
+    this.chosenLessonName=x;
+
     //--------------------------------------------------------------------------------
     //pobierz z bazy danych tylko slowka z danej lekcji
     //this.lessonsFiltered=this.lessons.filter((l:word) => l.lesson===this.chosenLesson);
@@ -40,21 +35,29 @@ export class TeacherWordsPanelComponent {
     this.lessonsFiltered.splice(i,1);
   }
   submit() {
-    var string='http://localhost:1337/word';
-    var body=JSON.stringify({polish:this.polish,english:this.english,lessonID: this.chosenLessonID});
-    //-------------------------------------------------------------------------------
-    this.http.post(string,body)
-    .map(res=>res.json())
-    .subscribe(
-      response => {
-        console.log("ok");
-        this.polish = "";
-        this.english = "";
-      },
-      error => {
-        console.log(error.text());
-      }
-    );
+        var url='http://localhost:1337/lesson/id';
+        var lessonID: string;
+        var body=JSON.stringify({subject:this.chosenLessonName});
+        this.http.post(url,body)
+        .map(res=>res.json())
+        .subscribe(data=>{
+          this.chosenLessonID=data.id;
+          url='http://localhost:1337/word';
+          var body=JSON.stringify({polish:this.polish,english:this.english,lessonID: this.chosenLessonID});
+          //-------------------------------------------------------------------------------
+          this.http.post(url,body)
+          .map(res=>res.json())
+          .subscribe(
+            response => {
+              this.polish = "";
+              this.english = "";
+            },
+            error => {
+              console.log(error.text());
+            }
+          );
+        })
+
 
 /*
     var n={pol:this.polish,eng:this.english,lesson:this.chosenLesson,id:""};

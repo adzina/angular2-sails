@@ -15,10 +15,10 @@ export class ChooseModeComponent{
 
   constructor(private _router: Router,private _loginService: LoginService){
     this.mode=null;
+
   }
   setmode(m:number){
     switch(m){
-      case(0):this._router.navigate(['/register']);break;
       case(1):this._router.navigate(['/admin-create-group']);break;
       case(2):this._router.navigate(['/teacher-create-lesson']);
     }

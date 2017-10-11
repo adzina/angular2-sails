@@ -21,11 +21,12 @@ export class NavbarComponent{
   }
   navigate(nr: number){
     switch(nr){
-      case(0): this._router.navigate(['./teacher-create-lesson']);break;
-      case(1): this._router.navigate(['./teacher-words-panel']);break;
-      case(2): this._router.navigate(['./teacher-add-students']);break;
-      case(3): this._router.navigate(['./teacher-see-progress']);break;
-      case(4): this._router.navigate(['./goodbye']);break;
+      case(0): this._router.navigate(['./choose-mode']);break;
+      case(1): this._router.navigate(['./teacher-create-lesson']);break;
+      case(2): this._router.navigate(['./teacher-words-panel']);break;
+      case(3): this._router.navigate(['./teacher-add-students']);break;
+      case(4): this._router.navigate(['./teacher-see-progress']);break;
+      case(5): this._router.navigate(['./goodbye']);break;
     }
   }
 }

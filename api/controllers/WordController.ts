@@ -14,30 +14,34 @@ module.exports = {
       var eng=req.param('english'),
           pol=req.param('polish'),
           lessonID=req.param('lessonID');
-          this.create(eng,pol,lessonID,(wordID)=>{
-                this.addToLesson(wordID,lessonID,(callback)=>{
-                    console.log(wordID);
-                    console.log(lessonID);
-                    console.log(callback);
-                    res.json(200);
-                })
+
+          this.create(eng,pol, (wordID) => {
+              this.addToLesson(lessonID,wordID,(wordLesson)=>{
+                return res.json(200);
+              })
           });
+
+
   },
-  create: function(eng,pol,lessonID,callback){
-    sails.models.word.create({
-      english:eng,
-      polish:pol}).exec(function (err, word){
-        return callback(word.id);
+
+   create: function(eng,pol,callback){
+           sails.models.word.create({
+               english:eng,
+               polish:pol})
+           .exec(function (err,word){
+             if(err){console.log(err);}
+            return callback(word.id);
+
+   });
+},
+
+  addToLesson: function(lessonID,wordID,callback){
+    sails.models.lessonword.create({
+      lessonID:lessonID,
+      wordID:wordID}).exec(function (err, wordLesson){
+          if(err){console.log(err);}
+          return callback(wordLesson);
 			});
 
-    },
-  addToLesson: function(wordID, lessonID, callback){
-    sails.models.lessonword.create({wordID:wordID, lessonID: lessonID})
-    .exec(function (err, id){
-      if(id)
-      return callback(id);
-
-      console.log(err);
-    });
-  }
+    }
 };

@@ -40,11 +40,10 @@ module.exports = {
 
   getLessonID: function(req,res) {
     var sub=req.param('subject');
-    return sails.models.lesson.find({subject:sub})
-          .exec(function(err, lessons) {
-                if (err) { return res.serverError(err); }
-                console.log(lessons.id);
-                res.json(200, { id: lessons.id });
-   });
+    return sails.models.lesson.findOne({subject: sub})
+            .exec(function (err, lesson){
+                  if (err) { return res.serverError(err); }
+                  res.json(200, {id:lesson.id});
+			             });
  }
 };

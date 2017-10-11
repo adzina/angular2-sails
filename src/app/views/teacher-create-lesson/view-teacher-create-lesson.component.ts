@@ -35,12 +35,14 @@ export class TeacherCreateLessonComponent {
     }
   }
   sendRequest(){
+    console.log(this._login.getUserID());
     var body={teacherID:this._login.getUserID(),subject:this.subject, date: this.date.toISOString()};
     var http_string="http://localhost:1337/lesson";
     this.http
         .post(http_string,
           body,)
           .subscribe(data => {
+            console.log(data);
             this.subject=null;
             this.error=false;
             this.created=true;

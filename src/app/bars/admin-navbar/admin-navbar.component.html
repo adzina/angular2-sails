@@ -4,17 +4,20 @@
     <div>
       <ul class="nav navbar-nav" style="display:inline-block">
         <li style="display:inline-block">
-          <a href="#" class="navbar-brand"><img src="assets/logo.png"  width="100" height="80"></a>
+          <a (click)="navigate(0)" style="cursor: pointer"><img src="assets/logo.png"  width="100" height="80"></a>
         </li>
         <li style="margin-left:30px;margin-right:30px;line-height: 80px; display:inline-block">
-          <a (click)="navigate(0)" style="cursor: pointer">       Create a group       </a>
+          <a (click)="navigate(1)" style="cursor: pointer">       Create a group       </a>
         </li>
 
-        <li style="margin-left:30px;margin-right:30px;line-height: 80px;display:inline-block">
-          <a (click)="navigate(1)" style="cursor: pointer">     Add users to groups     </a>
+        <li style="margin-left:30px;margin-right:30px;line-height: 80px; display:inline-block">
+          <a (click)="navigate(2)" style="cursor: pointer">       Register new user      </a>
         </li>
         <li style="margin-left:30px;margin-right:30px;line-height: 80px;display:inline-block">
-          <a (click)="navigate(2)" style="cursor: pointer">   Logout   </a>
+          <a (click)="navigate(3)" style="cursor: pointer">     Add users to groups     </a>
+        </li>
+        <li style="margin-left:30px;margin-right:30px;line-height: 80px;display:inline-block">
+          <a (click)="navigate(4)" style="cursor: pointer">   Logout   </a>
         </li>
       </ul>
     </div>
