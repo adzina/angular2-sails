@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  tableName: "words",
+  tableName: "word",
   attributes: {
     english: {type:'string', required: true},
     polish: {type:'string', required: true}
