@@ -42,8 +42,8 @@ export class TeacherWordsPanelComponent {
       this.chosenLessonID=data.id;
     this._backendService.getWords(data.id).subscribe(words=>{
       for(let i=0;i<words.length;i++)
-        {this.words.push({polish:words[i].polish,english:words[i].english,id:words[i].id});
-        console.log(this.words[i]);}
+        this.words.push(words[i]);
+
     });});
     //--------------------------------------------------------------------------------
     //pobierz z bazy danych tylko slowka z danej lekcji
@@ -74,6 +74,8 @@ export class TeacherWordsPanelComponent {
             response => {
               this.polish = "";
               this.english = "";
+              this.words=[];
+              this.handleLessonChosen(this.chosenLessonName);
             },
             error => {
               console.log(error.text());
