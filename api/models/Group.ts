@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  tableName: "groups",
+  tableName: "group",
   attributes: {
     name: {type:'string', required: true}
   }

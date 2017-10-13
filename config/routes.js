@@ -50,6 +50,8 @@ module.exports.routes = {
 
   'POST /word': 'WordController.add',
 
+  'POST /lessonword/getLessonsWords': 'LessonWordController.getLessonsWords',
+
   'POST /lessonWord': 'LessonWordController.create',
 
 

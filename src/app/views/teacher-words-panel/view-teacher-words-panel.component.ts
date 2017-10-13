@@ -17,15 +17,18 @@ export class TeacherWordsPanelComponent {
   lessonsUnique: string[];
   chosenLessonID: string;
   chosenLessonName: string;
+  buttonClass: string;
   constructor(private _loginService: LoginService,
               private http: Http) {
     this.chosenLessonID = null;
     this.lessonsUnique=[];
+    this.buttonClass="btn btn-success disabled";
+
   }
 
   handleLessonChosen(x:string){
     this.chosenLessonName=x;
-
+    this.buttonClass="btn btn-success active";
     //--------------------------------------------------------------------------------
     //pobierz z bazy danych tylko slowka z danej lekcji
     //this.lessonsFiltered=this.lessons.filter((l:word) => l.lesson===this.chosenLesson);
@@ -34,7 +37,11 @@ export class TeacherWordsPanelComponent {
   delete(i:number){
     this.lessonsFiltered.splice(i,1);
   }
-  submit() {
+  submit(){
+    if (this.polish!="" || this.english!="") this.addWord();
+    else alert("Provide both polish and english version of the word");
+  }
+  addWord() {
         var url='http://localhost:1337/lesson/id';
         var lessonID: string;
         var body=JSON.stringify({subject:this.chosenLessonName});

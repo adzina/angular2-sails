@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  tableName: "lessons",
+  tableName: "lesson",
   attributes: {
       teacherID: {type:'string', required: true},
       studentID: {type:'string'},

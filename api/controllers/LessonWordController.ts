@@ -19,4 +19,8 @@ create: function(req,res){
       return res.ok();
     });
 },
+
+getLessonsWords:function(req,res){
+  
+}
 }

@@ -26,7 +26,7 @@
 
       <input type="text"  name="english" [(ngModel)]="english" placeholder="english">
       <input type="text" name="polish" [(ngModel)]="polish" placeholder="polish"  (keyup.enter)="submit()"/>
-      <button class="btn btn-success" (click)="submit()">Submit</button>
+      <button class={{buttonClass}} (click)="submit()">Submit</button>
 
   </div>
 </div>

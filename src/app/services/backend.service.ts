@@ -5,15 +5,17 @@ import {LoginService} from '../services/login.service';
 @Injectable()
 
 export class BackendService{
+
+  g_url='http://localhost:1337/';
   constructor(private http:AuthHttp,
               private _loginService: LoginService){}
 
   getTeachersLessons(){
     var teacherID=this._loginService.getUserID();
-    var string='http://localhost:1337/lesson/'+teacherID;
+    var url=this.g_url+'lesson/'+teacherID;
     var lessons: string[];
     lessons=[];
-    this.http.get(string).
+    this.http.get(url).
     map(res => res.json()).
       subscribe(response=>{
         for (let index in response.lesson)
@@ -26,10 +28,10 @@ export class BackendService{
     return lessons;
   }
   getAllGroups(){
-    var string='http://localhost:1337/group';
+    var url=this.g_url+'group';
     var groups: string[];
     groups=[];
-    this.http.get(string).
+    this.http.get(url).
     map(res => res.json()).
       subscribe(response=>{
         for (let index in response)
@@ -42,10 +44,10 @@ export class BackendService{
     return groups;
   }
   getAllUsers(){
-    var string='http://localhost:1337/user/getAll';
+    var url=this.g_url+'user/getAll';
     var users: user[];
     users=[];
-    this.http.get(string)
+    this.http.get(url)
     .map(res=>res.json())
     .subscribe(response=>{
       for (let index in response)
@@ -60,13 +62,13 @@ export class BackendService{
    return users;
   }
   getActiveUsers(){
-    var string='http://localhost:1337/groupuser';
+    var url=this.g_url+'groupuser';
     var activeUsersID: string[];
     var activeUsers: user[];
     activeUsersID=[];
     activeUsers=[];
 
-    this.http.get(string)
+    this.http.get(url)
       .map(res=>res.json())
       .subscribe(response=>{
         for (let index in response)
@@ -77,13 +79,20 @@ export class BackendService{
           }
     );
 
+    var url=this.g_url+'user/findByID';
     for(let i in activeUsersID)
-      this.http.get('http://localhost:1337/user/findByID')
+      this.http.get(url)
       .map(res=>res.json())
       .subscribe(response=>{
         activeUsers[i]=response
       })
     return activeUsers;
+  }
+
+  getWords(lessonID:string){
+    var url=this.g_url+'/lessonword/getLessonsWords';
+    var body=JSON.stringify({lessonID:lessonID});
+    
   }
 }
 
