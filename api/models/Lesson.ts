@@ -9,9 +9,7 @@ module.exports = {
   tableName: "lesson",
   attributes: {
       teacherID: {type:'string', required: true},
-      studentID: {type:'string'},
       date: {type: 'date', required: true},
-      wordID: {type: 'string'},
       subject: {type: 'string', required: true, unique:true}
   }
 };

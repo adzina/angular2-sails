@@ -15,6 +15,7 @@ import { AuthGuard } from './common/auth.guard';
 
 import { LoginService } from './services/login.service';
 import { BackendService } from './services/backend.service';
+import { EmitterService} from './services/emitter.service';
 
 import { LoginComponent } from './views/login/view-login.component';
 import { DashboardComponent } from './views/dashboard/view-dashboard.component';
@@ -81,7 +82,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       useFactory: authHttpServiceFactory,
       deps: [ Http, RequestOptions ]
     }
-      ,LoginService, BackendService, AuthGuard
+      ,LoginService, BackendService, EmitterService, AuthGuard
      ],
   bootstrap: [AppComponent]
 })

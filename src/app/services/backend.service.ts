@@ -1,6 +1,14 @@
 import {Injectable} from '@angular/core';
 import { AuthHttp} from 'angular2-jwt';
 import {LoginService} from '../services/login.service';
+import {Observable} from 'rxjs/Rx';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+
+import {Lesson} from '../models/lesson';
+import {Word} from '../models/word';
+// Import RxJs required methods
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 
@@ -10,22 +18,14 @@ export class BackendService{
   constructor(private http:AuthHttp,
               private _loginService: LoginService){}
 
-  getTeachersLessons(){
+  getTeachersLessons(): Observable<Lesson[]> {
     var teacherID=this._loginService.getUserID();
     var url=this.g_url+'lesson/'+teacherID;
-    var lessons: string[];
-    lessons=[];
-    this.http.get(url).
-    map(res => res.json()).
-      subscribe(response=>{
-        for (let index in response.lesson)
-          lessons[index]=response.lesson[index].subject;
-        },
-        error=>{
-            alert(error);
-          }
-        );
-    return lessons;
+
+  return  this.http.get(url)
+   .map((res:Response) => res.json())
+   .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+
   }
   getAllGroups(){
     var url=this.g_url+'group';
@@ -89,10 +89,15 @@ export class BackendService{
     return activeUsers;
   }
 
-  getWords(lessonID:string){
-    var url=this.g_url+'/lessonword/getLessonsWords';
+  getWords(lessonID:string): Observable<Word[]>{
+    var url=this.g_url+'lessonword/getLessonsWords';
     var body=JSON.stringify({lessonID:lessonID});
-    
+
+    return this.http.post(url,body)
+    .map((res:Response) => res.json())
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+
+
   }
 }
 

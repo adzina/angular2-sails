@@ -34,7 +34,7 @@ module.exports = {
     return sails.models.lesson.find({teacherID: id})
             .exec(function (err, lessons){
                   if (err) { return res.serverError(err); }
-                  res.json(200, { lesson: lessons });
+                  res.json(200, lessons );
 			             });
   },
 

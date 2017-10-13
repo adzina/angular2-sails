@@ -15,7 +15,17 @@ export class SidePanelLessonsComponent {
 
     this.show=true;
     this.className="sidenav_true";
-    this.lessons=backendService.getTeachersLessons();
+    this.lessons=[];
+    backendService.getTeachersLessons().
+        subscribe(response=>{
+          console.log
+          for (let index in response)
+            this.lessons[index]=response[index].subject;
+          },
+          error=>{
+              alert(error);
+            }
+          );
   }
   toggle(){
     if(this.show){

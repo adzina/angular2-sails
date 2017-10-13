@@ -7,9 +7,9 @@
 </style>
 <div class="container">
       <table class="table table-striped table-bordered table-hover table-condensed">
-        <tr *ngFor=" let lesson of lessonsFiltered; let i=index" [attr.data-index]="i">
-          <th class="text-center">{{lesson.eng}}</th>
-          <th class="text-center">{{lesson.pol}}</th>
+        <tr *ngFor=" let word of words; let i=index" [attr.data-index]="i">
+          <th class="text-center">{{word.english}}</th>
+          <th class="text-center">{{word.polish}}</th>
           <th class="text-center" style="width:10px">
             <button type="button" class="close danger" aria-label="Close" (click)="delete(i)">
               <span aria-hidden="false">&times;</span>
