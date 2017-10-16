@@ -1,5 +1,7 @@
 import { Component,Output,EventEmitter } from '@angular/core';
 import {BackendService} from '../../services/backend.service';
+import { Group } from '../../models/group';
+
 @Component({
   moduleId: module.id,
   selector: 'side-panel-groups',
@@ -8,9 +10,9 @@ import {BackendService} from '../../services/backend.service';
 
 export class SidePanelGroupsComponent {
   show:boolean;
-  groups: string[];
+  groups: Group[];
   className:string;
-  @Output() groupChosen = new EventEmitter<string>();
+  @Output() groupChosen = new EventEmitter<Group>();
   constructor(private backendService:BackendService) {
 
     this.show=false;
@@ -27,7 +29,7 @@ export class SidePanelGroupsComponent {
     }
   }
 
-  choose(groupNr: string) {
-    this.groupChosen.emit(groupNr);
+  choose(i:number) {
+    this.groupChosen.emit(this.groups[i]);
   }
 }

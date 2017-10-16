@@ -3,7 +3,7 @@ import { LoginService } from '../../services/login.service';
 import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
 import { SidePanelGroupsComponent } from '../../bars/side-panel-groups/side-panel-groups.component';
-
+import { Group } from '../../models/group';
 
 @Component({
   selector: 'admin-add-users',
@@ -21,15 +21,18 @@ export class AdminAddUsersComponent{
 
   constructor(private _loginService: LoginService,
               private _backendService: BackendService) {
-    this.receivedUsers=this._backendService.getAllUsers();
-    console.log(this.receivedUsers);
-    console.log(this.receivedUsers.length);
-    this.receivedActiveUsers=this._backendService.getActiveUsers();
-    this.activeUsers=[];
-    this.inactiveUsers=[];
-    this.divideUsers();
-    this.myGroupsInactive=['group1','group2'];
-    this.myGroupsActive=['group3','group4'];
+                this.receivedUsers=[];
+                 this.activeUsers=[];
+                 this.inactiveUsers=[];
+
+                this._backendService.getAllUsers().subscribe(response=>{
+                  for (let index in response)
+                  this.receivedUsers[index]=response[index];
+      },
+      error=>{
+          alert(error);
+        }
+   );
   }
   divideUsers(){
     let count_active=0;
@@ -46,26 +49,24 @@ export class AdminAddUsersComponent{
               }
         }
         if(flag==false){
-          console.log(count_inactive);
           this.inactiveUsers[count_inactive]=this.receivedUsers[i];
           count_inactive++;
         }
     }
   }
-  handleGroupChosen(x:string){
-    this.chosenGroup=x;
-    /*
-    students2lessons
-    findAll
-    in: lesson_name
-    out: [studentID]
+  handleGroupChosen(x:Group){
+    this.chosenGroup=x.id;
+    this._backendService.getActiveUsers(x.id)
+    .subscribe(response=>{
+        this.receivedActiveUsers=response;
+        this.divideUsers();
+        this.myGroupsInactive=['group1','group2'];
+        this.myGroupsActive=['group3','group4'];
+        error=>{
+            alert(error);
+          };
+      });
 
-    students
-    finaAll
-    out: [students]
-
-    jeśli student znajduje się na pierwszej i drugiej liście, to obok jego nazwiska przycisk "remove" wpp "add"
-    */
   }
 
   delete(i:number){

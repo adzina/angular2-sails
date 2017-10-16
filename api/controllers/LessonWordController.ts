@@ -44,10 +44,8 @@ getLessonsWords:function(req,res){
         if(error) return res.negotiate(error);
 
         //here we can return our finished use
-        console.log(output);
         return res.json(output);
 });
-      //return res.json(200,output);
   })
 
 
@@ -61,7 +59,6 @@ getWordsID:function(_lessonID,callback){
       for(var i=0;i<words.length;i++){
         output[i]=words[i].wordID;
       }
-      console.log(output);
       return callback(output);
     })
 }

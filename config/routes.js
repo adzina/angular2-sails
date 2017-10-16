@@ -51,8 +51,9 @@ module.exports.routes = {
   'POST /word': 'WordController.add',
 
   'POST /lessonword/getLessonsWords': 'LessonWordController.getLessonsWords',
-
   'POST /lessonWord': 'LessonWordController.create',
+
+  'POST /groupuser/getGroupsUsers': 'GroupUserController.getGroupsUsers',
 
 
   'GET /allGroups': 'GroupController.getGroups',

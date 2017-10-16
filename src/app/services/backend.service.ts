@@ -6,6 +6,8 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import {Lesson} from '../models/lesson';
 import {Word} from '../models/word';
+import {Group} from '../models/group';
+import {User} from '../models/user';
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -29,13 +31,13 @@ export class BackendService{
   }
   getAllGroups(){
     var url=this.g_url+'group';
-    var groups: string[];
+    var groups: Group[];
     groups=[];
     this.http.get(url).
     map(res => res.json()).
       subscribe(response=>{
         for (let index in response)
-          groups[index]=response[index].name;
+          groups[index]=response[index];
         },
         error=>{
             alert(error);
@@ -43,50 +45,24 @@ export class BackendService{
         );
     return groups;
   }
-  getAllUsers(){
+  getAllUsers(): Observable<User[]>{
     var url=this.g_url+'user/getAll';
-    var users: user[];
+    var users: User[];
     users=[];
-    this.http.get(url)
-    .map(res=>res.json())
-    .subscribe(response=>{
-      for (let index in response)
-        users[index]=response[index];
+    return this.http.get(url)
+    .map((res:Response)=>res.json())
 
-        return users;
-      },
-      error=>{
-          alert(error);
-        }
-   );
-   return users;
   }
-  getActiveUsers(){
-    var url=this.g_url+'groupuser';
+  getActiveUsers(groupID: string): Observable<User[]>{
+    var url=this.g_url+'groupuser/getGroupsUsers';
     var activeUsersID: string[];
-    var activeUsers: user[];
+    var activeUsers: User[];
     activeUsersID=[];
     activeUsers=[];
+    var body=JSON.stringify({})
+    return this.http.post(url,body)
+      .map(res=>res.json());
 
-    this.http.get(url)
-      .map(res=>res.json())
-      .subscribe(response=>{
-        for (let index in response)
-          activeUsersID[index]=response[index].userID
-        },
-        error=>{
-            alert(error);
-          }
-    );
-
-    var url=this.g_url+'user/findByID';
-    for(let i in activeUsersID)
-      this.http.get(url)
-      .map(res=>res.json())
-      .subscribe(response=>{
-        activeUsers[i]=response
-      })
-    return activeUsers;
   }
 
   getWords(lessonID:string): Observable<Word[]>{
@@ -99,11 +75,4 @@ export class BackendService{
 
 
   }
-}
-
-interface user{
-  id: string,
-  first_name: string,
-  last_name: string,
-  role: string
 }

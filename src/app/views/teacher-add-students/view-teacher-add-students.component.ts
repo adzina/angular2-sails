@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { SidePanelLessonsComponent } from '../../bars/side-panel-lessons/side-panel-lessons.component';
-
+import { Lesson } from '../../models/lesson';
 
 @Component({
   selector: 'teacher-add-students',
@@ -10,27 +10,16 @@ import { SidePanelLessonsComponent } from '../../bars/side-panel-lessons/side-pa
 })
 export class TeacherAddStudentsComponent{
 
-  chosenLesson: string;
+  chosenLesson: Lesson;
   myGroupsActive: string[];
   myGroupsInactive:string[];
   constructor(private _loginService: LoginService) {
     this.myGroupsInactive=['group1','group2'];
     this.myGroupsActive=['group3','group4'];
   }
-  handleLessonChosen(x:string){
+  handleLessonChosen(x:Lesson){
     this.chosenLesson=x;
-    /*
-    students2lessons
-    findAll
-    in: lesson_name
-    out: [studentID]
-
-    students
-    finaAll
-    out: [students]
-
-    jeśli student znajduje się na pierwszej i drugiej liście, to obok jego nazwiska przycisk "remove" wpp "add"
-    */
+  
   }
 
   delete(i:number){
