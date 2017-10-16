@@ -36,13 +36,10 @@ export class AdminAddUsersComponent{
     let count_active=0;
     let count_inactive=0;
     let flag=false;
-    console.log('all');
-    console.log(this.receivedUsers);
-    console.log('active');
-    console.log(this.receivedActiveUsers);
-    for (let i in this.receivedUsers){
-      for (let j in this.receivedActiveUsers)
+    for (var i=0; i<this.receivedUsers.length;i++){
+      for (var j=0;j< this.receivedActiveUsers.length;j++)
         {
+          if(j==0) {flag=false;}
           if (this.receivedUsers[i].id==this.receivedActiveUsers[j].id)
               {
                 this.activeUsers[count_active]=this.receivedActiveUsers[j];
@@ -57,11 +54,15 @@ export class AdminAddUsersComponent{
     }
   }
   handleGroupChosen(x:Group){
+
+     this.activeUsers=[];
+     this.inactiveUsers=[];
     this.chosenGroup=x;
     this._backendService.getActiveUsers(x.id)
     .subscribe(response=>{
       console.log('response');
       console.log(response);
+      console.log(this.receivedUsers);
         this.receivedActiveUsers=response;
         this.divideUsers();
         error=>{
