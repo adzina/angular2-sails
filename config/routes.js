@@ -55,6 +55,7 @@ module.exports.routes = {
 
   'POST /groupuser/getGroupsUsers': 'GroupUserController.getGroupsUsers',
   'POST /groupuser/addUserToGroup': 'GroupUserController.addUserToGroup',
+  'POST /groupuser/delete': 'GroupUserController.removeUserFromGroup',
 
   'GET /allGroups': 'GroupController.getGroups',
   /***************************************************************************

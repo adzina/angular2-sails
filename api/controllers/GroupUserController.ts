@@ -19,8 +19,22 @@ module.exports = {
 
 				})
 				.exec(function (error, pair){
-					if (error) { return res.negotiate(error); }
+					if (error)  return res.negotiate(error);
 					return res.json(pair);
+				});
+
+	},
+	removeUserFromGroup: function(req,res){
+		let _groupID=req.param('groupID'),
+				_userID=req.param('userID');
+				return sails.models.groupuser.destroy({
+					groupID: _groupID,
+					userID: _userID
+
+				})
+				.exec(function (error, deleted){
+					if (error)  return res.negotiate(error);
+					return res.json(deleted);
 				});
 
 	},

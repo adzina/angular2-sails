@@ -74,14 +74,19 @@ export class AdminAddUsersComponent{
 
   delete(i:number){
     var user=this.activeUsers[i];
-    this.activeUsers.splice(i,1);
-    this.inactiveUsers.push(user);
+        this._backendService.removeUserFromGroup(user.id,this.chosenGroup.id).subscribe(response=>
+        {
+          this.inactiveUsers=[];
+          this.activeUsers=[];
+          this.handleGroupChosen(this.chosenGroup);
+        });
+    // this.activeUsers.splice(i,1);
+    // this.inactiveUsers.push(user);
   }
   add(i:number){
   var user=this.inactiveUsers[i];
       this._backendService.addUserToGroup(user.id,this.chosenGroup.id).subscribe(response=>
       {
-        console.log(response);
         this.inactiveUsers=[];
         this.activeUsers=[];
         this.handleGroupChosen(this.chosenGroup);

@@ -80,4 +80,12 @@ export class BackendService{
           .map(res => res.json())
           .catch((error:any) => Observable.throw('Server error'));
   }
+  removeUserFromGroup(userID: string, groupID: string): Observable<any>{
+    var url=this.g_url+'groupuser/delete';
+    var body=JSON.stringify({groupID:groupID,userID:userID});
+
+    return this.http.post(url,body)
+    .map(res => res.json())
+    .catch((error:any) => Observable.throw('Server error'));
+  }
 }
