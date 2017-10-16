@@ -1,5 +1,7 @@
 import { Component,Output,EventEmitter } from '@angular/core';
 import {BackendService} from '../../services/backend.service';
+import {Lesson} from '../../models/lesson';
+
 @Component({
   moduleId: module.id,
   selector: 'side-panel-lessons',
@@ -8,9 +10,9 @@ import {BackendService} from '../../services/backend.service';
 
 export class SidePanelLessonsComponent {
   show:boolean;
-  lessons: string[];
+  lessons: Lesson[];
   className:string;
-  @Output() lessonChosen = new EventEmitter<string>();
+  @Output() lessonChosen = new EventEmitter<Lesson>();
   constructor(private backendService:BackendService) {
 
     this.show=true;
@@ -20,7 +22,7 @@ export class SidePanelLessonsComponent {
         subscribe(response=>{
           console.log
           for (let index in response)
-            this.lessons[index]=response[index].subject;
+            {this.lessons[index]=response[index]}
           },
           error=>{
               alert(error);
@@ -37,7 +39,8 @@ export class SidePanelLessonsComponent {
     }
   }
 
-  choose(lessonNr: string) {
-    this.lessonChosen.emit(lessonNr);
+  choose(nr:string) {
+    var lesson=this.lessons[nr];
+    this.lessonChosen.emit(lesson);
   }
 }
