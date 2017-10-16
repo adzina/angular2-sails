@@ -60,6 +60,18 @@ getWordsID:function(_lessonID,callback){
       }
       return callback(output);
     })
+},
+removeWordFromLesson:function(req,res){
+  var _wordID=req.param('wordID'),
+      _lessonID=req.param('lessonID');
+
+  sails.models.lessonword.destroy(
+    { wordID: _wordID,
+      lessonID: _lessonID})
+      .exec(function (err, deleted){
+        if (err) { return res.serverError(err); }
+        return res.json(deleted);
+      });
 }
 }
 interface lesson{

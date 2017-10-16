@@ -15,14 +15,11 @@ export class TeacherWordsPanelComponent {
   polish: string;
   english: string;
   words: Word[];
-  lessonsFiltered: word[];
-  lessonsUnique: string[];
   chosenLesson: Lesson;
   buttonClass: string;
   constructor(private _loginService: LoginService,
               private http: Http,
               private _backendService: BackendService) {
-    this.lessonsUnique=[];
     this.words=[];
     this.buttonClass="btn btn-success disabled";
 
@@ -31,7 +28,6 @@ export class TeacherWordsPanelComponent {
   handleLessonChosen(x:Lesson){
     this.chosenLesson=x;
     this.buttonClass="btn btn-success active";
-    var url='http://localhost:1337/lesson/id';
     var lessonID: string;
 
     this._backendService.getWords(x.id).subscribe(words=>{
@@ -42,13 +38,14 @@ export class TeacherWordsPanelComponent {
         this.words.push(words[i]);
 
   });
-    //--------------------------------------------------------------------------------
-    //pobierz z bazy danych tylko slowka z danej lekcji
-    //this.lessonsFiltered=this.lessons.filter((l:word) => l.lesson===this.chosenLesson);
-
   }
   delete(i:number){
-    this.lessonsFiltered.splice(i,1);
+    var word=this.words[i];
+    this._backendService.removeWordFromLesson(this.chosenLesson.id,word.id)
+    .subscribe(deleted=>{
+      this.words=[];
+      this.handleLessonChosen(this.chosenLesson);
+    })
   }
   submit(){
     if (this.polish!="" || this.english!="") this.addWord();

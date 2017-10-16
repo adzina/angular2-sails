@@ -88,4 +88,14 @@ export class BackendService{
     .map(res => res.json())
     .catch((error:any) => Observable.throw('Server error'));
   }
+  removeWordFromLesson(lessonID:string,wordID:string):Observable<any>{
+    var url=this.g_url+'lessonWord/delete';
+    var body=JSON.stringify({lessonID: lessonID,wordID: wordID});
+
+    return this.http.post(url,body)
+    .map(res => res.json())
+    .catch((error:any) => Observable.throw('Server error'));
+
+
+  }
 }
