@@ -55,11 +55,8 @@ export class BackendService{
   }
   getActiveUsers(groupID: string): Observable<User[]>{
     var url=this.g_url+'groupuser/getGroupsUsers';
-    var activeUsersID: string[];
-    var activeUsers: User[];
-    activeUsersID=[];
-    activeUsers=[];
-    var body=JSON.stringify({})
+
+    var body=JSON.stringify({groupID:groupID})
     return this.http.post(url,body)
       .map(res=>res.json());
 
@@ -74,5 +71,13 @@ export class BackendService{
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
 
+  }
+  addUserToGroup(userID: string, groupID:string): Observable<any>{
+      var url=this.g_url+'groupuser/addUserToGroup';
+      var body=JSON.stringify({groupID:groupID,userID:userID});
+
+          return this.http.post(url,body)
+          .map(res => res.json())
+          .catch((error:any) => Observable.throw('Server error'));
   }
 }

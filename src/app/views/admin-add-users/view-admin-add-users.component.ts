@@ -11,9 +11,7 @@ import { Group } from '../../models/group';
 })
 export class AdminAddUsersComponent{
 
-  chosenGroup: string;
-  myGroupsActive: string[];
-  myGroupsInactive:string[];
+  chosenGroup: Group;
   receivedUsers: user[];
   receivedActiveUsers: user[];
   activeUsers: user[];
@@ -38,6 +36,10 @@ export class AdminAddUsersComponent{
     let count_active=0;
     let count_inactive=0;
     let flag=false;
+    console.log('all');
+    console.log(this.receivedUsers);
+    console.log('active');
+    console.log(this.receivedActiveUsers);
     for (let i in this.receivedUsers){
       for (let j in this.receivedActiveUsers)
         {
@@ -55,13 +57,13 @@ export class AdminAddUsersComponent{
     }
   }
   handleGroupChosen(x:Group){
-    this.chosenGroup=x.id;
+    this.chosenGroup=x;
     this._backendService.getActiveUsers(x.id)
     .subscribe(response=>{
+      console.log('response');
+      console.log(response);
         this.receivedActiveUsers=response;
         this.divideUsers();
-        this.myGroupsInactive=['group1','group2'];
-        this.myGroupsActive=['group3','group4'];
         error=>{
             alert(error);
           };
@@ -75,10 +77,17 @@ export class AdminAddUsersComponent{
     this.inactiveUsers.push(user);
   }
   add(i:number){
-    alert("ok");
-      var user=this.inactiveUsers[i];
+  var user=this.inactiveUsers[i];
+      this._backendService.addUserToGroup(user.id,this.chosenGroup.id).subscribe(response=>
+      {
+        console.log(response);
+        this.inactiveUsers=[];
+        this.activeUsers=[];
+        this.handleGroupChosen(this.chosenGroup);
+      });
+       /*
       this.inactiveUsers.splice(i,1);
-      this.activeUsers.push(user);
+      this.activeUsers.push(user);*/
   }
 }
 interface user{

@@ -9,6 +9,6 @@ module.exports = {
 
   attributes: {
         userID: {type:'string', required: true},
-        lessonID: {type: 'string',required: true},
+        groupID: {type: 'string',required: true},
   }
 };

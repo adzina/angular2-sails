@@ -15,7 +15,6 @@ create: function(req,res){
     })
     .exec(function (err, user){
       if (err) { return res.serverError(err); }
-      console.log("did it");
       return res.ok();
     });
 },

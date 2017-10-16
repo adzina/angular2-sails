@@ -7,9 +7,23 @@
  import { Model } from 'Sails';
  import * as async from "async";
  declare var sails: any;
- 
+
 module.exports = {
 
+	addUserToGroup: function(req,res){
+		let _groupID=req.param('groupID'),
+				_userID=req.param('userID');
+				return sails.models.groupuser.create({
+					groupID: _groupID,
+					userID: _userID
+
+				})
+				.exec(function (error, pair){
+					if (error) { return res.negotiate(error); }
+					return res.json(pair);
+				});
+
+	},
 	getGroupsUsers:function(req,res){
 	  let _groupID=req.param('groupID');
 
