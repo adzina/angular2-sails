@@ -45,6 +45,16 @@ export class BackendService{
         );
     return groups;
   }
+
+  getAllMyGroups(): Observable<Group[]>{
+    var url=this.g_url+'group/getAll';
+    var groups: Group[];
+    var body=null;
+    groups=[];
+    return this.http.post(url,body)
+    .map((res:Response)=>res.json())
+
+  }
   getAllUsers(): Observable<User[]>{
     var url=this.g_url+'user/getAll';
     var users: User[];
@@ -57,6 +67,15 @@ export class BackendService{
     var url=this.g_url+'groupuser/getGroupsUsers';
 
     var body=JSON.stringify({groupID:groupID})
+    return this.http.post(url,body)
+      .map(res=>res.json());
+
+  }
+
+  getActiveGroups(lessonID: string): Observable<Group[]>{
+    var url=this.g_url+'groupLesson/getLessonsGroups';
+
+    var body=JSON.stringify({lessonID:lessonID})
     return this.http.post(url,body)
       .map(res=>res.json());
 
@@ -80,6 +99,14 @@ export class BackendService{
           .map(res => res.json())
           .catch((error:any) => Observable.throw('Server error'));
   }
+  addGroupToLesson(groupID: string, lessonID:string): Observable<any>{
+      var url=this.g_url+'groupLesson/addGroupToLesson';
+      var body=JSON.stringify({lessonID:lessonID,groupID:groupID});
+
+          return this.http.post(url,body)
+          .map(res => res.json())
+          .catch((error:any) => Observable.throw('Server error'));
+  }
   removeUserFromGroup(userID: string, groupID: string): Observable<any>{
     var url=this.g_url+'groupuser/delete';
     var body=JSON.stringify({groupID:groupID,userID:userID});
@@ -97,5 +124,13 @@ export class BackendService{
     .catch((error:any) => Observable.throw('Server error'));
 
 
+  }
+  removeGroupFromLesson(groupID: string, lessonID: string): Observable<any>{
+    var url=this.g_url+'grouplesson/delete';
+    var body=JSON.stringify({lessonID:lessonID,groupID:groupID});
+
+    return this.http.post(url,body)
+    .map(res => res.json())
+    .catch((error:any) => Observable.throw('Server error'));
   }
 }

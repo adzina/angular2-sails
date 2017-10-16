@@ -17,7 +17,7 @@ module.exports = {
         name:_name
 
       })
-      .exec(function (err, lesson){
+      .exec(function (err, group){
         if (err) { return res.serverError(err); }
 
         return res.ok();
@@ -28,7 +28,7 @@ module.exports = {
     return sails.models.group.find()
             .exec(function (err, groups){
                   if (err) { return res.serverError(err); }
-                      res.json(200, { group: groups });
+                      res.json(200,groups);
 			             });
   }
 };

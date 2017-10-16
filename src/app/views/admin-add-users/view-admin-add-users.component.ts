@@ -55,8 +55,8 @@ export class AdminAddUsersComponent{
   }
   handleGroupChosen(x:Group){
 
-     this.activeUsers=[];
-     this.inactiveUsers=[];
+    this.activeUsers=[];
+    this.inactiveUsers=[];
     this.chosenGroup=x;
     this._backendService.getActiveUsers(x.id)
     .subscribe(response=>{
