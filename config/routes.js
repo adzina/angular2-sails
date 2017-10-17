@@ -63,7 +63,7 @@ module.exports.routes = {
   'POST /groupLesson/delete': 'GroupLessonController.removeGroupFromLesson',
 
   'GET /allGroups': 'GroupController.getGroups',
-  'POST /group/getAll': 'GroupController.getGroups',
+  'POST /groupUser/getAll': 'GroupUserController.getMyGroups',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

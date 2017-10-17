@@ -24,8 +24,8 @@ export class TeacherAddStudentsComponent{
                  this.inactiveGroups=[];
 
                 this._backendService.getAllMyGroups().subscribe(response=>{
-                  for (let index in response)
-                  this.receivedGroups[index]=response[index];
+
+                  this.receivedGroups=response;
       },
       error=>{
           alert(error);
@@ -38,9 +38,6 @@ export class TeacherAddStudentsComponent{
     this.chosenLesson=x;
     this._backendService.getActiveGroups(x.id)
     .subscribe(response=>{
-      console.log('response');
-      console.log(response);
-      console.log(this.receivedGroups);
         this.receivedActiveGroups=response;
         this.divideGroups();
         error=>{

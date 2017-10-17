@@ -47,18 +47,15 @@ export class BackendService{
   }
 
   getAllMyGroups(): Observable<Group[]>{
-    var url=this.g_url+'group/getAll';
-    var groups: Group[];
-    var body=null;
-    groups=[];
+    var url=this.g_url+'groupUser/getAll';
+    var id=this._loginService.getUserID();
+    var body=JSON.stringify({userID: id});
     return this.http.post(url,body)
     .map((res:Response)=>res.json())
 
   }
   getAllUsers(): Observable<User[]>{
     var url=this.g_url+'user/getAll';
-    var users: User[];
-    users=[];
     return this.http.get(url)
     .map((res:Response)=>res.json())
 

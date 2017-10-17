@@ -60,9 +60,6 @@ export class AdminAddUsersComponent{
     this.chosenGroup=x;
     this._backendService.getActiveUsers(x.id)
     .subscribe(response=>{
-      console.log('response');
-      console.log(response);
-      console.log(this.receivedUsers);
         this.receivedActiveUsers=response;
         this.divideUsers();
         error=>{

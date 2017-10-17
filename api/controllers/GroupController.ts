@@ -25,6 +25,7 @@ module.exports = {
   },
 
   getGroups: function(req,res){
+    let _userID=req.param('userID');
     return sails.models.group.find()
             .exec(function (err, groups){
                   if (err) { return res.serverError(err); }

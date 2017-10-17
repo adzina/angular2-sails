@@ -69,6 +69,7 @@ module.exports = {
 
 	},
 	getUsersID:function(_groupID,callback){
+
 	  sails.models.groupuser.find({groupID:_groupID})
 	    .exec(function(err,Users){
 	      if(err) console.log(err);
@@ -79,7 +80,49 @@ module.exports = {
 	      }
 	      return callback(output);
 	    })
-	}
+	},
+  getMyGroups: function(req,res){
+  	 let _userID=req.param('userID');
+
+    this.getGroupsID(_userID,GroupsID=>{
+	      var output:group[];
+	      output=[];
+	      async.each(GroupsID, function (groupID, cb) {
+	        sails.models.group.findOne({id: groupID})
+	          .then(function(group){
+	            var elem:group;
+	            elem={id:<string>group.id,name: <string>group.name};
+	            output.push(elem);
+	            //inside the iterator function we call cb() once we are finished
+	            cb();
+	          })
+	          .fail(function(error){
+	            //you can pass an error...
+	            cb(error);
+	          })
+	      }, function(error){
+	        //... and handle it in the final callback
+	        if(error) return res.negotiate(error);
+
+	        //here we can return our finished use
+	        return res.json(output);
+	});
+	  })
+
+
+  },
+  getGroupsID:function(_userID,callback){
+	  sails.models.groupuser.find({userID:_userID})
+	    .exec(function(err,Groups){
+	      if(err) console.log(err);
+	      var output:string[];
+	      output=[];
+	      for(var i=0;i<Groups.length;i++){
+	        output[i]=Groups[i].groupID;
+	      }
+	      return callback(output);
+	    })
+	},
 }
 
 interface user{
@@ -87,4 +130,8 @@ interface user{
 	role: string,
 	first_name: string,
 	last_name:string,
+}
+interface group{
+  id:string,
+  name: string
 }
