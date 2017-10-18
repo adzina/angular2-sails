@@ -8,9 +8,8 @@
  import { Model } from 'Sails';
  import * as async from "async";
  declare var sails: any;
-
+var k=1;
 module.exports = {
-
 		addGroupToLesson: function(req,res){
 			let _groupID=req.param('groupID'),
 					_lessonID=req.param('lessonID');
@@ -80,9 +79,61 @@ module.exports = {
 		      }
 		      return callback(output);
 		    })
+		},
+
+    getGroupsLessons:function(req,res){
+      console.log("in1");
+		  let _groupID=req.param("groupID");
+		  this.getLessonsID(_groupID,LessonsID=>{
+		      var output:lesson[];
+          console.log(LessonsID);
+		      output=[];
+		      async.each(LessonsID, function (lessonID, cb) {
+		        sails.models.lesson.findOne({id: lessonID})
+		          .then(function(lesson){
+		            var elem:lesson;
+		            elem={id:<string>lesson.id,subject: <string>lesson.subject, date: <Date>lesson.date, teacherID: <string>lesson.teacherID};
+		            output.push(elem);
+		            //inside the iterator function we call cb() once we are finished
+		            cb();
+		          })
+		          .fail(function(error){
+		            //you can pass an error...
+		            cb(error);
+		          })
+		      }, function(error){
+		        //... and handle it in the final callback
+		        if(error) res.negotiate(error);
+
+		        //here we can return our finished use
+		        return res.json(output);
+		});
+		  })
+
+
+		},
+    getLessonsID:function(_groupID,callback){
+      console.log("in");
+		  sails.models.grouplesson.find({groupID:_groupID})
+		    .exec(function(err,Lessons){
+		      if(err) console.log(err);
+		      var output:string[];
+		      output=[];
+		      for(var i=0;i<Lessons.length;i++){
+		        output[i]=Lessons[i].lessonID;
+		      }
+		      return callback(output);
+		    })
 		}
+
 };
 interface group{
 	id: string,
 	name: string;
+}
+interface lesson{
+  id:string,
+  teacherID: string,
+  date: Date,
+  subject: string
 }
