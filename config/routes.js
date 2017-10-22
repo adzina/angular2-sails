@@ -65,6 +65,8 @@ module.exports.routes = {
 
   'GET /allGroups': 'GroupController.getGroups',
   'POST /groupUser/getAll': 'GroupUserController.getMyGroups',
+
+  'POST /studentword/assignStudentToWord': 'StudentWordController.assignStudentToWord',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

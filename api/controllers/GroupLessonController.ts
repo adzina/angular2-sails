@@ -8,7 +8,6 @@
  import { Model } from 'Sails';
  import * as async from "async";
  declare var sails: any;
-var k=1;
 module.exports = {
 		addGroupToLesson: function(req,res){
 			let _groupID=req.param('groupID'),
@@ -82,11 +81,10 @@ module.exports = {
 		},
 
     getGroupsLessons:function(req,res){
-      console.log("in1");
 		  let _groupID=req.param("groupID");
+
 		  this.getLessonsID(_groupID,LessonsID=>{
 		      var output:lesson[];
-          console.log(LessonsID);
 		      output=[];
 		      async.each(LessonsID, function (lessonID, cb) {
 		        sails.models.lesson.findOne({id: lessonID})
@@ -113,7 +111,6 @@ module.exports = {
 
 		},
     getLessonsID:function(_groupID,callback){
-      console.log("in");
 		  sails.models.grouplesson.find({groupID:_groupID})
 		    .exec(function(err,Lessons){
 		      if(err) console.log(err);

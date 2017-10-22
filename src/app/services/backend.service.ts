@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import { AuthHttp} from 'angular2-jwt';
 import {LoginService} from '../services/login.service';
-import {Observable} from 'rxjs/Rx';
+import {Observable,Observer} from 'rxjs/Rx';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import {Lesson} from '../models/lesson';
@@ -11,6 +11,8 @@ import {User} from '../models/user';
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+
+import * as async from "async";
 
 @Injectable()
 
@@ -130,4 +132,30 @@ export class BackendService{
     .map(res => res.json())
     .catch((error:any) => Observable.throw('Server error'));
   }
+  //zwraca wszystkie lekcje studenta
+  getStudentsLessons(groupID:string):Observable<any>{
+
+    var url=this.g_url+'groupLesson/getGroupsLessons';
+    var body=JSON.stringify({groupID:groupID})
+    return this.http.post(url,body)
+
+
+  }
+  getStudentsWords(studentID:string,groupID:string):Observable<any>{
+    var url=this.g_url+'lessonword/getLessonsWords';
+    return this.getStudentsLessons(groupID)
+    .flatMap((res:Response)=>res.json())
+    .flatMap((lesson:Lesson)=>
+      this.http.post(url, JSON.stringify({lessonID:lesson.id})),
+      (lesson:Lesson,resp:Response)=>resp.json()
+      )
+
+
+}
+  assignStudentToWord(studentID:string,word:Word[]){
+    var url=this.g_url+'studentword/assignStudentToWord';
+    var body=JSON.stringify({words:word,studentID:studentID});
+    this.http.post(url,body).subscribe();
+  }
+
 }
