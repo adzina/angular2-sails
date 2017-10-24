@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import { AuthHttp} from 'angular2-jwt';
 import {HttpErrorResponse} from '@angular/common/http';
 import {LoginService} from '../../services/login.service';
-
+import {BackendService} from '../../services/backend.service';
 @Component({
   selector: 'register',
   templateUrl: './view-register.component.html'
@@ -16,7 +16,10 @@ export class RegisterComponent {
   last_name: string;
   registered: boolean;
   backend_error: string;
-  constructor(private _router:Router, private _loginService:LoginService, private http:AuthHttp) {
+  constructor(private _router:Router,
+     private _loginService:LoginService,
+     private _backendService: BackendService,
+     private http:AuthHttp) {
     this.inputType = 'password';
     this.email="";
     this.password="";
@@ -32,20 +35,15 @@ export class RegisterComponent {
     };
 
   submit(role:string){
-    var body={first_name: this.first_name,last_name: this.last_name, email: this.email, password: this.password,role: role};
-    var http_string="http://localhost:1337/user";
-    this.http
-        .post(http_string,
-          body,)
-          .subscribe(data => {
-                this.registered=true;
-          },
-          (error:HttpErrorResponse) => {
+    this._backendService.createUser(this.first_name,this.last_name,this.email,this.password,role).subscribe(data=>{
 
-            this.backend_error=`Backend returned code ${error.status}`;
-          }
-        );
-    };
+            this.registered=true;
+    },(error:HttpErrorResponse) => {
+
+      this.backend_error=`Backend returned code ${error.status}`;
+    })
+
+  }
 
 createUser(){
   if(this.password!="" && this.last_name!="" && this.first_name!="" && this.email!="")

@@ -20,7 +20,15 @@ export class BackendService{
 
   g_url='http://localhost:1337/';
   constructor(private http:AuthHttp,
-              private _loginService: LoginService){}
+              private _http:Http,
+              private _loginService: LoginService){
+                this._http.get('assets/config.json')
+                .map(res => res.json())
+                .subscribe((api_data) => {
+                  this.g_url = api_data.apiUrl;
+                });
+              }
+
 
   getTeachersLessons(): Observable<Lesson[]> {
     var teacherID=this._loginService.getUserID();
@@ -91,6 +99,7 @@ export class BackendService{
 
   }
   addUserToGroup(userID: string, groupID:string): Observable<any>{
+    console.log(this.g_url);
       var url=this.g_url+'groupuser/addUserToGroup';
       var body=JSON.stringify({groupID:groupID,userID:userID});
 
@@ -157,5 +166,28 @@ export class BackendService{
     var body=JSON.stringify({words:word,studentID:studentID});
     this.http.post(url,body).subscribe();
   }
+createGroup(name:string):Observable<any>{
+  var body={name:name};
+  var url=this.g_url+"group";
+  return this.http.post(url,body)
 
+}
+createUser(first_name:string,last_name:string,email:string,password:string,role:string):Observable<any>{
+  var body={first_name: first_name,last_name: last_name, email: email, password: password,role: role};
+  var url=this.g_url+"user";
+  return this.http.post(url,body)
+
+}
+createLesson(login:string,subject:string,date:Date):Observable<any>{
+  var body={teacherID:login,subject:subject, date:date.toISOString()};
+  var url=this.g_url+"lesson";
+  return this.http.post(url,body)
+
+}
+addWord(polish:string,english:string,lessonID:string):Observable<any>{
+  var url=this.g_url+'word';
+  var body=JSON.stringify({polish:polish,english:english,lessonID: lessonID});
+  return this.http.post(url,body)
+
+}
 }

@@ -52,21 +52,18 @@ export class TeacherWordsPanelComponent {
     else alert("Provide both polish and english version of the word");
   }
   addWord() {
-          var url='http://localhost:1337/word';
-          var body=JSON.stringify({polish:this.polish,english:this.english,lessonID: this.chosenLesson.id});
-          this.http.post(url,body)
-          .map(res=>res.json())
-          .subscribe(
-            response => {
-              this.polish = "";
-              this.english = "";
-              this.words=[];
-              this.handleLessonChosen(this.chosenLesson);
-            },
-            error => {
-              console.log(error.text());
-            }
-          );
+    this._backendService.addWord(this.polish,this.english,this.chosenLesson.id)
+    .subscribe(
+      response => {
+        this.polish = "";
+        this.english = "";
+        this.words=[];
+        this.handleLessonChosen(this.chosenLesson);
+      },
+      error => {
+        console.log(error.text());
+      }
+    );
 
 
 /*
