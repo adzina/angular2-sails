@@ -161,11 +161,7 @@ export class BackendService{
 
 
 }
-  assignStudentToWord(studentID:string,word:Word[]){
-    var url=this.g_url+'studentword/assignStudentToWord';
-    var body=JSON.stringify({words:word,studentID:studentID});
-    this.http.post(url,body).subscribe();
-  }
+
 createGroup(name:string):Observable<any>{
   var body={name:name};
   var url=this.g_url+"group";
@@ -190,4 +186,5 @@ addWord(polish:string,english:string,lessonID:string):Observable<any>{
   return this.http.post(url,body)
 
 }
+
 }

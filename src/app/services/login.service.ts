@@ -10,6 +10,7 @@ export class LoginService{
   userType: string;
   mode: number;
   userID: string;
+  role: string[];
   constructor(private _router:Router){
 
   }
@@ -34,6 +35,9 @@ export class LoginService{
   setUserID(id:string){
     this.userID=id;
   }
+  setUserRole(role:string[]){
+    this.role=role;
+  }
   setLoggedIn(loggedIn:boolean){
     this.loggedIn=loggedIn;
   }
@@ -53,5 +57,10 @@ export class LoginService{
       this._router.navigate(['./login']);
     };
   }
-
+  isAdmin(){
+    for (var i=0;i<this.role.length;i++)
+      if (this.role[i]=="admin")
+        return true;
+      return false;
+  }
 }

@@ -39,7 +39,9 @@ export class LoginComponent{
         response => {
           localStorage.setItem('token', response.id_token);
           this._loginService.setUserID(response.id);
-          this._router.navigate(['./choose-mode']);
+          this._loginService.setUserRole(response.role);
+          this._loginService.setUsername(response.first_name);
+          this._router.navigate(['./teacher-create-lesson']);
         },
         error => {
           alert(error);

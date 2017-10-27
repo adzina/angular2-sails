@@ -11,6 +11,6 @@ module.exports = {
     studentID: {type:'string', required: true},
     wordID: {type:'string', required: true},
     attempt: {type: 'number', required: true},
-    guessed: {type: 'number', required:true}
+    guessed: {type: 'boolean', required:true}
   }
 };

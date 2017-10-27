@@ -67,7 +67,7 @@ module.exports = {
         });
 
         //return the token here
-        res.json(200, { id_token: token,id:user.id });
+        res.json(200, { id_token: token,id:user.id, role:user.role, first_name:user.first_name });
       });
 
     });

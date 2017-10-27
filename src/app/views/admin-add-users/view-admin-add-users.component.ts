@@ -84,13 +84,10 @@ export class AdminAddUsersComponent{
   var user=this.inactiveUsers[i];
       this._backendService.addUserToGroup(user.id,this.chosenGroup.id)
       .subscribe(response=>
-        { this._backendService.getStudentsWords(user.id,this.chosenGroup.id)
-          .subscribe(words=>{
-                this._backendService.assignStudentToWord(user.id,words);
-                this.inactiveUsers=[];
-                this.activeUsers=[];
-                this.handleGroupChosen(this.chosenGroup);
-                })
+        {
+        this.inactiveUsers=[];
+        this.activeUsers=[];
+        this.handleGroupChosen(this.chosenGroup);
 
         });
            /*

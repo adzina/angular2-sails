@@ -23,7 +23,6 @@ import { SidePanelLessonsComponent } from './bars/side-panel-lessons/side-panel-
 import { SidePanelGroupsComponent } from './bars/side-panel-groups/side-panel-groups.component';
 import { ChooseModeComponent } from './views/choose-mode/view-choose-mode.component';
 import { NavbarComponent } from './bars/navbar/navbar.component';
-import { AdminNavbarComponent } from './bars/admin-navbar/admin-navbar.component';
 import { AdminCreateGroupComponent } from './views/admin-create-group/view-admin-create-group.component';
 import { AdminAddUsersComponent } from './views/admin-add-users/view-admin-add-users.component';
 import { GoodbyeComponent } from './views/goodbye/view-goodbye.component';
@@ -54,7 +53,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     SidePanelGroupsComponent,
     ChooseModeComponent,
     NavbarComponent,
-    AdminNavbarComponent,
     AdminCreateGroupComponent,
     AdminAddUsersComponent,
     GoodbyeComponent,

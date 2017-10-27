@@ -14,7 +14,7 @@ module.exports = {
     last_name: {type:'string', required: true},
     email: {type: 'string', required: true, email: true, unique: true},
     password: {type: 'string', required:true},
-    role: {type: 'string', required:true},
+    role: {type: 'array', required:true},
 
  },
  /**
