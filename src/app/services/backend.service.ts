@@ -169,7 +169,7 @@ createGroup(name:string):Observable<any>{
 
 }
 createUser(first_name:string,last_name:string,email:string,password:string,role:string):Observable<any>{
-  var body={first_name: first_name,last_name: last_name, email: email, password: password,role: role};
+  var body={first_name: first_name,last_name: last_name, email: email, password: password,role: [role]};
   var url=this.g_url+"user";
   return this.http.post(url,body)
 

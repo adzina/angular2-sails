@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
-
+import {LoginService} from '../services/login.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private loginService: LoginService) {}
 
   canActivate() {
     // Check to see if a user has a valid JWT
@@ -14,7 +15,13 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     // If not, they redirect them to the login page
-    this.router.navigate(['./login']);
+    this.router.navigate(['login']);
+    return false;
+  }
+  isAdmin(){
+    if(this.loginService.isAdmin()){
+      return true;
+    }
     return false;
   }
 }

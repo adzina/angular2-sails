@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
-import {LoginService} from '../../services/login.service';
 import {Router} from '@angular/router';
-
+import {LoginService} from '../../services/login.service';
 @Component({
   moduleId: module.id,
   selector: 'navbar',

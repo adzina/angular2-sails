@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 
 import { AuthGuard } from './common/auth.guard';
+import { RoleGuard } from './common/role.guard';
 
 import { LoginService } from './services/login.service';
 import { BackendService } from './services/backend.service';
@@ -80,7 +81,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       useFactory: authHttpServiceFactory,
       deps: [ Http, RequestOptions ]
     }
-      ,LoginService, BackendService, EmitterService, AuthGuard
+      ,LoginService, BackendService, EmitterService, AuthGuard, RoleGuard
      ],
   bootstrap: [AppComponent]
 })

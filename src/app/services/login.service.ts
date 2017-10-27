@@ -37,6 +37,7 @@ export class LoginService{
   }
   setUserRole(role:string[]){
     this.role=role;
+    console.log(role);
   }
   setLoggedIn(loggedIn:boolean){
     this.loggedIn=loggedIn;
@@ -58,6 +59,7 @@ export class LoginService{
     };
   }
   isAdmin(){
+    console.log(this.role);
     for (var i=0;i<this.role.length;i++)
       if (this.role[i]=="admin")
         return true;

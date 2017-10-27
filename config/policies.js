@@ -19,16 +19,54 @@
 
 module.exports.policies = {
 
-
-  UserController: {
-    create: 'sessionAuth'
-  },
   LessonController: {
     find: 'sessionAuth',
     create: 'sessionAuth'
+  },
+  GroupController: {
+    getGroups: 'sessionAuth',
+    create: 'sessionAuth'
+  },
+  LessonController: {
+    getTeacherID: 'sessionAuth',
+    create: 'sessionAuth',
+    getLessonID: 'sessionAuth',
+  },
+  GroupLessonController: {
+    addGroupToLesson: 'sessionAuth',
+    removeGroupFromLesson: 'sessionAuth',
+    getLessonsGroups: 'sessionAuth',
+    getGroupsID: 'sessionAuth',
+    getGroupsLessons: 'sessionAuth',
+    getLessonsID: 'sessionAuth',
+  },
+  GroupUserController: {
+    	addUserToGroup: 'sessionAuth',
+    	removeUserFromGroup: 'sessionAuth',
+    	getGroupsUsers: 'sessionAuth',
+    	getUsersID: 'sessionAuth',
+      getMyGroups: 'sessionAuth',
+      getGroupsID: 'sessionAuth',
+  },
+  LessonWordController: {
+    create: 'sessionAuth',
+    getLessonsWords: 'sessionAuth',
+    getWordsID: 'sessionAuth',
+    removeWordFromLesson:'sessionAuth',
+  },
+  StudentWordController: {
+    addOrUpdateStudentWord: 'sessionAuth',
+  },
+  UserController: {
+    create: 'sessionAuth',
+    getAll: 'sessionAuth',
+    findByID: 'sessionAuth',
+  },
+  WordController: {
+    add: 'sessionAuth',
+    create: 'sessionAuth',
+    addToLesson: 'sessionAuth',
   }
-
-
   /***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions (`true` allows public     *

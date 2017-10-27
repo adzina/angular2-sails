@@ -14,6 +14,7 @@ import { RegisterComponent } from './views/register/view-register.component';
 import { ProgressComponent } from './views/progress/view-progress.component';
 
 import { AuthGuard } from './common/auth.guard';
+import { RoleGuard } from './common/role.guard';
 
 // Define the routes
 export const routes = [
@@ -24,18 +25,27 @@ export const routes = [
   {
     path: 'register',
     component: RegisterComponent,
-    canActivate: [AuthGuard]
+    canActivate: [RoleGuard],
+    data: {
+      expectedRole: 'admin'
+    }
   },
 
   {
     path: 'admin-create-group',
     component: AdminCreateGroupComponent,
-    canActivate: [AuthGuard]
+    canActivate: [RoleGuard],
+    data: {
+      expectedRole: 'admin'
+    }
   },
   {
       path: 'admin-add-users',
       component: AdminAddUsersComponent,
-      canActivate: [AuthGuard]
+      canActivate: [RoleGuard],
+      data: {
+        expectedRole: 'admin'
+      }
     },
   {
     path: 'teacher-words-panel',
