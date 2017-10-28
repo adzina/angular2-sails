@@ -12,7 +12,7 @@ import { TeacherAddStudentsComponent } from './views/teacher-add-students/view-t
 import { TeacherSeeProgressComponent } from './views/teacher-see-progress/view-teacher-see-progress.component';
 import { RegisterComponent } from './views/register/view-register.component';
 import { ProgressComponent } from './views/progress/view-progress.component';
-
+import {SeeAllLessonsComponent} from './views/see-all-lessons/see-all-lessons.component';
 import { AuthGuard } from './common/auth.guard';
 import { RoleGuard } from './common/role.guard';
 
@@ -46,6 +46,11 @@ export const routes = [
       data: {
         expectedRole: 'admin'
       }
+    },
+    {
+      path: 'see-all-lessons',
+      component: SeeAllLessonsComponent,
+      canActivate: [AuthGuard]
     },
   {
     path: 'teacher-words-panel',

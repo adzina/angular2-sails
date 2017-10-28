@@ -62,6 +62,7 @@ export class TeacherCreateLessonComponent {
               this.subject=null;
               this.error=false;
               this.created=true;
+              this.goto();
             })
           }
       }

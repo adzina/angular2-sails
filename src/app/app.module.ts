@@ -21,7 +21,7 @@ import { EmitterService} from './services/emitter.service';
 
 import { LoginComponent } from './views/login/view-login.component';
 import { DashboardComponent } from './views/dashboard/view-dashboard.component';
-import { SidePanelLessonsComponent } from './bars/side-panel-lessons/side-panel-lessons.component';
+import {SeeAllLessonsComponent} from './views/see-all-lessons/see-all-lessons.component';
 import { SidePanelGroupsComponent } from './bars/side-panel-groups/side-panel-groups.component';
 import { ChooseModeComponent } from './views/choose-mode/view-choose-mode.component';
 import { NavbarComponent } from './bars/navbar/navbar.component';
@@ -51,7 +51,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    SidePanelLessonsComponent,
+    SeeAllLessonsComponent,
     SidePanelGroupsComponent,
     ChooseModeComponent,
     NavbarComponent,

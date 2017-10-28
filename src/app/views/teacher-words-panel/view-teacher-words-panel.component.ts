@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { BackendService} from '../../services/backend.service';
 import { Router } from '@angular/router';
-import { SidePanelLessonsComponent } from '../../bars/side-panel-lessons/side-panel-lessons.component';
 import {Http} from '@angular/http';
 import {Word} from '../../models/word';
 import {Lesson} from '../../models/lesson';
@@ -22,28 +21,27 @@ export class TeacherWordsPanelComponent {
               private _backendService: BackendService) {
     this.words=[];
     this.buttonClass="btn btn-success disabled";
+    this.chosenLesson=this._loginService.getChosenLesson();
 
+    this.prepare();
   }
 
-  handleLessonChosen(x:Lesson){
-    this.chosenLesson=x;
-    this.buttonClass="btn btn-success active";
-    var lessonID: string;
-
-    this._backendService.getWords(x.id).subscribe(words=>{
+  prepare(){
+    this._backendService.getWords(this.chosenLesson.id).subscribe(words=>{
       this.polish = "";
       this.english = "";
       this.words=[];
       this.words=words;
 
+      this.buttonClass="btn btn-success active";
   });
   }
   delete(i:number){
     var word=this.words[i];
     this._backendService.removeWordFromLesson(this.chosenLesson.id,word.id)
     .subscribe(deleted=>{
-      this.words=[];
-      this.handleLessonChosen(this.chosenLesson);
+      this.buttonClass="btn btn-success disabled";
+      this.prepare();
     })
   }
   submit(){
@@ -54,10 +52,8 @@ export class TeacherWordsPanelComponent {
     this._backendService.addWord(this.polish,this.english,this.chosenLesson.id)
     .subscribe(
       response => {
-        this.polish = "";
-        this.english = "";
-        this.words=[];
-        this.handleLessonChosen(this.chosenLesson);
+        this.buttonClass="btn btn-success disabled";
+        this.prepare();
       },
       error => {
         console.log(error.text());
