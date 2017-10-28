@@ -52,8 +52,9 @@ module.exports = {
   },
   getAllGuessed:function(req,res){
     var studentID = req.param("studentID");
-    return  sails.models.studentword.find({studentID: studentID})
+    return  sails.models.studentword.find({studentID: studentID,guessed:true})
       .exec(function(err,found){
+        
         res.json(found);
       })
   }
