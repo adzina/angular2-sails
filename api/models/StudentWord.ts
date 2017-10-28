@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     studentID: {type:'string', required: true},
     wordID: {type:'string', required: true},
-    attempt: {type: 'number', required: true},
+    attempt: {type: 'integer', required: true},
     guessed: {type: 'boolean', required:true}
   }
 };

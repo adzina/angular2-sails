@@ -18,7 +18,7 @@
 
 
 module.exports.policies = {
-
+/*
   LessonController: {
     find: 'sessionAuth',
     create: 'sessionAuth'
@@ -66,7 +66,7 @@ module.exports.policies = {
     add: 'sessionAuth',
     create: 'sessionAuth',
     addToLesson: 'sessionAuth',
-  }
+  }*/
   /***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions (`true` allows public     *
