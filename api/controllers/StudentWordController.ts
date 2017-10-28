@@ -13,40 +13,49 @@ module.exports = {
         if (pair) {
           var at=pair.attempt;
           if (at + 1 == 3 && guessed) {
-            //slówko odgadnięte 3 razy z rzedu jest usuwane
-            console.log("deleting");
-            sails.models.studentword.destroy({ studentID: studentID, wordID: wordID })
-              .exec(function(error, deleted) {
-                if (error)  return res.negotiate(error);
-    						return res.json(deleted);
-              })
+            //slówko odgadnięte 3 razy z rzedu jest odgadnięte
+            var data={studentID: studentID, wordID: wordID,attempt:at,guessed:true};
+            sails.models.studentword.update({ studentID: studentID, wordID: wordID },data,function(err,updated){
+
+                return res.json(updated);
+            })
           }
           else{//zeruje podejscia jesli student popelnil blad
           if(!guessed) at=0;
           else at=pair.attempt+1;
-          console.log("trying update");
           var data={studentID: studentID, wordID: wordID,attempt:at,guessed:false};
           sails.models.studentword.update({ studentID: studentID, wordID: wordID },data,function(err,updated){
-              console.log(updated);
               return res.json(updated);
           })}
 
         }
-        //creating a pair only in case if student did not guess the word in first attempt
+        //creating a pair
         if (!pair && !guessed) {
           var attempt:number;
           attempt=0;
           sails.models.studentword.create({ studentID: studentID, wordID: wordID, attempt: attempt, guessed: false })
           .exec(function(created){
-            console.log(created);
             return res.json(created);
           })
         }
-        if(!pair && guessed)
-          return res.ok();
+        if(!pair && guessed){
+          var attempt:number;
+          attempt=0;
+          sails.models.studentword.create({ studentID: studentID, wordID: wordID, attempt: attempt, guessed: true })
+          .exec(function(created){
+            return res.json(created);
+          })
+        }
       })
 
 
+  },
+  getAllGuessed:function(req,res){
+    var studentID = req.param("studentID");
+    return  sails.models.studentword.find({studentID: studentID})
+      .exec(function(err,found){
+        res.json(found);
+      })
   }
 };
 interface word {
