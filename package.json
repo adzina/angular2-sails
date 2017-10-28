@@ -38,6 +38,7 @@
     "jsonwebtoken": "^8.0.1",
     "jwt-decode": "^2.2.0",
     "ng-bootstrap": "^1.6.3",
+    "ng2-completer": "^1.6.3",
     "ng2-datepicker-bootstrap": "^1.0.0",
     "ngx-bootstrap": "^1.8.1",
     "rc": "1.0.1",

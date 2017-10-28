@@ -17,7 +17,11 @@ export class SidePanelGroupsComponent {
 
     this.show=false;
     this.className="sidenav_false";
-    this.groups=backendService.getAllGroups();
+    backendService.getAllGroups().
+      subscribe(response=>{
+        this.groups=response;
+          }
+        );
   }
   toggle(){
     if(this.show){

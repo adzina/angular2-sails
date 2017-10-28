@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { Ng2CompleterModule } from "ng2-completer";
 import {HttpClientModule} from '@angular/common/http';
 import { HttpModule, Http, RequestOptions,ConnectionBackend } from '@angular/http';
 import { NgModule } from '@angular/core';
@@ -70,6 +71,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     NgbModule.forRoot(),
     ModalModule.forRoot(),
     FormsModule,
+    Ng2CompleterModule,
     AppRoutingModule,
     BrowserModule,
     HttpModule,

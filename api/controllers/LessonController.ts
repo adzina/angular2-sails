@@ -24,7 +24,7 @@ module.exports = {
     	.exec(function (err, lesson){
         if (err) { return res.serverError(err); }
 
-        return res.ok();
+        return res.json(lesson);
 			});
 	},
 

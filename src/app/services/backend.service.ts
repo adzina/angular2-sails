@@ -39,21 +39,10 @@ export class BackendService{
    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
   }
-  getAllGroups(){
+  getAllGroups():Observable<any>{
     var url=this.g_url+'group';
-    var groups: Group[];
-    groups=[];
-    this.http.get(url).
-    map(res => res.json()).
-      subscribe(response=>{
-        for (let index in response)
-          groups[index]=response[index];
-        },
-        error=>{
-            alert(error);
-          }
-        );
-    return groups;
+    return this.http.get(url).
+    map(res => res.json());
   }
 
   getAllMyGroups(): Observable<Group[]>{
@@ -99,7 +88,7 @@ export class BackendService{
 
   }
   addUserToGroup(userID: string, groupID:string): Observable<any>{
-    console.log(this.g_url);
+
       var url=this.g_url+'groupuser/addUserToGroup';
       var body=JSON.stringify({groupID:groupID,userID:userID});
 
@@ -109,6 +98,7 @@ export class BackendService{
   }
   addGroupToLesson(groupID: string, lessonID:string): Observable<any>{
       var url=this.g_url+'groupLesson/addGroupToLesson';
+      
       var body=JSON.stringify({lessonID:lessonID,groupID:groupID});
 
           return this.http.post(url,body)
@@ -178,6 +168,8 @@ createLesson(login:string,subject:string,date:Date):Observable<any>{
   var body={teacherID:login,subject:subject, date:date.toISOString()};
   var url=this.g_url+"lesson";
   return this.http.post(url,body)
+  .map(res => res.json())
+  .catch((error:any) => Observable.throw('Server error'));
 
 }
 addWord(polish:string,english:string,lessonID:string):Observable<any>{
