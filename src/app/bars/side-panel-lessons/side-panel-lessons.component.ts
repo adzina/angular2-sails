@@ -1,5 +1,6 @@
 import { Component,Output,EventEmitter } from '@angular/core';
 import {BackendService} from '../../services/backend.service';
+import { LoginService } from '../../services/login.service';
 import {Lesson} from '../../models/lesson';
 
 @Component({
@@ -13,16 +14,20 @@ export class SidePanelLessonsComponent {
   lessons: Lesson[];
   className:string;
   @Output() lessonChosen = new EventEmitter<Lesson>();
-  constructor(private backendService:BackendService) {
+  constructor(private backendService:BackendService,
+              private loginService:LoginService) {
 
     this.show=true;
     this.className="sidenav_true";
     this.lessons=[];
     backendService.getTeachersLessons().
         subscribe(response=>{
-          console.log
+
           for (let index in response)
             {this.lessons[index]=response[index]}
+
+          this.lessonChosen.emit(this.loginService.getChosenLesson());
+
           },
           error=>{
               alert(error);

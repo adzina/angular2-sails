@@ -20,7 +20,6 @@ export class LoginComponent{
     this.inputType = 'password';
     this.email="";
     this.password="";
-    this._loginService.setLoggedIn(false);
   }
 
   hideShowPassword(){

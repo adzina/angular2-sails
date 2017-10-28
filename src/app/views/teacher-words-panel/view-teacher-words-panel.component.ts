@@ -34,8 +34,7 @@ export class TeacherWordsPanelComponent {
       this.polish = "";
       this.english = "";
       this.words=[];
-      for(let i=0;i<words.length;i++)
-        this.words.push(words[i]);
+      this.words=words;
 
   });
   }

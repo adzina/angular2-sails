@@ -14,7 +14,6 @@ export class GoodbyeComponent{
   user: string;
   constructor(private _router:Router, private _loginService:LoginService){
     this.user=this._loginService.getUserName();
-    this._loginService.setLoggedIn(false);
     this._loginService.setUserType(null);
     this._loginService.setUsername(null);
     localStorage.removeItem('token');

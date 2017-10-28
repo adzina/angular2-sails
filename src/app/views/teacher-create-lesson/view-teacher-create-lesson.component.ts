@@ -27,7 +27,7 @@ export class TeacherCreateLessonComponent {
   group: string;
   constructor(private _router:Router,
               private http:AuthHttp,
-              private _login:LoginService,
+              private _loginService:LoginService,
               private _backendService: BackendService,
               private completerService: CompleterService){
                 this.placeholder="click to see all groups"
@@ -52,13 +52,13 @@ export class TeacherCreateLessonComponent {
     }
   }
   sendRequest(){
-    this._backendService.createLesson(this._login.getUserID(),this.subject,this.date).subscribe(data => {
+    this._backendService.createLesson(this._loginService.getUserID(),this.subject,this.date).subscribe(data => {
 
       for(var i=0;i<this.groups.length;i++){
         if(this.group==this.groups[i].name)
           {
             this._backendService.addGroupToLesson(this.groups[i].id,data.id).subscribe(result=>{
-
+              this._loginService.setChosenLesson(data);
               this.subject=null;
               this.error=false;
               this.created=true;

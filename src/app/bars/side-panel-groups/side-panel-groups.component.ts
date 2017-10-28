@@ -1,5 +1,6 @@
 import { Component,Output,EventEmitter } from '@angular/core';
 import {BackendService} from '../../services/backend.service';
+import {LoginService} from '../../services/login.service';
 import { Group } from '../../models/group';
 
 @Component({
@@ -13,13 +14,15 @@ export class SidePanelGroupsComponent {
   groups: Group[];
   className:string;
   @Output() groupChosen = new EventEmitter<Group>();
-  constructor(private backendService:BackendService) {
+  constructor(private backendService:BackendService,
+              private loginService: LoginService) {
 
     this.show=false;
     this.className="sidenav_false";
     backendService.getAllGroups().
       subscribe(response=>{
         this.groups=response;
+
           }
         );
   }

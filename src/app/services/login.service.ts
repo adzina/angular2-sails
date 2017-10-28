@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
 
+import { Injectable} from '@angular/core';
+import {Router} from '@angular/router';
+import {Lesson} from '../models/lesson';
 @Injectable()
 
 export class LoginService{
@@ -11,11 +12,9 @@ export class LoginService{
   mode: number;
   userID: string;
   role: string[];
+  chosenLesson: Lesson;
   constructor(private _router:Router){
 
-  }
-  getLoggedIn(){
-    return this.loggedIn;
   }
   getUserID(){
     return this.userID;
@@ -39,9 +38,6 @@ export class LoginService{
     this.role=role;
     console.log(role);
   }
-  setLoggedIn(loggedIn:boolean){
-    this.loggedIn=loggedIn;
-  }
   setUsername(username:string){
     this.userName=username;
 
@@ -52,6 +48,12 @@ export class LoginService{
   }
   setMode(mode:number){
     this.mode=mode;
+  }
+  setChosenLesson(lesson:Lesson){
+    this.chosenLesson=lesson;
+  }
+  getChosenLesson(){
+    return this.chosenLesson;
   }
   checkLoggedIn(){
     if(!this.loggedIn){

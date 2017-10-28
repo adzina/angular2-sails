@@ -23,7 +23,7 @@
         <li>
           <a (click)="navigate(5)" style="cursor: pointer">     Add words to lesson     </a>
         </li>
-        <li>
+        <li *ngIf="isAdmin">
           <a (click)="navigate(6)" style="cursor: pointer"> Assign lessons to students </a>
         </li>
         <li>
