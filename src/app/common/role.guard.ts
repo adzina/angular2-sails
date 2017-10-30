@@ -25,7 +25,7 @@ export class RoleGuard implements CanActivate {
     if (
       !this.auth.canActivate() || !ad
     ) {
-      this.router.navigate(['teacher-create-lesson']);
+      this.router.navigate(['./see-all-lessons']);
       return false;
     }
     return true;

@@ -15,18 +15,24 @@ export class TeacherWordsPanelComponent {
   english: string;
   words: Word[];
   chosenLesson: Lesson;
+  subject: string;
   buttonClass: string;
   constructor(private _loginService: LoginService,
               private http: Http,
-              private _backendService: BackendService) {
+              private _backendService: BackendService,
+              private _router: Router) {
     this.words=[];
     this.buttonClass="btn btn-success disabled";
     this.chosenLesson=this._loginService.getChosenLesson();
+    console.log(this.chosenLesson!=null);
+    console.log("^");
+    if(this.chosenLesson!=null)
+      this.prepare();
 
-    this.prepare();
   }
 
   prepare(){
+    this.subject=this.chosenLesson.subject;
     this._backendService.getWords(this.chosenLesson.id).subscribe(words=>{
       this.polish = "";
       this.english = "";
@@ -60,12 +66,15 @@ export class TeacherWordsPanelComponent {
       }
     );
 
-
 /*
     var n={pol:this.polish,eng:this.english,lesson:this.chosenLesson,id:""};
 
     this.lessonsFiltered.push({pol:this.polish,eng:this.english,lesson:this.chosenLesson,id:""});
 */
+  }
+
+  goto(){
+    this._router.navigate(['./see-all-lessons']);
   }
 }
 

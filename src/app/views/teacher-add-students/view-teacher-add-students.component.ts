@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
-import { SidePanelLessonsComponent } from '../../bars/side-panel-lessons/side-panel-lessons.component';
 import { Group } from '../../models/group';
 import { Lesson } from '../../models/lesson'
 @Component({
@@ -18,7 +17,6 @@ export class TeacherAddStudentsComponent{
   inactiveGroups: Group[];
   constructor(private _loginService: LoginService,
               private _backendService: BackendService) {
-
                 this.receivedGroups=[];
                  this.activeGroups=[];
                  this.inactiveGroups=[];

@@ -82,7 +82,6 @@ module.exports = {
 
     getGroupsLessons:function(req,res){
 		  let _groupID=req.param("groupID");
-
 		  this.getLessonsID(_groupID,LessonsID=>{
 		      var output:lesson[];
 		      output=[];
@@ -102,7 +101,7 @@ module.exports = {
 		      }, function(error){
 		        //... and handle it in the final callback
 		        if(error) res.negotiate(error);
-
+            else 
 		        //here we can return our finished use
 		        return res.json(output);
 		});

@@ -22,7 +22,7 @@ export class NavbarComponent{
   }
   navigate(nr: number){
     switch(nr){
-      case(0): this._router.navigate(['./choose-mode']);break;
+      case(0): this._router.navigate(['./see-all-lessons']);break;
       case(1): this._router.navigate(['./admin-create-group']);break;
       case(2): this._router.navigate(['./register']);break;
       case(3): this._router.navigate(['./admin-add-users']);break;

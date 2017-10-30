@@ -15,12 +15,9 @@ module.exports = function (req, res, next) {
   if (typeof bearerHeader !== 'undefined') {
     var bearer = bearerHeader.split(" ");
     bearerToken = bearer[1];
-
     if (bearer[0] !== "Bearer") {
       return res.forbidden("bearer not understood");
     }
-
-
     //verify if this token was from us or not
     jwt.verify(bearerToken, "this is my secret key", function (err, decoded) {
       if (err) {
