@@ -25,7 +25,6 @@ export class SeeAllLessonsComponent {
 
           for (let index in response)
             {this.lessons[index]=response[index]}
-
           this.lessonChosen.emit(this.loginService.getChosenLesson());
 
           },

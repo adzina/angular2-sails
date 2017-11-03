@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {Http} from '@angular/http';
 import {LoginService} from '../../services/login.service';
-
+import {BackendService} from '../../services/backend.service';
 import * as bcrypt from "bcryptjs";
 
 @Component({
@@ -16,7 +16,10 @@ export class LoginComponent{
   email: string;
   password: string;
   wrong: boolean;
-  constructor(private _router:Router, private _loginService: LoginService, private http: Http){
+  constructor(private _router:Router,
+              private _loginService: LoginService,
+              private http: Http,
+              private _backendService: BackendService){
     this.inputType = 'password';
     this.email="";
     this.password="";
@@ -32,21 +35,25 @@ export class LoginComponent{
     var email=this.email;
     var pswd=this.password;
     let body = JSON.stringify({ email, pswd });
-    this.http.post('http://localhost:1337/user/login', body)
-      .map(res=>res.json())
-      .subscribe(
-        response => {
-          localStorage.setItem('token', response.id_token);
-          this._loginService.setUserID(response.id);
-          this._loginService.setUserRole(response.role);
-          this._loginService.setUsername(response.first_name);
-          this._router.navigate(['./see-all-lessons']);
-        },
-        error => {
-          alert(error);
-          console.log(error);
-        }
-      );
+    var url=this._backendService.getApiUrl()+'user/login';
+    
+      this.http.post(url, body)
+        .map(res=>res.json())
+        .subscribe(
+          response => {
+            localStorage.setItem('token', response.id_token);
+            this._loginService.setUserID(response.id);
+            this._loginService.setUserRole(response.role);
+            this._loginService.setUsername(response.first_name);
+            this._router.navigate(['./see-all-lessons']);
+          },
+          error => {
+            alert("login error:"+error);
+            console.log(error);
+          }
+        );
+
+
   }
   /*
 submit(type:string){

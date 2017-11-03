@@ -90,13 +90,10 @@ export const routes = [
     path: 'goodbye',
     component: GoodbyeComponent
   },
-  // {
-  //   path: 'src/app/config/config.json'
-  // },
-  // { //Redirect urls not found at root
-  //   path: '**',
-  //   redirectTo: ''
-  // }
+  { //Redirect urls not found at root
+     path: '**',
+     redirectTo: ''
+   }
 ];
 
 

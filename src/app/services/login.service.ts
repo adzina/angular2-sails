@@ -14,7 +14,8 @@ export class LoginService{
   role: string[];
   chosenLesson: Lesson;
   constructor(private _router:Router){
-
+      //jesli jest token w localstorage to pobierz dane
+      //synchronicznie - blokujące
   }
   getUserID(){
     return this.userID;
@@ -36,7 +37,6 @@ export class LoginService{
   }
   setUserRole(role:string[]){
     this.role=role;
-    console.log(role);
   }
   setUsername(username:string){
     this.userName=username;
@@ -55,13 +55,7 @@ export class LoginService{
   getChosenLesson(){
     return this.chosenLesson;
   }
-  checkLoggedIn(){
-    if(!this.loggedIn){
-      this._router.navigate(['./login']);
-    };
-  }
   isAdmin(){
-    console.log(this.role);
     for (var i=0;i<this.role.length;i++)
       if (this.role[i]=="admin")
         return true;

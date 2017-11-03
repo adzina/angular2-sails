@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import {
-  Router,
-  CanActivate,
-  ActivatedRouteSnapshot
-} from '@angular/router';
+import {Router,CanActivate,ActivatedRouteSnapshot} from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import decode from 'jwt-decode';
+
 @Injectable()
+
 export class RoleGuard implements CanActivate {
   constructor(public auth: AuthGuard, public router: Router) {}
+
   canActivate(route: ActivatedRouteSnapshot): boolean {
     // this will be passed from the route config
     // on the data property
@@ -25,7 +24,7 @@ export class RoleGuard implements CanActivate {
     if (
       !this.auth.canActivate() || !ad
     ) {
-      this.router.navigate(['./see-all-lessons']);
+      this.router.navigate(['']);
       return false;
     }
     return true;

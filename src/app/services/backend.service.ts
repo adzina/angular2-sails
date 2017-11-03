@@ -19,17 +19,14 @@ import * as async from "async";
 export class BackendService{
 
   g_url='http://localhost:1337/';
+
   constructor(private http:AuthHttp,
               private _http:Http,
-              private _loginService: LoginService){
-                this._http.get('assets/config.json')
-                .map(res => res.json())
-                .subscribe((api_data) => {
-                  this.g_url = api_data.apiUrl;
-                });
-              }
+              private _loginService: LoginService){}
 
-
+getApiUrl(){
+    return this.g_url;
+  }
   getTeachersLessons(): Observable<Lesson[]> {
     var teacherID=this._loginService.getUserID();
     var url=this.g_url+'lesson/'+teacherID;
@@ -98,7 +95,7 @@ export class BackendService{
   }
   addGroupToLesson(groupID: string, lessonID:string): Observable<any>{
       var url=this.g_url+'groupLesson/addGroupToLesson';
-      
+
       var body=JSON.stringify({lessonID:lessonID,groupID:groupID});
 
           return this.http.post(url,body)
