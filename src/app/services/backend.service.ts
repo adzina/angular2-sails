@@ -27,6 +27,9 @@ export class BackendService{
 getApiUrl(){
     return this.g_url;
   }
+  setApiUrl(url:string){
+    this.g_url=url;
+  }
   getTeachersLessons(): Observable<Lesson[]> {
     var teacherID=this._loginService.getUserID();
     var url=this.g_url+'lesson/'+teacherID;

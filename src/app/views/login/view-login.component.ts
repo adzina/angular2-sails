@@ -16,6 +16,7 @@ export class LoginComponent{
   email: string;
   password: string;
   wrong: boolean;
+  url: string;
   constructor(private _router:Router,
               private _loginService: LoginService,
               private http: Http,
@@ -35,9 +36,13 @@ export class LoginComponent{
     var email=this.email;
     var pswd=this.password;
     let body = JSON.stringify({ email, pswd });
-    var url=this._backendService.getApiUrl()+'user/login';
-    
-      this.http.post(url, body)
+    if(this.url){
+          var x='http://'+this.url+':1337/';
+              this._backendService.setApiUrl(x);
+      }
+      this.url=this._backendService.getApiUrl()+'user/login';
+
+      this.http.post(this.url, body)
         .map(res=>res.json())
         .subscribe(
           response => {
