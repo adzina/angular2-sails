@@ -88,11 +88,14 @@ module.exports = {
 		      async.each(LessonsID, function (lessonID, cb) {
 		        sails.models.lesson.findOne({id: lessonID})
 		          .then(function(lesson){
-		            var elem:lesson;
-		            elem={id:<string>lesson.id,subject: <string>lesson.subject, date: <Date>lesson.date, teacherID: <string>lesson.teacherID};
-		            output.push(elem);
+                if(lesson){
+                    var elem:lesson;
+		                elem={id:<string>lesson.id,subject: <string>lesson.subject, date: <Date>lesson.date, teacherID: <string>lesson.teacherID};
+		                output.push(elem);}
+
 		            //inside the iterator function we call cb() once we are finished
-		            cb();
+
+                cb();
 		          })
 		          .fail(function(error){
 		            //you can pass an error...
@@ -101,7 +104,7 @@ module.exports = {
 		      }, function(error){
 		        //... and handle it in the final callback
 		        if(error) res.negotiate(error);
-            else 
+            else
 		        //here we can return our finished use
 		        return res.json(output);
 		});
