@@ -42,8 +42,7 @@ export class TeacherCreateLessonComponent {
   }
   create(){
     if(this.subject!=null){
-      this.date=new Date(this.model.year,this.model.month,this.model.day);
-      this.date.setHours(0, -this.date.getTimezoneOffset(), 0, 0);
+      this.date=new Date(Date.UTC(this.model.year,this.model.month-1,this.model.day, 0, 0, 0));
 
       this.sendRequest();
     }
@@ -57,6 +56,7 @@ export class TeacherCreateLessonComponent {
       for(var i=0;i<this.groups.length;i++){
         if(this.group==this.groups[i].name)
           {
+            console.log(this.groups[i]);
             this._backendService.addGroupToLesson(this.groups[i].id,data.id).subscribe(result=>{
               this._loginService.setChosenLesson(data);
               this.subject=null;

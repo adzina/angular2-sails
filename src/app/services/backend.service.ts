@@ -98,7 +98,7 @@ getApiUrl(){
   }
   addGroupToLesson(groupID: string, lessonID:string): Observable<any>{
       var url=this.g_url+'groupLesson/addGroupToLesson';
-
+      console.log("adding lesson to group "+groupID);
       var body=JSON.stringify({lessonID:lessonID,groupID:groupID});
 
           return this.http.post(url,body)
