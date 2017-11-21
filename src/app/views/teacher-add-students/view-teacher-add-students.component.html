@@ -1,13 +1,6 @@
 
   <navbar></navbar>
 
-  <div>
-    <div *ngFor=" let student of students">
-        {{student.name}}  {{student.surname}} <input type="checkbox" (click)="submit()">
-
-    </div>
-  </div>
-
   <div class="container">
     <table class="table table-striped table-bordered table-hover table-condensed">
       <tr *ngFor=" let group of activeGroups; let i=index" [attr.data-index]="i">

@@ -50,7 +50,10 @@ export class LoginComponent{
             this._loginService.setUserID(response.id);
             this._loginService.setUserRole(response.role);
             this._loginService.setUsername(response.first_name);
-            this._router.navigate(['./see-all-lessons']);
+            if(this._loginService.isAdmin())
+              this._router.navigate(['./admin-create-group']);
+            else
+              this._router.navigate(['./see-all-lessons']);
           },
           error => {
             alert("login error:"+error);

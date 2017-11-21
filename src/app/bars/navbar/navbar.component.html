@@ -1,41 +1,38 @@
-<nav class="navbar navbar-toggleable-sm navbar-inverse " style="height:160px">
-  <div class=" container-fluid">
+<nav class="navbar navbar-toggleable-sm navbar-inverse " style="min-height:160px">
 
-    <div>
-      <ul class="nav navbar-nav" style="display:inline-block">
-        <li style="display:inline-block">
-          <a (click)="navigate(0)" style="cursor: pointer; margin-top:80px"><img src="assets/logo.png"  width="200" height="160"></a>
-        </li>
-        <li *ngIf="isAdmin">
-          <a (click)="navigate(1)" style="cursor: pointer">       Create a group       </a>
-        </li>
 
-        <li *ngIf="isAdmin">
-          <a (click)="navigate(2)" style="cursor: pointer">       Register new user      </a>
-        </li>
-        <li *ngIf="isAdmin">
-          <a (click)="navigate(3)" style="cursor: pointer">     Add users to groups     </a>
-        </li>
+      <ul class="nav navbar-nav">
         <li>
-          <a (click)="navigate(4)" style="cursor: pointer">       See all lessons       </a>
+          <a (click)="navigate(0)"><img src="assets/logo.png"  width="200" height="160"></a>
         </li>
-        <li>
-          <a (click)="navigate(5)" style="cursor: pointer">       Create a lesson       </a>
+        <li *ngIf="isAdmin">
+          <a (click)="navigate(1)">       Create a group       </a>
         </li>
 
-        <li>
-          <a (click)="navigate(6)" style="cursor: pointer">     Add words to lesson     </a>
+        <li *ngIf="isAdmin">
+          <a (click)="navigate(2)">       Register new user      </a>
         </li>
         <li *ngIf="isAdmin">
-          <a (click)="navigate(7)" style="cursor: pointer"> Assign lessons to students </a>
+          <a (click)="navigate(3)">     Add users to groups     </a>
         </li>
         <li>
-          <a (click)="navigate(8)" style="cursor: pointer">   See students' progress   </a>
+          <a (click)="navigate(4)">       See all lessons       </a>
         </li>
         <li>
-          <a (click)="navigate(9)" style="cursor: pointer">   Logout   </a>
+          <a (click)="navigate(5)">       Create a lesson       </a>
+        </li>
+
+        <li>
+          <a (click)="navigate(6)">     Add words to lesson     </a>
+        </li>
+        <li *ngIf="isAdmin">
+          <a (click)="navigate(7)"> Assign lessons to students </a>
+        </li>
+        <li>
+          <a (click)="navigate(8)">   See students' progress   </a>
+        </li>
+        <li>
+          <a (click)="navigate(9)">   Logout   </a>
         </li>
       </ul>
-    </div>
-  </div>
 </nav>

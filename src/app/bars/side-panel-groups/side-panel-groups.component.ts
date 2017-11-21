@@ -17,8 +17,8 @@ export class SidePanelGroupsComponent {
   constructor(private backendService:BackendService,
               private loginService: LoginService) {
 
-    this.show=false;
-    this.className="sidenav_false";
+    this.show=true;
+    this.className="sidenav_true";
     backendService.getAllGroups().
       subscribe(response=>{
         this.groups=response;
