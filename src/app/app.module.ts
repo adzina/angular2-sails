@@ -21,7 +21,7 @@ import { EmitterService} from './services/emitter.service';
 
 import { LoginComponent } from './views/login/view-login.component';
 import { DashboardComponent } from './views/dashboard/view-dashboard.component';
-import {SeeAllLessonsComponent} from './views/see-all-lessons/see-all-lessons.component';
+import { TeacherSeeAllLessonsComponent } from './views/teacher-see-all-lessons/view-teacher-see-all-lessons.component';
 import { SidePanelGroupsComponent } from './bars/side-panel-groups/side-panel-groups.component';
 import { ChooseModeComponent } from './views/choose-mode/view-choose-mode.component';
 import { NavbarComponent } from './bars/navbar/navbar.component';
@@ -32,8 +32,7 @@ import { TeacherCreateLessonComponent } from './views/teacher-create-lesson/view
 import { TeacherWordsPanelComponent } from './views/teacher-words-panel/view-teacher-words-panel.component';
 import { TeacherSeeProgressComponent } from './views/teacher-see-progress/view-teacher-see-progress.component';
 import { TeacherAddStudentsComponent } from './views/teacher-add-students/view-teacher-add-students.component';
-import { RegisterComponent } from './views/register/view-register.component';
-import { ProgressComponent } from './views/progress/view-progress.component';
+import { AdminRegisterComponent } from './views/admin-register/view-admin-register.component';
 import { CommonModule } from '@angular/common';
 
 
@@ -51,19 +50,18 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    SeeAllLessonsComponent,
     SidePanelGroupsComponent,
     ChooseModeComponent,
     NavbarComponent,
     AdminCreateGroupComponent,
     AdminAddUsersComponent,
     GoodbyeComponent,
+    TeacherSeeAllLessonsComponent,
     TeacherCreateLessonComponent,
     TeacherWordsPanelComponent,
     TeacherSeeProgressComponent,
     TeacherAddStudentsComponent,
-    RegisterComponent,
-    ProgressComponent,
+    AdminRegisterComponent,
   ],
   imports: [
     AlertModule.forRoot(),

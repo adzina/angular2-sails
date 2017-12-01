@@ -6,9 +6,9 @@ import {LoginService} from '../../services/login.service';
 import {BackendService} from '../../services/backend.service';
 @Component({
   selector: 'register',
-  templateUrl: './view-register.component.html'
+  templateUrl: './view-admin-register.component.html'
 })
-export class RegisterComponent {
+export class AdminRegisterComponent {
   inputType: string;
   email: string;
   password: string;

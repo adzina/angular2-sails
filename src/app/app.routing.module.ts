@@ -10,9 +10,8 @@ import { AdminAddUsersComponent } from './views/admin-add-users/view-admin-add-u
 import { TeacherWordsPanelComponent } from './views/teacher-words-panel/view-teacher-words-panel.component';
 import { TeacherAddStudentsComponent } from './views/teacher-add-students/view-teacher-add-students.component';
 import { TeacherSeeProgressComponent } from './views/teacher-see-progress/view-teacher-see-progress.component';
-import { RegisterComponent } from './views/register/view-register.component';
-import { ProgressComponent } from './views/progress/view-progress.component';
-import {SeeAllLessonsComponent} from './views/see-all-lessons/see-all-lessons.component';
+import { AdminRegisterComponent } from './views/admin-register/view-admin-register.component';
+import { TeacherSeeAllLessonsComponent} from './views/teacher-see-all-lessons/view-teacher-see-all-lessons.component';
 import { AuthGuard } from './common/auth.guard';
 import { RoleGuard } from './common/role.guard';
 
@@ -24,7 +23,7 @@ export const routes = [
   },
   {
     path: 'register',
-    component: RegisterComponent,
+    component: AdminRegisterComponent,
     canActivate: [RoleGuard],
     data: {
       expectedRole: 'admin'
@@ -49,7 +48,7 @@ export const routes = [
     },
     {
       path: 'see-all-lessons',
-      component: SeeAllLessonsComponent,
+      component: TeacherSeeAllLessonsComponent,
       canActivate: [AuthGuard]
     },
   {
@@ -79,11 +78,6 @@ export const routes = [
   },
   {  path: 'choose-mode',
     component: ChooseModeComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'progress',
-    component: ProgressComponent,
     canActivate: [AuthGuard]
   },
   {

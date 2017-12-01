@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
 @Component({
   moduleId: module.id,
   selector: 'see-all-lessons',
-  templateUrl: 'see-all-lessons.component.html',
+  templateUrl: 'view-teacher-see-all-lessons.component.html',
 })
 
-export class SeeAllLessonsComponent {
+export class TeacherSeeAllLessonsComponent {
   show:boolean;
   lessons: Lesson[];
   className:string;
