@@ -48,7 +48,7 @@ module.exports = {
 	        sails.models.user.findOne({id: userID})
 	          .then(function(user){
 	            var elem:user;
-	            elem={id:<string>user.id,first_name: <string>user.first_name, last_name: <string>user.elast_name, role: <string>user.role};
+	            elem={id:<string>user.id,first_name: <string>user.first_name, last_name: <string>user.last_name, role: <string>user.role};
 	            output.push(elem);
 	            //inside the iterator function we call cb() once we are finished
 	            cb();

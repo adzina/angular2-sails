@@ -2,11 +2,13 @@ FROM node:latest
 
 RUN npm install -g sails grunt npm-check-updates
 
+
 RUN mkdir /app
 WORKDIR /app
 
 COPY package.json /app
-RUN npm install
+RUN npm cache clear --force 
+RUN npm install --no-shrinkwrap --update-binary
 
 COPY . /app
 

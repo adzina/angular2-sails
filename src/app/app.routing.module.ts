@@ -24,10 +24,10 @@ export const routes = [
   {
     path: 'register',
     component: AdminRegisterComponent,
-    canActivate: [RoleGuard],
-    data: {
-      expectedRole: 'admin'
-    }
+  //  canActivate: [RoleGuard],
+    //data: {
+      //expectedRole: 'admin'
+    //}
   },
 
   {
@@ -84,7 +84,7 @@ export const routes = [
     path: 'goodbye',
     component: GoodbyeComponent
   },
-  { //Redirect urls not found at root
+ { //Redirect urls not found at root
      path: '**',
      redirectTo: ''
    }

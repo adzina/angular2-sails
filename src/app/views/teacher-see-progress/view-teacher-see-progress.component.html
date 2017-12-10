@@ -1,3 +1,6 @@
+<navbar></navbar>
 
-  <navbar></navbar>
-  
+<h3><font color="white">Choose a group:</font></h3>
+<div *ngFor=" let group of groups;let i=index">
+        <button style="margin-bottom:3px;min-width:100%"class="btn btn-info" (click)="choose(i)">{{group.name}}</button><br>
+</div>
