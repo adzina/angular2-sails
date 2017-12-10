@@ -3,6 +3,7 @@ import { LoginService } from '../../services/login.service';
 import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
 import { Group } from '../../models/group';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'teacher-see-progress',
@@ -10,7 +11,8 @@ import { Group } from '../../models/group';
 })
 export class TeacherSeeProgressComponent{
   groups: Group[];
-  chosenLesson: string;
+  students:User[];
+  groupChosen=false;
   constructor(private _loginService: LoginService,
               private _backendService: BackendService) {
     _backendService.getAllMyGroups().subscribe(
@@ -20,7 +22,12 @@ export class TeacherSeeProgressComponent{
     )
   }
   choose(i){
-    alert("group chosen: "+this.groups[i].name);
+    this._backendService.getActiveUsers(this.groups[i].id).subscribe(
+      data=>{
+        this.students=data;
+          this.groupChosen=true;
+      }
+    )
   }
 
 }

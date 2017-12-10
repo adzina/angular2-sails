@@ -25,14 +25,22 @@ module.exports = {
   },
 
    create: function(eng,pol,callback){
-           sails.models.word.create({
-               english:eng,
-               polish:pol})
-           .exec(function (err,word){
-             if(err){console.log(err);}
-            return callback(word.id);
+     sails.models.word.findOne({ english: eng, polish: pol })
+       .exec(function(err, word) {
+           if(!word){
+             sails.models.word.create({
+                 english:eng,
+                 polish:pol})
+             .exec(function (err,word){
+               if(err){console.log(err);}
+              return callback(word.id);
 
-   });
+              })
+         }
+         else{
+           return callback(word.id)
+         }
+       })
 },
 
   addToLesson: function(lessonID,wordID,callback){
