@@ -29,5 +29,8 @@ export class TeacherSeeProgressComponent{
       }
     )
   }
+  student(i){
+  
+  }
 
 }

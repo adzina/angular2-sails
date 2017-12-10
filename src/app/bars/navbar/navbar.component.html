@@ -1,38 +1,41 @@
-<nav class="navbar navbar-toggleable-sm navbar-inverse " style="min-height:160px">
+<nav class="navbar navbar-toggleable-sm navbar-inverse " >
 
 
       <ul class="nav navbar-nav">
-        <li>
-          <a (click)="navigate(0)"><img src="assets/logo.png"  width="200" height="160"></a>
+        <li *ngIf="!isAdmin">
+          <a class="logo" (click)="navigate(0)"><img src="assets/logo.png"  width="100" height="80"></a>
         </li>
         <li *ngIf="isAdmin">
-          <a (click)="navigate(1)">       Create a group       </a>
+          <a class="logo_big" (click)="navigate(0)"><img src="assets/logo.png"  width="200" height="160"></a>
+        </li>
+        <li *ngIf="isAdmin">
+          <a class="tab" (click)="navigate(1)">       Create a group       </a>
         </li>
 
         <li *ngIf="isAdmin">
-          <a (click)="navigate(2)">       Register new user      </a>
+          <a class="tab" (click)="navigate(2)">       Register new user      </a>
         </li>
         <li *ngIf="isAdmin">
-          <a (click)="navigate(3)">     Add users to groups     </a>
+          <a class="tab" (click)="navigate(3)">     Add users to groups     </a>
         </li>
         <li>
-          <a (click)="navigate(4)">       See all lessons       </a>
+          <a class="tab" (click)="navigate(4)">       See all lessons       </a>
         </li>
         <li>
-          <a (click)="navigate(5)">       Create a lesson       </a>
+          <a class="tab" (click)="navigate(5)">       Create a lesson       </a>
         </li>
 
         <li>
-          <a (click)="navigate(6)">     Add words to lesson     </a>
+          <a class="tab" (click)="navigate(6)">     Add words to lesson     </a>
         </li>
         <li *ngIf="isAdmin">
-          <a (click)="navigate(7)"> Assign lessons to students </a>
+          <a class="tab" (click)="navigate(7)"> Assign lessons to students </a>
         </li>
         <li>
-          <a (click)="navigate(8)">   See students' progress   </a>
+          <a class="tab" (click)="navigate(8)">   See students' progress   </a>
         </li>
         <li>
-          <a (click)="navigate(9)">   Logout   </a>
+          <a class="tab" (click)="navigate(9)">   Logout   </a>
         </li>
       </ul>
 </nav>
