@@ -68,6 +68,8 @@ module.exports.routes = {
 
   'POST /studentword/addOrUpdateStudentWord': 'StudentWordController.addOrUpdateStudentWord',
   'POST /studentword/getAllGuessed': 'StudentWordController.getAllGuessed',
+  'POST /studentword/countAll': 'StudentWordController.countAll',
+  'POST /studentword/countAllGuessed': 'StudentWordController.countAllGuessed'
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

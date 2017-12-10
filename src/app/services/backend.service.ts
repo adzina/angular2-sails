@@ -150,7 +150,15 @@ getApiUrl(){
       )
 
 
-}
+  }
+  countAllWords(studentID:string):Observable<any>{
+    var url=this.g_url+"studentword/countAll";
+    return this.http.post(url,JSON.stringify({studentID:studentID}))
+  }
+  countAllGuessedWords(studentID:string):Observable<any>{
+    var url=this.g_url+"studentword/countAllGuessed";
+    return this.http.post(url,JSON.stringify({studentID:studentID}))
+  }
 
 createGroup(name:string):Observable<any>{
   var body={name:name};

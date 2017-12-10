@@ -7,6 +7,6 @@
 
 <div *ngIf="groupChosen">
   <div *ngFor=" let student of students;let i=index">
-          <button style="margin-bottom:3px;min-width:20%" class="btn btn-warning" (click)="student(i)">{{student.first_name}} {{student.last_name}}</button><br>
+          <button style="margin-bottom:3px;min-width:20%" class="btn btn-warning" (click)="s(i)">{{student.first_name}} {{student.last_name}}</button><br>
   </div>
 </div>

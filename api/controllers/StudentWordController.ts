@@ -54,10 +54,25 @@ module.exports = {
     var studentID = req.param("studentID");
     return  sails.models.studentword.find({studentID: studentID,guessed:true})
       .exec(function(err,found){
-        
+
         res.json(found);
       })
+  },
+  countAllGuessed:function(req,res){
+    var studentID = req.param("studentID");
+    return sails.models.studentword.count({studentID: studentID,guessed:true}).exec(function countCB(error, number) {
+      res.json(number)
+    });
+  },
+  countAll:function(req,res){
+    var studentID = req.param("studentID");
+    return sails.models.studentword.count({studentID: studentID}).exec(function countCB(error, number) {
+      res.json(number)
+    });
   }
+
+
+
 };
 interface word {
   english: string,
