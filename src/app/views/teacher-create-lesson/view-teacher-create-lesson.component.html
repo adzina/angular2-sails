@@ -9,20 +9,13 @@
       <form>
         <div class="form-group" style="text-align:left">
           <strong> Date</strong><br>
-        <!--  <ng-datepicker #dp class="form-control" style="width:250px" name="model" [(ngModel)]="model"(navigate)="date = $event.next"></ng-datepicker>
-        -->
+
           <datepicker
                         name="date"
                         [(ngModel)]="date"
                          [showWeeks]="true"
                          [minDate]="minDate"
-                       ></datepicker>
-          <!--
-        <ng-datepicker name="date" [(ngModel)]="date"> </ng-datepicker>
-
-          <input type="text" date-picker ng-control="date" [(ng-model)]="date" />
-          -->
-
+          ></datepicker>
         </div>
       </form>
     </td>

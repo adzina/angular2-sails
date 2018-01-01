@@ -58,7 +58,7 @@ module.exports.policies = {
     addOrUpdateStudentWord: 'sessionAuth',
   },
   UserController: {
-    //create: 'sessionAuth',
+    create: 'sessionAuth',
     getAll: 'sessionAuth',
     findByID: 'sessionAuth',
   },
