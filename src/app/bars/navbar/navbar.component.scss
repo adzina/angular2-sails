@@ -1,0 +1,24 @@
+li a{
+  color: white;
+  font-size: 20px;
+}
+a{
+  cursor: pointer
+}
+ul{
+    display:table;
+    padding:0;
+    margin-top:50;
+}
+.tab{
+    line-height: 80px;
+    display:inline-table;
+}
+.logo{
+  line-height: 80px;
+  display:inline-table;
+}
+.logoBig{
+  line-height: 160px;
+  display:inline-table;
+}

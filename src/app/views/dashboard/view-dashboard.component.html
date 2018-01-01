@@ -1,0 +1,34 @@
+<head>
+	<title>Dashboard</title>
+</head>
+
+<body>
+
+	<navbar></navbar>
+
+
+
+		<div *ngIf="chosenLesson!='null'">
+			 <div class="word_to_guess">{{word.eng}}</div><br><br>
+
+
+			 <div class="grid2x2" *ngIf="!mode">
+									<!-- iteruje po wszystkich opcjach z tablicy i tworzy kolejne przyciski wg wzoru-->
+									<div *ngFor=" let word of lessonsFiltered">
+											<div class="box"><input type="submit" class={{ok}} (click)="assign(word.pol)" value={{word.pol}}></div>
+									</div>
+			</div>
+
+			<div *ngIf="mode">
+
+								<input type="text" name="response" [(ngModel)]="response" class={{ok}} (keyup.enter)="assign(response)" placeholder="Your response">
+
+			</div>
+
+
+			<div class="reponse" *ngIf="clicked">
+									<p align="center">Correct response: {{word.pol}}</p>
+									<div class="box"><input type="submit" (click)="nextword()" value="NEXT >>"></div>
+			</div>
+</div>
+</body>

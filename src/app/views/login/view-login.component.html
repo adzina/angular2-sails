@@ -1,0 +1,29 @@
+<div class="jumbotron text-center vertical-center" style="min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #66a3ff;">
+	<div class="container" style="background-color: #ccc; width:400px; border-radius: 25px;">
+		<h1>Log in</h1><br>
+		<form action="/" style="margin-bottom:5%">
+		  <input type="text" name="email" [(ngModel)]="email" placeholder="Email"><br><br>
+		  <input type="{{inputType}}" name="password" [(ngModel)]="password" placeholder="Password" /><br><br>
+		  <input type="checkbox" name="passwordCheckBox" (click)="hideShowPassword()" />
+		  <label for="checkbox" *ngIf="passwordCheckbox">Hide password</label>
+		  <label for="checkbox" *ngIf="!passwordCheckbox">Show password</label>
+      <br>
+      Domyślne url: <b>http://localhost:1337/</b><br>
+      Żeby zmienić na np <b>http://192.178.1.17:1337/</b> wpisz <b>192.178.1.17</b> poniżej<br>
+  		  <input type="text" name="url" [(ngModel)]="url" placeholder="Wpisz url"><br><br>
+		  <br><br>
+				<button class="btn btn-primary" (click)="submit('teacher')">Log in</button>
+		</form>
+
+
+		<div style="height:20px">
+
+						<div class="alert alert-danger" *ngIf="wrong" style="margin-bottom:0px">Wrong credentials!</div>
+		</div>
+
+</div>
+</div>
