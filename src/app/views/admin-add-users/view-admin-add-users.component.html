@@ -12,7 +12,7 @@
         <th class="text-left col-md-11">{{user.role}} : {{user.first_name}}  {{user.last_name}}</th>
         <th align="center" class="text-center col-md-1">
           <button type="button" class="close danger" aria-label="Close" (click)="delete(i)" style="width:60px;margin:0 auto">
-            <span aria-hidden="false"> &times; </span>
+            <span class="glyphicon glyphicon-remove"></span>
           </button>
         </th>
       </tr>
@@ -23,7 +23,7 @@
         <th class="text-left col-md-11">{{user.role}} : {{user.first_name}}  {{user.last_name}}</th>
         <th align="center" class="text-center col-md-1">
           <button type="button" class="close danger" aria-label="Close" (click)="add(i)" style="width:60px;margin:0 auto">
-          <span aria-hidden="false">Add</span>
+          <span class="glyphicon glyphicon-ok"></span>
         </button></th>
       </tr>
     </table>
