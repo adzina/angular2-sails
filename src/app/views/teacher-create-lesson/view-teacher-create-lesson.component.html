@@ -1,8 +1,16 @@
-
-  <navbar></navbar>
+<navbar></navbar>
 <div style="height:50px">
 </div>
 <div class="container text-center">
+  <h1>
+    <b>Hello {{user}}!</b>
+  </h1>
+  <br>
+  <h3>
+    You can create new groups here:
+  </h3>
+  <br>
+    <hr>
 <table align="center">
   <tr>
     <td>
@@ -43,6 +51,7 @@
     </td>
   </tr>
 </table>
+<hr>
     <div class="alert alert-success" *ngIf="created" style="margin-left:25%;margin-right:25%">Lesson created, you can now add words
       <a (click)="goto()" style="cursor: pointer; margin-left:0px"><strong>here</strong></a></div>
 

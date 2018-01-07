@@ -30,6 +30,7 @@ export class TeacherSeeProgressComponent{
     return false;
   }
   choose(i){
+    this.students=[];
     this._backendService.getActiveUsers(this.groups[i].id).subscribe(
       data=>{
            for(let user of data){

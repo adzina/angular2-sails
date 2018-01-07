@@ -24,11 +24,14 @@ export class TeacherCreateLessonComponent {
   backend_error:string;
   placeholder: string;
   group: string;
+  user:string;
   constructor(private _router:Router,
               private http:AuthHttp,
               private _loginService:LoginService,
               private _backendService: BackendService,
               private completerService: CompleterService){
+
+                this.user=this._loginService.getUserName();
                 this.minDate=new Date();
                 this.date=new Date();
                 this.minDate.setDate(this.date.getDate()-1);

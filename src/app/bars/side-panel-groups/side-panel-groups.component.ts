@@ -38,5 +38,6 @@ export class SidePanelGroupsComponent {
 
   choose(i:number) {
     this.groupChosen.emit(this.groups[i]);
+    this.toggle();
   }
 }

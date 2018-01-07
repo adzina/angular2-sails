@@ -15,11 +15,13 @@ export class AdminCreateGroupComponent{
   created: boolean;
   error: boolean;
   backend_error:string;
+  user: string;
   constructor(private _router:Router,
               private http:AuthHttp,
               private _login:LoginService,
               private backendService: BackendService){
     this.name=null;
+    this.user=this._login.getUserName();
   }
   create(){
     if(this.name!=null){
