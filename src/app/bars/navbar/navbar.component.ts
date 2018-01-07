@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {LoginService} from '../../services/login.service';
+
 @Component({
   moduleId: module.id,
   selector: 'navbar',
@@ -9,7 +10,6 @@ import {LoginService} from '../../services/login.service';
 })
 
 export class NavbarComponent{
-
   user: string;
   isAdmin: boolean;
   constructor(private _router:Router, private _loginService:LoginService){

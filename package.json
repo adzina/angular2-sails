@@ -35,7 +35,6 @@
     "jquery": "^3.2.0",
     "jsonwebtoken": "^8.0.1",
     "jwt-decode": "^2.2.0",
-    "ng2-bootstrap": "^1.6.3",
     "ng2-completer": "^1.6.3",
     "ng2-datepicker": "^2.1.7",
     "ng2-datepicker-bootstrap": "^1.0.0",

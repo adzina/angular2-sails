@@ -22,7 +22,6 @@ export class TeacherAddStudentsComponent{
                  this.inactiveGroups=[];
 
                 this._backendService.getAllMyGroups().subscribe(response=>{
-
                   this.receivedGroups=response;
       },
       error=>{
@@ -48,6 +47,8 @@ export class TeacherAddStudentsComponent{
     let count_active=0;
     let count_inactive=0;
     let flag=false;
+    console.log(this.receivedActiveGroups);
+    console.log("pre");
     for (var i=0; i<this.receivedGroups.length;i++){
       for (var j=0;j< this.receivedActiveGroups.length;j++)
         {
@@ -64,6 +65,9 @@ export class TeacherAddStudentsComponent{
           count_inactive++;
         }
     }
+    console.log("out");
+    console.log(this.inactiveGroups);
+    console.log(this.activeGroups);
   }
   delete(i:number){
     var user=this.activeGroups[i];

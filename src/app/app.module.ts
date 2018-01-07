@@ -5,7 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { HttpModule, Http, RequestOptions,ConnectionBackend } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BsDropdownModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
