@@ -9,6 +9,7 @@ import * as bcrypt from "bcryptjs";
   moduleId: module.id,
   selector: 'login',
   templateUrl: 'view-login.component.html',
+  styleUrls: ['view-login.component.scss']
 })
 
 export class LoginComponent{
