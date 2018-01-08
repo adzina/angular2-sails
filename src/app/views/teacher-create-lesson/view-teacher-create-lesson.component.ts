@@ -38,7 +38,7 @@ export class TeacherCreateLessonComponent {
                 this.placeholder="click to see all groups"
                 //this.model = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
                 this.subject=null;
-                _backendService.getAllGroups().
+                _backendService.getAllMyGroups().
                   subscribe(response=>{
                     this.groups=response;
                      this.dataService=completerService.local(this.groups,'name','name');
